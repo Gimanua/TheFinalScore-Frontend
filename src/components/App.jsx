@@ -3,8 +3,8 @@ import './css/App.css';
 import MoviePage from './Movie.jsx';
 import SearchBar from './SearchBar.jsx';
 import SearchResult from './SearchResult.jsx';
-import Table from './table.jsx';
 import MovieInfo from './MovieInfo.jsx';
+import Table from './Table.jsx';
 
 function Meny(props) {
 
