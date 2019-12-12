@@ -7,6 +7,11 @@
     src: url(../../Karla/Karla-Bold.ttf);
 }
 
+body{
+    padding: 0;
+    margin: 0;
+}
+
 .search{
     font-family: karla;
     text-transform: uppercase;
@@ -32,9 +37,24 @@
 
 .top{
     background-color: lightgray;
-    padding: 10px;
+    padding-top: 10px;
+}
 
+.searchDrop{
 
+    top: 0;
+    left: -200px;
+    margin:0;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    width: 200px;
+     height: 100vh;
+    background: #00aeff;
+    transition: 0.5s;
+}
+
+.searchResult{
+ 
 }
 
 

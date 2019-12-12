@@ -10,8 +10,8 @@ const tempSearchResults = [
 
 export default function SearchResult({searchQuery}){
     return (
-        <section>
-            <ul>
+        <section className="searchDrop">
+            <ul className="searchResult">
                 {searchQuery && search(searchQuery)}
             </ul>
         </section>

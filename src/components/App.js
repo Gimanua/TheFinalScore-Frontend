@@ -19,7 +19,6 @@ function Meny(props) {
               <SearchResult searchQuery={searchQuery} />
               <div></div>
           </div>
-
       </>
   )
   }
