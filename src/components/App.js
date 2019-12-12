@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/App.css';
 import SearchBar from './SearchBar';
+import SearchResult from './SearchResult';
 
 function Meny(props) {
 
@@ -8,11 +9,14 @@ function Meny(props) {
       props.onNavigate(id);
   }
 
+  const [searchQuery, setSearchQuery] = React.useState(null);
+
   return (
 
       <>
           <div className="top">
-              <SearchBar />
+              <SearchBar search={setSearchQuery} />
+              <SearchResult searchQuery={searchQuery} />
               <div></div>
           </div>
 
