@@ -1,6 +1,8 @@
 import React from 'react';
 import './css/App.css';
 import MoviePage from './Movie.js';
+import SearchBar from './SearchBar';
+import SearchResult from './SearchResult';
 
 function Meny(props) {
 
@@ -8,11 +10,14 @@ function Meny(props) {
       props.onNavigate(id);
   }
 
+  const [searchQuery, setSearchQuery] = React.useState(null);
+
   return (
       <>
           <div className="top">
-              <input type="text" name="Search" className="search" placeholder="search"></input>
-              <div className="menu">Menu</div>
+              <SearchBar search={setSearchQuery} />
+              <SearchResult searchQuery={searchQuery} />
+              <div></div>
           </div>
 
       </>
