@@ -1,10 +1,10 @@
 import React from 'react';
 import './css/App.css';
-import MoviePage from './Movie.jsx';
-import SearchBar from './SearchBar.jsx';
-import SearchResult from './SearchResult.jsx';
-import Table from './table.jsx';
-import MovieInfo from './MovieInfo.jsx';
+import MoviePage from './Movie';
+import SearchBar from './SearchBar';
+import SearchResult from './SearchResult';
+import MovieInfo from './MovieInfo';
+import Table from './Table';
 
 function Meny(props) {
 
