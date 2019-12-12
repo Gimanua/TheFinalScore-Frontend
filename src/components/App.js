@@ -3,6 +3,7 @@ import './css/App.css';
 import MoviePage from './Movie.js';
 import SearchBar from './SearchBar';
 import SearchResult from './SearchResult';
+import Table from './table';
 
 function Meny(props) {
 
@@ -17,7 +18,7 @@ function Meny(props) {
           <div className="top">
               <SearchBar search={setSearchQuery} />
               <SearchResult searchQuery={searchQuery} />
-              <div></div>
+              <Table />
           </div>
 
       </>
