@@ -1,26 +1,61 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function Meny(props) {
+
+  function onLinkClick(id) {
+      props.onNavigate(id);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <>
+          <div className="top">
+              <div className="search">Search</div>
+              <div></div>
+          </div>
+
+      </>
+  )
 }
 
-export default App;
+export default function App(props) {
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  function navigate(id) {
+      console.log(`Navigate: ${id}`)
+      setCurrentPage(id);
+  }
+/**
+* Sends the user to page 4 on login
+*/
+  function onLogin() {
+      setCurrentPage(4);
+  }
+
+
+  let currentContent = null;
+  if (currentPage === 1)
+      currentContent = null;
+
+  else if (currentPage === 2) {
+      currentContent = null;
+  }
+
+  else if (currentPage === 3) {
+      currentContent = null;
+
+  }
+
+  else if (currentPage === 4) {
+      currentContent = null;
+  }
+
+  return (
+      <div>
+          <Meny onNavigate={navigate} />
+          <div className="guistate-content">
+              {currentContent}
+          </div>
+      </div>
+  )
+}
