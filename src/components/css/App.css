@@ -1,0 +1,40 @@
+@font-face{
+    font-family: karla;
+    src: url(../../Karla/Karla-Regular.ttf);
+}
+@font-face{
+    font-family: karla-b;
+    src: url(../../Karla/Karla-Bold.ttf);
+}
+
+.search{
+    font-family: karla;
+    text-transform: uppercase;
+    padding: 12px;
+    margin-left: 10px;
+    font-size: 26px;
+    border: none;
+    outline: none;
+    background-color:lightgray;
+    color: black;
+}
+
+.menu{
+    font-family: karla;
+    text-transform: uppercase;
+    font-size: 26px;
+    padding: 10px;
+    margin-right: 10px;
+    float: right;
+    color: grey;
+    cursor: pointer;
+}
+
+.top{
+    background-color: lightgray;
+    padding: 10px;
+
+
+}
+
+
