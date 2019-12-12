@@ -1,8 +1,10 @@
 import React from 'react';
 import './css/App.css';
-import MoviePage from './Movie.js';
-import SearchBar from './SearchBar';
-import SearchResult from './SearchResult';
+import MoviePage from './Movie.jsx';
+import SearchBar from './SearchBar.jsx';
+import SearchResult from './SearchResult.jsx';
+import MovieInfo from './MovieInfo.jsx';
+import Table from './Table.jsx';
 
 function Meny(props) {
 
@@ -17,7 +19,8 @@ function Meny(props) {
           <div className="top">
               <SearchBar search={setSearchQuery} />
               <SearchResult searchQuery={searchQuery} />
-              <div></div>
+              <MovieInfo />
+              <Table />
           </div>
       </>
   )
