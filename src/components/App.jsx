@@ -1,10 +1,12 @@
 import React from 'react';
-import './css/App.css';
 import MoviePage from './Movie';
 import SearchBar from './SearchBar';
 import SearchResult from './SearchResult';
 import MovieInfo from './MovieInfo';
 import Table from './Table';
+import MenuDrop from './MenuDrop';
+
+import './css/App.css';
 
 function Meny(props) {
 
@@ -18,10 +20,11 @@ function Meny(props) {
       <>
           <div className="top">
               <SearchBar search={setSearchQuery} />
-              <SearchResult searchQuery={searchQuery} />
-              <MovieInfo />
-              <Table />
+              <MenuDrop />
           </div>
+             <SearchResult searchQuery={searchQuery} />
+        
+          
 
       </>
   )
@@ -41,7 +44,7 @@ export default function App(props) {
 
   let currentContent = null;
   if (currentPage === 1)
-      currentContent = <MoviePage />;
+      currentContent = null;
 
   else if (currentPage === 2) {
       currentContent = null;
