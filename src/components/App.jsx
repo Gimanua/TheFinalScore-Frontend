@@ -6,7 +6,7 @@ import MovieInfo from './MovieInfo';
 import Table from './Table';
 import MenuDrop from './MenuDrop';
 
-import './css/App.css';
+import './scss/App.scss';
 
 function Meny(props) {
 
@@ -22,7 +22,7 @@ function Meny(props) {
               <SearchBar search={setSearchQuery} />
               <MenuDrop />
           </div>
-             <SearchResult searchQuery={searchQuery} />
+          <SearchResult searchQuery={searchQuery} />
         
           
 
@@ -47,7 +47,7 @@ export default function App(props) {
       currentContent = null;
 
   else if (currentPage === 2) {
-      currentContent = null;
+      currentContent = <MovieInfo />
   }
 
   else if (currentPage === 3) {
@@ -60,11 +60,11 @@ export default function App(props) {
   }
 
   return (
-      <div>
+      <>
           <Meny onNavigate={navigate} />
-          <div className="guistate-content">
+          <main className="guistate-content">
               {currentContent}
-          </div>
-      </div>
+          </main>
+      </>
   )
 }

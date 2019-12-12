@@ -3,9 +3,9 @@ export default function MenuDrop(){
  
    return(
      <>
-<div class="dropdown">
-  <button class="dropbtn">Menu</button>
-  <div class="dropdown-content">
+<div className="dropdown">
+  <button className="dropbtn">Menu</button>
+  <div className="dropdown-content">
   <a href="#">Link 1</a>
   <a href="#">Link 2</a>
   <a href="#">Link 3</a>
