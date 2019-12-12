@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/App.css';
+import MoviePage from './Movie.js';
 
 function Meny(props) {
 
@@ -8,11 +9,10 @@ function Meny(props) {
   }
 
   return (
-
       <>
           <div className="top">
-              <div className="search">Search</div>
-              <div></div>
+              <input type="text" name="Search" className="search" placeholder="search"></input>
+              <div className="menu">Menu</div>
           </div>
 
       </>
@@ -33,7 +33,7 @@ export default function App(props) {
 
   let currentContent = null;
   if (currentPage === 1)
-      currentContent = null;
+      currentContent = <MoviePage />;
 
   else if (currentPage === 2) {
       currentContent = null;
