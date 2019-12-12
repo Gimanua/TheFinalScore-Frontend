@@ -1,10 +1,10 @@
 @font-face{
     font-family: karla;
-    src: url(Karla/Karla-Regular.ttf);
+    src: url(../../Karla/Karla-Regular.ttf);
 }
 @font-face{
     font-family: karla-b;
-    src: url(Karla/Karla-Bold.ttf);
+    src: url(../../Karla/Karla-Bold.ttf);
 }
 
 .search{
