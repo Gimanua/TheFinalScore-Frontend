@@ -15,6 +15,7 @@ return (
           <th>Plot</th>
           <th>FINALSCORE</th>
           <th>Type</th>
+          <th></th>
         </thead>
         <tbody>
         <tr>
@@ -36,6 +37,7 @@ return (
             <td>
               Movie
             </td>
+            <td>❌</td>
           </tr>
           <tr>
             <td>
@@ -56,6 +58,7 @@ return (
             <td>
                 Movie
             </td>
+            <td>❌</td>
           </tr>
           <tr>
             <td>
@@ -76,6 +79,7 @@ return (
             <td>
                 Movie
             </td>
+            <td>❌</td>
           </tr>
           <tr>
             <td>
@@ -96,6 +100,7 @@ return (
             <td>
                 Movie
             </td>
+          <td>❌</td>
           </tr>
         </tbody>
       </table>
