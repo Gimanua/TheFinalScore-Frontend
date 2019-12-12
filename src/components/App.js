@@ -17,7 +17,7 @@ function Meny(props) {
 
       </>
   )
-
+  }
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(1);
 
@@ -25,9 +25,7 @@ export default function App(props) {
       console.log(`Navigate: ${id}`)
       setCurrentPage(id);
   }
-/**
-* Sends the user to page 4 on login
-*/
+
   function onLogin() {
       setCurrentPage(4);
   }
