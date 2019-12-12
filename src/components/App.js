@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/App.css';
+import SearchBar from './SearchBar';
 
 function Meny(props) {
 
@@ -11,7 +12,7 @@ function Meny(props) {
 
       <>
           <div className="top">
-              <div className="search">Search</div>
+              <SearchBar />
               <div></div>
           </div>
 
