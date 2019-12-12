@@ -1,18 +1,24 @@
 import React from 'react';
 
+
 const tempSearchResults = [
     'Star Wars',
     'Batman',
     'Lego Batman',
     'Indiana Jones',
-    'Indian Jones 2'
+    'Indian-Jones 2'
 ];
 
 export default function SearchResult({searchQuery}){
+    let content = searchQuery && search(searchQuery);
+    let classes = "searchDrop";
+    if(content){
+        classes += " hasRes"
+    }
     return (
-        <section className="searchDrop">
+        <section className={classes}>
             <ul className="searchResult">
-                {searchQuery && search(searchQuery)}
+                {content}
             </ul>
         </section>
     );
