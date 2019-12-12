@@ -8,6 +8,7 @@ function Meny(props) {
   }
 
   return (
+
       <>
           <div className="top">
               <div className="search">Search</div>
@@ -16,7 +17,6 @@ function Meny(props) {
 
       </>
   )
-}
 
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(1);
