@@ -30,7 +30,7 @@ function Meny(props) {
   )
   }
 export default function App(props) {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0);
 
   function navigate(id) {
       console.log(`Navigate: ${id}`)
@@ -42,12 +42,12 @@ export default function App(props) {
   }
 
 
-  let currentContent = null;
+  let currentContent = <MovieInfo />;
   if (currentPage === 1)
       currentContent = null;
 
   else if (currentPage === 2) {
-      currentContent = <MovieInfo />
+      currentContent = null;
   }
 
   else if (currentPage === 3) {

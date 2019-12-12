@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Score({value, source}){
+export default function Score({value, source, id}){
     return (
-        <>
-            <p>{value}</p>
-            <p>{source}</p>
-        </>
+        <section>
+            <p className="is-size-3">{value}</p>
+            <p className="is-size-5">{source}</p>
+        </section>
     );
 }
