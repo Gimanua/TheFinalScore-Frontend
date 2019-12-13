@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
 import './scss/App.scss';
+import SignIn from './SignIn';
 
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -30,8 +31,7 @@ export default function App(props) {
   }
 
   else if (currentPage === 3) {
-      currentContent = null;
-
+      currentContent = <SignIn />;
   }
 
   else if (currentPage === 4) {
