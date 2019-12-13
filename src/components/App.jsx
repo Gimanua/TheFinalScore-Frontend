@@ -1,10 +1,11 @@
 import React from 'react';
-
 import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
-
+import Table from "./Table";
 import './scss/App.scss';
 import {getMovieInfo} from "../APIHelper";
+import SearchBar from "./SearchBar";
+import SearchResult from "./SearchResult";
 
 function Meny({onNavigate, onMovieSelect}) {
 
