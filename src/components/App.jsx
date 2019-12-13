@@ -1,17 +1,15 @@
 import React from 'react';
-import MoviePage from './Movie';
-import SearchBar from './SearchBar';
-import SearchResult from './SearchResult';
+
 import MovieInfo from './MovieInfo';
-import Table from './Table';
-import MenuDrop from './MenuDrop';
+import Menu from "./Menu";
 
 import './scss/App.scss';
+import {getMovieInfo} from "../APIHelper";
 
-function Meny(props) {
+function Meny({onNavigate, onMovieSelect}) {
 
   function onLinkClick(id) {
-      props.onNavigate(id);
+      onNavigate(id);
   }
 
   const [searchQuery, setSearchQuery] = React.useState(null);
@@ -20,17 +18,22 @@ function Meny(props) {
       <>
           <div className="top">
               <SearchBar search={setSearchQuery} />
-              <MenuDrop />
+              <div className="dropdown">
+  <button className="dropbtn">Menu</button>
+  <div className="dropdown-content">
+  <button className="item" onClick={() => onLinkClick(1)}>Home</button>
+  <button className="item" onClick={() => onLinkClick(2)}>My List</button>
+  <button className="item" onClick={() => onLinkClick(3)}>Sign in</button>
+  </div>
+</div>
           </div>
-          <SearchResult searchQuery={searchQuery} />
-        
-          
-
+          <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />
       </>
   )
   }
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(0);
+  const [selectedMovie, setSelectedMovie] = React.useState(null);
 
   function navigate(id) {
       console.log(`Navigate: ${id}`)
@@ -42,12 +45,12 @@ export default function App(props) {
   }
 
 
-  let currentContent = <MovieInfo />;
+  let currentContent = <MovieInfo {...selectedMovie} />;
   if (currentPage === 1)
-      currentContent = null;
+      currentContent = <MovieInfo />;
 
   else if (currentPage === 2) {
-      currentContent = null;
+      currentContent = <Table />;
   }
 
   else if (currentPage === 3) {
@@ -61,9 +64,9 @@ export default function App(props) {
 
   return (
       <>
-          <Meny onNavigate={navigate} />
+          <Menu onNavigate={navigate} onMovieSelect={(selectedMovie) => setSelectedMovie(selectedMovie)} />
           <main className="guistate-content">
-              {currentContent}
+              <MovieInfo {...getMovieInfo(selectedMovie)} />
           </main>
       </>
   )

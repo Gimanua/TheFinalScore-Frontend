@@ -1,19 +1,7 @@
 import React from 'react';
+import {searchForMovie} from '../APIHelper';
 
-
-const tempSearchResults = [
-    'Star Wars',
-    'Batman',
-    'Lego Batman',
-    'Indiana Jones',
-    'Indian-Jones 2'
-];
-
-/**
- * This previews the movis/series when you type in something in the search field
- * @param {searchQuery} param0 
- */
-export default function SearchResult({searchQuery}){
+export default function SearchResult({searchQuery, onSelect}){
     let content = searchQuery && search(searchQuery);
     let classes = "searchDrop";
     if(content){
@@ -26,8 +14,9 @@ export default function SearchResult({searchQuery}){
             </ul>
         </section>
     );
-}
 
-function search(query){
-    return tempSearchResults.filter(searchResult => searchResult.toLowerCase().includes(query.toLowerCase())).map((searchResult, index) => <li key={index}>{searchResult}</li>);
+    function search(query){
+        const searchResults = searchForMovie(query);
+        return searchResults.map((searchResult, index) => <li key={index} onClick={() => onSelect(searchResult)}>{searchResult}</li>);
+    }
 }
