@@ -7,11 +7,12 @@ import Table from './Table';
 import MenuDrop from './MenuDrop';
 
 import './scss/App.scss';
+import {getMovieInfo} from "../APIHelper";
 
-function Meny(props) {
+function Meny({onNavigate, onMovieSelect}) {
 
   function onLinkClick(id) {
-      props.onNavigate(id);
+      onNavigate(id);
   }
 
   const [searchQuery, setSearchQuery] = React.useState(null);
@@ -29,15 +30,13 @@ function Meny(props) {
   </div>
 </div>
           </div>
-          <SearchResult searchQuery={searchQuery} />
-        
-          
-
+          <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />
       </>
   )
   }
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(0);
+  const [selectedMovie, setSelectedMovie] = React.useState(null);
 
   function navigate(id) {
       console.log(`Navigate: ${id}`)
@@ -49,7 +48,7 @@ export default function App(props) {
   }
 
 
-  let currentContent = <MovieInfo />;
+  let currentContent = <MovieInfo {...selectedMovie} />;
   if (currentPage === 1)
       currentContent = <MovieInfo />;
 
@@ -68,9 +67,9 @@ export default function App(props) {
 
   return (
       <>
-          <Meny onNavigate={navigate} />
+          <Meny onNavigate={navigate} onMovieSelect={(selectedMovie) => setSelectedMovie(selectedMovie)} />
           <main className="guistate-content">
-              {currentContent}
+              <MovieInfo {...getMovieInfo(selectedMovie)} />
           </main>
       </>
   )

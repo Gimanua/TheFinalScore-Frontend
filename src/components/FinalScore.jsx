@@ -1,6 +1,13 @@
 import React from "react";
 import Score from "./Score";
 
+/**
+ * Gets the final score for a movie.
+ * @param value
+ * @param source
+ * @returns {*}
+ * @constructor
+ */
 export default function FinalScore({value, source}) {
     return (
         <>
