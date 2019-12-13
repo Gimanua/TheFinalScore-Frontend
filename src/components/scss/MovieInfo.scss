@@ -1,4 +1,39 @@
 #movie-info{
-    padding-left: 10vw;
-    padding-right: 10vw;
+    margin-top: 200px;
+    padding-left: 18vw;
+    padding-right: 18vw;
 }
+
+img{
+    height: 40px;
+    width: auto;
+    padding: 3px;
+}
+
+.MovieImg{
+    float:left;
+    padding: 0;
+    height: 30vh;
+    width: 20vh;
+    border: solid white 5px;
+    border-radius: 15px;
+}
+
+h2{
+    text-align: left;
+    font-family: karla-b;
+    margin-left: 40px;
+}
+
+h3{
+    margin-left: 300px;
+    text-align: left;
+    font-family: karla-b;
+}
+
+p:first-of-type
+{
+    margin-left: 300px;
+    text-align: left;
+}
+
