@@ -2,37 +2,13 @@ import React from 'react';
 
 import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
-
-import './scss/App.scss';
+import Table from './Table';
 import {getMovieInfo} from "../APIHelper";
 
-function Meny({onNavigate, onMovieSelect}) {
+import './scss/App.scss';
 
-  function onLinkClick(id) {
-      onNavigate(id);
-  }
-
-  const [searchQuery, setSearchQuery] = React.useState(null);
-
-  return (
-      <>
-          <div className="top">
-              <SearchBar search={setSearchQuery} />
-              <div className="dropdown">
-  <button className="dropbtn">Menu</button>
-  <div className="dropdown-content">
-  <button className="item" onClick={() => onLinkClick(1)}>Home</button>
-  <button className="item" onClick={() => onLinkClick(2)}>My List</button>
-  <button className="item" onClick={() => onLinkClick(3)}>Sign in</button>
-  </div>
-</div>
-          </div>
-          <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />
-      </>
-  )
-  }
 export default function App(props) {
-  const [currentPage, setCurrentPage] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [selectedMovie, setSelectedMovie] = React.useState(null);
 
   function navigate(id) {
@@ -44,10 +20,9 @@ export default function App(props) {
       setCurrentPage(4);
   }
 
-
-  let currentContent = <MovieInfo {...selectedMovie} />;
+  let currentContent;
   if (currentPage === 1)
-      currentContent = <MovieInfo />;
+      currentContent = selectedMovie && <MovieInfo {...selectedMovie} />;
 
   else if (currentPage === 2) {
       currentContent = <Table />;
@@ -64,9 +39,9 @@ export default function App(props) {
 
   return (
       <>
-          <Menu onNavigate={navigate} onMovieSelect={(selectedMovie) => setSelectedMovie(selectedMovie)} />
+          <Menu onNavigate={navigate} onMovieSelect={(selectedMovieTitle) => setSelectedMovie(getMovieInfo(selectedMovieTitle))} />
           <main className="guistate-content">
-              <MovieInfo {...getMovieInfo(selectedMovie)} />
+              {currentContent}
           </main>
       </>
   )
