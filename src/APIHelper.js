@@ -15,7 +15,7 @@ export function getMovieInfo(movieTitle) {
     switch (lowerCaseMovieTitle) {
         case 'batman':
             return {title: 'Batman', synopsis: 'Gotham City. Crime boss Carl Grissom (Jack Palance) effectively runs the town but there\'s a new crime fighter in town - Batman (Michael Keaton). Grissom\'s right-hand man is Jack Napier (Jack Nicholson), a brutal man who is not entirely sane... After falling out between the two Grissom has Napier set up with the Police and Napier falls to his apparent death in a vat of chemicals. However, he soon reappears as The Joker and starts a reign of terror in Gotham City. Meanwhile, reporter Vicki Vale (Kim Basinger) is in the city to do an article on Batman. She soon starts a relationship with Batman\'s everyday persona, billionaire Bruce Wayne.',
-                ratings: [{source: 'Internet Movie Database', value: 7.5}, {source: 'Rotten Tomatoes', value: 7.2}, {source: 'Metacritic', value: 6.9}]
+                ratings: [{source: 'Internet Movie Database', imgSrc: "images/imdb.jpg", value: 7.5}, {source: 'Rotten Tomatoes', value: 7.2, imgSrc: 'images/rotten_tomatoes.png'}, {source: 'Metacritic', value: 6.9, imgSrc: 'images/metacritic.png'}]
             };
         case 'indiana jones':
             return {title: 'Indiana Jones and the Last Crusade', synopsis: 'An art collector appeals to Jones to embark on a search for the Holy Grail. He learns that another archaeologist has disappeared while searching for the precious goblet, and the missing man is his own father, Dr. Henry Jones. The artifact is much harder to find than they expected, and its powers are too much for those impure in heart.',

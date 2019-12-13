@@ -60,7 +60,7 @@ export default function App(props) {
 
   return (
       <>
-          <Meny onNavigate={navigate} onMovieSelect={(selectedMovie) => { setSelectedMovie(selectedMovie); console.log(selectedMovie);}} />
+          <Meny onNavigate={navigate} onMovieSelect={(selectedMovie) => setSelectedMovie(selectedMovie)} />
           <main className="guistate-content">
               <MovieInfo {...getMovieInfo(selectedMovie)} />
           </main>
