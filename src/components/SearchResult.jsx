@@ -1,10 +1,15 @@
 import React from 'react';
-import {searchForMovie} from '../APIHelper';
+import { searchForMovie } from '../APIHelper';
 
-export default function SearchResult({searchQuery, onSelect}){
-    let content = searchQuery && search(searchQuery);
+export default function SearchResult({ searchQuery, onSelect }) {
+    const [content, setContent] = React.useState(null);
+    React.useEffect(() => { 
+        if(searchQuery) {
+            search(searchQuery, setContent);
+        } }, [searchQuery]);
+
     let classes = "searchDrop";
-    if(content){
+    if (content) {
         classes += " hasRes"
     }
     return (
@@ -15,8 +20,8 @@ export default function SearchResult({searchQuery, onSelect}){
         </section>
     );
 
-    function search(query){
-        const searchResults = searchForMovie(query);
-        return searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult)}>{searchResult}</a></li>);
+    async function search(query, setContent) {
+        const searchResults = await searchForMovie(query);
+        setContent(searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult)}>{searchResult}</a></li>));
     }
 }

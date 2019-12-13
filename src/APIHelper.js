@@ -1,13 +1,16 @@
 import Movie from './entities/Movie';
 import Score from './entities/Score';
 
+const apiURL = 'http://localhost:8080/TheFinalScore-Backend/api/movie';
 const tempSearchResults = [
     'Batman',
     'Indiana Jones',
 ];
 
-export function searchForMovie(query){
-  return tempSearchResults.filter(searchResult => searchResult.toLowerCase().includes(query.toLowerCase()))
+export async function searchForMovie(query){
+    const response = await fetch(`${apiURL}/search/${query}`);
+    const json = await response.json();
+    return json.results.map(result => result.title);
 }
 
 export function getMovieInfo(movieTitle) {

@@ -5,7 +5,7 @@ import FinalScore from './FinalScore';
 
 import './scss/MovieInfo.scss';
 
-export default function MovieInfo({title, synopsis, imgSrc, scores, finalScore}){
+export default function MovieInfo({title, synopsis, logo, scores, finalScore}){
 
     const leftSideScores = [];
     const rightSideScores = [];
@@ -20,6 +20,7 @@ export default function MovieInfo({title, synopsis, imgSrc, scores, finalScore})
         <article id="movie-info" className="has-text-centered">
             <h2 className="has-text-weight-bold is-size-1">{title}</h2>
             <h3 className="has-text-weight-bold is-size-4">Synopsis</h3>
+            <p>{logo}</p>
             <p>{synopsis}</p>
             <section className="columns">
                 <ul className="column is-two-fifths columns is-marginless">
