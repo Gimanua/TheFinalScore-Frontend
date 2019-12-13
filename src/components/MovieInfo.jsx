@@ -1,7 +1,9 @@
 import React from 'react';
-import './scss/MovieInfo.scss';
+
 import Score from './Score';
-import FinalScore from "./FinalScore";
+import FinalScore from './FinalScore';
+
+import './scss/MovieInfo.scss';
 
 export default function MovieInfo({title, synopsis, imgSrc, scores, finalScore}){
 
