@@ -1,32 +1,11 @@
 import React from 'react';
-import MoviePage from './Movie';
-import SearchBar from './SearchBar';
-import SearchResult from './SearchResult';
+
 import MovieInfo from './MovieInfo';
-import Table from './Table';
-import MenuDrop from './MenuDrop';
+import Menu from "./Menu";
 
 import './scss/App.scss';
 import {getMovieInfo} from "../APIHelper";
 
-function Meny({onNavigate, onMovieSelect}) {
-
-  function onLinkClick(id) {
-      onNavigate(id);
-  }
-
-  const [searchQuery, setSearchQuery] = React.useState(null);
-
-  return (
-      <>
-          <div className="top">
-              <SearchBar search={setSearchQuery} />
-              <MenuDrop />
-          </div>
-          <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />
-      </>
-  )
-  }
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(0);
   const [selectedMovie, setSelectedMovie] = React.useState(null);
@@ -60,7 +39,7 @@ export default function App(props) {
 
   return (
       <>
-          <Meny onNavigate={navigate} onMovieSelect={(selectedMovie) => setSelectedMovie(selectedMovie)} />
+          <Menu onNavigate={navigate} onMovieSelect={(selectedMovie) => setSelectedMovie(selectedMovie)} />
           <main className="guistate-content">
               <MovieInfo {...getMovieInfo(selectedMovie)} />
           </main>
