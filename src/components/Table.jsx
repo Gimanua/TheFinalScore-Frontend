@@ -2,7 +2,9 @@ import React from 'react';
 import './scss/table.scss';
 
 
-
+/**
+ * This print the list (a table) of a logged in user
+ */
 export default function Table(){
 return (
     <div className="List">

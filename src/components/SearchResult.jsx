@@ -9,6 +9,10 @@ const tempSearchResults = [
     'Indian-Jones 2'
 ];
 
+/**
+ * This previews the movis/series when you type in something in the search field
+ * @param {searchQuery} param0 
+ */
 export default function SearchResult({searchQuery}){
     let content = searchQuery && search(searchQuery);
     let classes = "searchDrop";
