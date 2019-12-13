@@ -17,6 +17,6 @@ export default function SearchResult({searchQuery, onSelect}){
 
     function search(query){
         const searchResults = searchForMovie(query);
-        return searchResults.map((searchResult, index) => <li key={index} onClick={() => onSelect(searchResult)}>{searchResult}</li>);
+        return searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult)}>{searchResult}</a></li>);
     }
 }
