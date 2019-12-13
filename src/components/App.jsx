@@ -2,7 +2,7 @@ import React from 'react';
 import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
 import Table from './Table';
-import {getMovieInfo} from "../APIHelper";
+import {getMovie} from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
@@ -40,7 +40,7 @@ export default function App(props) {
 
   return (
       <>
-          <Menu onNavigate={navigate} onMovieSelect={(selectedMovieTitle) => setSelectedMovie(getMovieInfo(selectedMovieTitle))} />
+          <Menu onNavigate={navigate} onMovieSelect={(selectedMovieTitle) => getMovie(selectedMovieTitle).then(movieInfo => setSelectedMovie(movieInfo))} />
           <main className="guistate-content">
               {currentContent}
           </main>
