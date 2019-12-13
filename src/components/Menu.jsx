@@ -24,8 +24,8 @@ export default function Menu({ onNavigate, onMovieSelect }) {
                         <button className="item" onClick={() => onLinkClick(3)}>Sign in</button>
                     </div>
                 </div>
-            </div>
             <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />
+            </div>
         </>
     )
 }

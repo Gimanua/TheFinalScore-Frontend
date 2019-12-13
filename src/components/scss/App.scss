@@ -40,13 +40,13 @@ html{
 }
 
 .top{
-    
+    position: relative;
      padding: 10px;
 }
 
 .searchDrop{
     position: absolute;
-    top: 0;
+
     left: -200px;
     margin:0;
     padding: 10px 10px;
@@ -62,7 +62,7 @@ html{
  font-family: karla;
  font-size: 20px;
  padding: 10px;
- margin-top: 75px;
+
 }
 
 .hasRes{
@@ -112,7 +112,8 @@ html{
 
 
   .item:hover {
-    background-color: #f1f1f1
+    background-color: #f1f1f1;
+    cursor: pointer;
   }
 }
   

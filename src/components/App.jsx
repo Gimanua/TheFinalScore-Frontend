@@ -1,12 +1,7 @@
 import React from 'react';
 import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
-<<<<<<< HEAD
-import Table from "./Table";
-import './scss/App.scss';
-=======
 import Table from './Table';
->>>>>>> 03cba46541aa91ca9fec2e3436de79eaa61c5690
 import {getMovieInfo} from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
