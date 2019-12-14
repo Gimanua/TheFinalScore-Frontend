@@ -1,12 +1,18 @@
 import React from 'react';
 import { searchForMovie } from '../APIHelper';
 
+let timeoutID;
+
 export default function SearchResult({ searchQuery, onSelect }) {
     const [content, setContent] = React.useState(null);
     React.useEffect(() => { 
         if(searchQuery) {
-            search(searchQuery, setContent);
-        } }, [searchQuery]);
+            clearTimeout(timeoutID);
+            timeoutID = setTimeout(() => search(searchQuery, setContent), 525);
+        }
+        else
+            clearTimeout(timeoutID);
+    }, [searchQuery]);
 
     let classes = "searchDrop";
     if (content) {
@@ -21,7 +27,7 @@ export default function SearchResult({ searchQuery, onSelect }) {
     );
 
     async function search(query, setContent) {
-        const searchResults = await searchForMovie(query);
+        const searchResults = await searchForMovie(query.trim());
         setContent(searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult)}>{searchResult}</a></li>));
     }
 }
