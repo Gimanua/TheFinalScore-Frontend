@@ -5,22 +5,24 @@ import './scss/table.scss';
 /**
  * This print the list (a table) of a logged in user
  */
-export default function Table(){
-return (
+export default function Table() {
+  return (
     <div className="List">
       <h1>The Final Score</h1>
       <table>
         <thead>
-          <th>Title</th>
-          <th>Year</th>
-          <th>Actor</th>
-          <th>Plot</th>
-          <th>FINALSCORE</th>
-          <th>Type</th>
-          <th></th>
+          <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Actor</th>
+            <th>Plot</th>
+            <th>FINALSCORE</th>
+            <th>Type</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-        <tr>
+          <tr>
             <td>
               Star wars
             </td>
@@ -31,7 +33,7 @@ return (
               Mark Hamill, Carrie Fisher, Harrison Ford
             </td>
             <td>
-                Lorem ipsum
+              Lorem ipsum
             </td>
             <td>
               89,67
@@ -52,13 +54,13 @@ return (
               Mark Hamill, Carrie Fisher, Harrison Ford
             </td>
             <td>
-                Lorem ipsum
+              Lorem ipsum
             </td>
             <td>
               89,67
             </td>
             <td>
-                Movie
+              Movie
             </td>
             <td>❌</td>
           </tr>
@@ -73,13 +75,13 @@ return (
               Mark Hamill, Carrie Fisher, Harrison Ford
             </td>
             <td>
-                Lorem ipsum
+              Lorem ipsum
             </td>
             <td>
               89,67
             </td>
             <td>
-                Movie
+              Movie
             </td>
             <td>❌</td>
           </tr>
@@ -94,15 +96,15 @@ return (
               Mark Hamill, Carrie Fisher, Harrison Ford
             </td>
             <td>
-                Lorem ipsum
+              Lorem ipsum
             </td>
             <td>
               89,67
             </td>
             <td>
-                Movie
+              Movie
             </td>
-          <td>❌</td>
+            <td>❌</td>
           </tr>
         </tbody>
       </table>
