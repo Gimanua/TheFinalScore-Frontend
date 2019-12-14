@@ -22,6 +22,15 @@ export default function App(props) {
       setCurrentPage(4);
   }
 
+  async function onMovieSelected(selectedMovieTitle){
+    try{
+        const movie = await getMovie(selectedMovieTitle);
+        setSelectedMovie(movie);
+    } catch (error){
+        console.log(error);
+    }
+  }
+
   let currentContent;
   if (currentPage === 1)
       currentContent = selectedMovie && <MovieInfo {...selectedMovie} />;
@@ -40,7 +49,7 @@ export default function App(props) {
 
   return (
       <>
-          <Menu onNavigate={navigate} onMovieSelect={(selectedMovieTitle) => getMovie(selectedMovieTitle).then(movieInfo => setSelectedMovie(movieInfo))} />
+          <Menu onNavigate={navigate} onMovieSelect={onMovieSelected} />
           <main className="guistate-content">
               {currentContent}
           </main>

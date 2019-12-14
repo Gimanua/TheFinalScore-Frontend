@@ -27,7 +27,11 @@ export default function SearchResult({ searchQuery, onSelect }) {
     );
 
     async function search(query, setContent) {
-        const searchResults = await searchForMovie(query.trim());
-        setContent(searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult)}>{searchResult}</a></li>));
+        try{
+            const searchResults = await searchForMovie(query.trim());
+            setContent(searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult)}>{searchResult}</a></li>));
+        } catch(error){
+            console.log(error);
+        }
     }
 }
