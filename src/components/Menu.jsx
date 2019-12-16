@@ -4,6 +4,8 @@ import SearchBar from "./SearchBar";
 import MenuDrop from "./MenuDrop";
 import SearchResult from "./SearchResult";
 
+import {githubClientID} from '../APIHelper';
+
 export default function Menu({ onNavigate, onMovieSelect }) {
 
     function onLinkClick(id) {
@@ -21,7 +23,7 @@ export default function Menu({ onNavigate, onMovieSelect }) {
                     <div className="dropdown-content">
                         <button className="item" onClick={() => onLinkClick(1)}>Home</button>
                         <button className="item" onClick={() => onLinkClick(2)}>My List</button>
-                        <button className="item" onClick={() => onLinkClick(3)}>Sign in</button>
+                        <button className="item"><a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>Sign in</a></button>
                     </div>
                 </div>
             <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />

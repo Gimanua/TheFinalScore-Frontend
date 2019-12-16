@@ -7,6 +7,11 @@ import Score from './entities/Score';
 const apiURL = 'http://localhost:8080/TheFinalScore-Backend/api';
 
 /**
+ * The client ID used by Github OAuth.
+ */
+export const githubClientID = '686a9cd2fe0be4052344';
+
+/**
  * Search results to use if the backend is unreachable.
  */
 const fakeSearchResults = [
@@ -79,7 +84,7 @@ export async function getMovie(movieTitle) {
         const response = await fetch(`${apiURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return new Movie(json.title, json.plot, 'imgSrc (APIHelper:82)', json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:82)')));
+            return new Movie(json.title, json.plot, 'imgSrc (APIHelper:87)', json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:87)')));
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
@@ -93,6 +98,42 @@ export async function getMovie(movieTitle) {
     }
 
     return fakeMovie;
+}
+
+/**
+ * Checks the OAuth status. Sends an alert on logged in.
+ */
+export async function OAuthCheck(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if(localStorage.getItem('token')){
+        sendToken(localStorage.getItem('token'));
+    }
+    else if(urlParams.has('code')){
+        const url = `http://localhost:8080/TheFinalScore-Backend/api/token?code=${urlParams.get('code')}`;
+    
+        try {
+            const response = await fetch(url);
+            const token = await response.text();
+            localStorage.setItem('token', token);
+            sendToken(localStorage.getItem('token'));
+        } catch (error) {
+            console.log('Could not get token from backend.');
+            console.log(error);
+        }
+    }
+    
+    async function sendToken(token){
+        const url = `http://localhost:8080/TheFinalScore-Backend/api/login?token=${token}`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            alert(`Welcome ${data.login}, your id is ${data.id}`);
+        } catch (error) {
+            console.log('Could not send token to backend.');
+            console.log(error);
+        }
+    }
 }
 
 /**
