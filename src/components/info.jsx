@@ -1,10 +1,11 @@
 import React from 'react';
+import './scss/info.scss';
 
 export default function Info() {
     return (
-      <div className="Info">
+      <div id="infodiv">
         <h1>The Final Score</h1>
-        <p>This is a page where you can check the score of movies from sources such as IMDB, <br/>
+        <p id="Info">This is a page where you can check the score of movies from sources such as IMDB, <br/>
         metacritic and rottentomatoes. Api that are used are omdbapi.com.<br/>
         This api is used to get the info such as the title of the film,<br/>
         score from the sources listed above and the basic plot of the movie.<br/>
