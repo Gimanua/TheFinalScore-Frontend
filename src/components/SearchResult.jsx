@@ -10,8 +10,10 @@ export default function SearchResult({ searchQuery, onSelect }) {
             clearTimeout(timeoutID);
             timeoutID = setTimeout(() => search(searchQuery, setContent), 525);
         }
-        else
+        else{
             clearTimeout(timeoutID);
+            setContent(null);
+        }
     }, [searchQuery]);
 
     let classes = "searchDrop";
