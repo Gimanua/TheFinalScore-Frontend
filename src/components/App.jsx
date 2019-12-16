@@ -2,6 +2,7 @@ import React from 'react';
 import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
 import Table from './Table';
+import Info from './info';
 import {getMovie} from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
@@ -10,7 +11,7 @@ import './scss/App.scss';
 import SignIn from './SignIn';
 
 export default function App(props) {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0);
   const [selectedMovie, setSelectedMovie] = React.useState(null);
 
   function navigate(id) {
@@ -32,6 +33,9 @@ export default function App(props) {
   }
 
   let currentContent;
+  if(currentPage === 0){
+      currentContent = <Info/>;
+  }
   if (currentPage === 1)
       currentContent = selectedMovie && <MovieInfo {...selectedMovie} />;
 

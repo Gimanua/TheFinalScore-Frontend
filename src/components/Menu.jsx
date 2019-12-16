@@ -21,12 +21,12 @@ export default function Menu({ onNavigate, onMovieSelect }) {
                 <div className="dropdown">
                     <button className="dropbtn">Menu</button>
                     <div className="dropdown-content">
-                        <button className="item" onClick={() => onLinkClick(1)}>Home</button>
+                        <button className="item" onClick={() => onLinkClick(0)}>Home</button>
                         <button className="item" onClick={() => onLinkClick(2)}>My List</button>
                         <button className="item"><a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>Sign in</a></button>
                     </div>
                 </div>
-            <SearchResult searchQuery={searchQuery} onSelect={onMovieSelect} />
+            <SearchResult searchQuery={searchQuery} onSelect={() => {onLinkClick(1); onMovieSelect();}} />
             </div>
         </>
     )
