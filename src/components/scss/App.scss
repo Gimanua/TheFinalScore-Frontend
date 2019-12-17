@@ -1,3 +1,5 @@
+$primary-font-color: white;
+
 @font-face{
     font-family: karla;
     src: url(../../Karla/Karla-Regular.ttf);
@@ -108,7 +110,7 @@ html{
     background-color:transparent ;   
     font-family: karla;
     font-size: 20px;
-    color: grey;
+    color: $primary-font-color;
     min-width: 160px;
     text-align: left;
   }

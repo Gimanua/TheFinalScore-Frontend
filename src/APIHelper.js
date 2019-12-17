@@ -25,9 +25,9 @@ const fakeSearchResults = [
 /**
  * A fake movie to use if the backend is unreachable.
  */
-const fakeMovie = new Movie('Movie Title',
+const fakeMovie = new Movie('Year Zero',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    'https://cdn2.vectorstock.com/i/1000x1000/40/96/3d-question-mark-vector-1504096.jpg',
+    'https://mymodernmet.com/wp/wp-content/uploads/2018/06/your-post-as-movie-reddit-6-2.jpg',
     [new Score(8.3, 'images/imdb.png'), new Score(9.5, 'images/rotten_tomatoes.png'), new Score(3.5, 'images/metacritic.png')]
 );
 
