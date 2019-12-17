@@ -5,7 +5,9 @@ import './scss/table.scss';
 /**
  * This print the list (a table) of a logged in user
  */
+let n = 0;
 export default function Table() {
+  if ( n === 1){
   return (
     <div className="List">
       <h1>The Final Score</h1>
@@ -18,96 +20,59 @@ export default function Table() {
             <th>Plot</th>
             <th>FINALSCORE</th>
             <th>Type</th>
-            <th></th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              Star wars
-            </td>
-            <td>
-              1977
-            </td>
-            <td>
-              Mark Hamill, Carrie Fisher, Harrison Ford
-            </td>
-            <td>
-              Lorem ipsum
-            </td>
-            <td>
-              89,67
-            </td>
-            <td>
-              Movie
-            </td>
+            <td>Star wars</td>
+            <td>1977</td>
+            <td>Mark Hamill, Carrie Fisher, Harrison Ford</td>
+            <td>Lorem ipsum</td>
+            <td>89,67</td>
+            <td>Movie</td>
             <td>❌</td>
           </tr>
+
           <tr>
-            <td>
-              Star wars
-            </td>
-            <td>
-              1977
-            </td>
-            <td>
-              Mark Hamill, Carrie Fisher, Harrison Ford
-            </td>
-            <td>
-              Lorem ipsum
-            </td>
-            <td>
-              89,67
-            </td>
-            <td>
-              Movie
-            </td>
+            <td>Star wars</td>
+            <td>1977</td>
+            <td>Mark Hamill, Carrie Fisher, Harrison Ford</td>
+            <td>Lorem ipsum</td>
+            <td>89,67</td>
+            <td>Movie</td>
             <td>❌</td>
           </tr>
+
           <tr>
-            <td>
-              Star wars
-            </td>
-            <td>
-              1977
-            </td>
-            <td>
-              Mark Hamill, Carrie Fisher, Harrison Ford
-            </td>
-            <td>
-              Lorem ipsum
-            </td>
-            <td>
-              89,67
-            </td>
-            <td>
-              Movie
-            </td>
+            <td>Star wars</td>
+            <td>1977</td>
+            <td>Mark Hamill, Carrie Fisher, Harrison Ford</td>
+            <td>Lorem ipsum</td>
+            <td>89,67</td>
+            <td>Movie</td>
             <td>❌</td>
           </tr>
+
           <tr>
-            <td>
-              Star wars
-            </td>
-            <td>
-              1977
-            </td>
-            <td>
-              Mark Hamill, Carrie Fisher, Harrison Ford
-            </td>
-            <td>
-              Lorem ipsum
-            </td>
-            <td>
-              89,67
-            </td>
-            <td>
-              Movie
-            </td>
+            <td>Star wars</td>
+            <td>1977</td>
+            <td>Mark Hamill, Carrie Fisher, Harrison Ford</td>
+            <td>Lorem ipsum</td>
+            <td>89,67</td>
+            <td>Movie</td>
             <td>❌</td>
           </tr>
         </tbody>
       </table>
     </div>
   );
+}
+else{
+  return(
+    <div>
+      <h1>You need to log in to view your list</h1>
+    </div>
+  )
+}
 }
