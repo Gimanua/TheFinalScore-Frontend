@@ -84,7 +84,7 @@ export async function getMovie(movieTitle) {
         const response = await fetch(`${apiURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return new Movie(json.title, json.plot, 'imgSrc (APIHelper:87)', json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:87)')));
+            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:87)')), json.genres, json.director, json.cast);
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);

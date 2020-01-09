@@ -26,6 +26,7 @@ export default function App(props) {
   async function onMovieSelected(selectedMovieTitle){
     try{
         const movie = await getMovie(selectedMovieTitle);
+        console.log(movie);
         setSelectedMovie(movie);
     } catch (error){
         console.log(error);
