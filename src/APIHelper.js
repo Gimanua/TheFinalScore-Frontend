@@ -28,7 +28,7 @@ const fakeSearchResults = [
 const fakeMovie = new Movie('Year Zero',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     'images/fake_poster.jpg',
-    [new Score(8.3, 'images/imdb.png'), new Score(9.5, 'images/rotten_tomatoes.png'), new Score(3.5, 'images/metacritic.png')],
+    [new Score('8.3/10', 'Internet Movie Database'), new Score('95%', 'Rotten Tomatoes'), new Score('35/100', 'Metacritic')],
     ['Thriller', 'Science Fiction'],
     'Vladimir Putin',
     ['Boris Spasskij', 'Chuck Norris', 'He-Man']
@@ -87,7 +87,7 @@ export async function getMovie(movieTitle) {
         const response = await fetch(`${apiURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:87)')), json.genres, json.director, json.cast);
+            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, rating.source)), json.genres, json.director, json.cast);
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);

@@ -1,15 +1,37 @@
 /**
  * Represents a critics score on a movie.
  */
-export default class Score{
+export default class Score {
 
     /**
      * Constructs a score.
-     * @param {Number} value The value of the score.
-     * @param {String} sourceLogo The logo of the source for this score.
+     * @param {String} rawValue The raw value of the score.
+     * @param {String} source The source for this score.
      */
-    constructor(value, sourceLogo){
-        this.value = value;
-        this.sourceLogo = sourceLogo;
+    constructor(rawValue, source) {
+        this.value = getValue(rawValue);
+        this.source = source;
+        this.sourceLogo = getLogo(source);
     }
+}
+
+function getLogo(source) {
+    switch (source) {
+        case 'Internet Movie Database':
+            return 'images/imdb.png';
+        case 'Rotten Tomatoes':
+            return 'images/rotten_tomatoes.png';
+        case 'Metacritic':
+            return 'images/metacritic.png';
+        default:
+            return 'N/A';
+    }
+}
+
+function getValue(rawValue) {
+    const rawNumValue = parseFloat(rawValue);
+    if (rawNumValue > 10) {
+        return rawNumValue / 10;
+    }
+    return rawNumValue;
 }
