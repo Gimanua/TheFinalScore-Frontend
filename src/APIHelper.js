@@ -19,7 +19,23 @@ const fakeSearchResults = [
     'Indiana Jones',
     'Star Wars I',
     'Star Wars II',
-    'Harry Potter'
+    'Harry Potter',
+    'Star Wars III',
+    'Star Wars IV',
+    'Star Wars V',
+    'Star Wars VI',
+    'Star Wars VII',
+    'Star Wars VIII',
+    'Star Wars IX',
+    'Star Wars X',
+    'Star Wars och de sju rövarna',
+    'Star Wars XII',
+    'Star Wars XIII',
+    'Star Wars XIV',
+    'Star Wars XV',
+    'Star Wars XVI',
+    'Star Wars XVII',
+    'Star Wars XVIII',
 ];
 
 /**

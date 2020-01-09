@@ -5,7 +5,7 @@ import './scss/table.scss';
 /**
  * This print the list (a table) of a logged in user
  */
-let n = 0;
+let n = 1;
 export default function Table() {
   if ( n === 1){
   return (

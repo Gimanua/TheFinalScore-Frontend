@@ -24,7 +24,7 @@ export default function MovieInfo({title, synopsis, logo, scores, finalScore}){
             </section>
         </article>
 <div class="finalScoreContainer">
-    <p>ss</p>
+    
 <section className="finalScore"><FinalScore value={finalScore} /></section>
 </div>
 </>

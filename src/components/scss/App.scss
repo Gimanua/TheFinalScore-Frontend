@@ -1,5 +1,6 @@
 $primary-font-color: white;
-
+$primary-window-color: rgba($color: #000000, $alpha: 0.75);
+$accent: #EB3501;
 @font-face{
     font-family: karla;
     src: url(../../Karla/Karla-Regular.ttf);
@@ -26,13 +27,21 @@ html{
     font-family: karla;
     text-transform: uppercase;
     padding: 12px;
-    margin-left: 10px;
     font-size: 26px;
     border: none;
     outline: none;
     background-color:lightgray;
     color: black;
+    background: none;
+    padding-left: 15px;
+    transition: .5s;
 }
+
+.search:focus{
+  background-color: $primary-window-color;
+  transition: .5s;
+}
+
 
 .menu{
     font-family: karla;
@@ -48,27 +57,62 @@ html{
 .top{
     position: relative;
      padding: 10px;
+     padding-left: 0;
+     padding-top: 0;
 }
 
 .searchDrop{
     position: absolute;
     left: -200px;
     margin:0;
-    padding: 10px 10px;
     box-sizing: border-box;
-    width: 200px;
+    width: 299px;
     min-height: 1vh;
     transition: 0.5s;
     z-index: 10000;
     overflow-y: auto; 
+    max-height: 300px;
+    overflow-x: hidden;
+    background-color: $primary-window-color;
+    border-top: $accent 2px solid;
+    border-bottom: $accent 2px solid;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  display: none;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(71, 69, 69); 
+  display: block;
+}
+
+li{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 40px;
+  
 }
 
 .searchResult{
  font-family: karla;
  font-size: 20px;
  padding: 10px;
-
+ 
 }
+
+a:hover{
+  color: black;
+}
+
+
 
 .hasRes{
     left: 0px;
@@ -83,6 +127,9 @@ html{
     border: none;
     text-transform:uppercase;
     cursor: pointer;
+    outline: none;
+    cursor: default;
+    
   }
 
 .dropdown {
@@ -94,11 +141,13 @@ html{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color:  rgb(187, 184, 184);
+  background-color: $primary-window-color;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   font-family: karla;
+  border-radius: 0;
+ 
   
   
   .item {
@@ -113,6 +162,7 @@ html{
     color: $primary-font-color;
     min-width: 160px;
     text-align: left;
+    outline: none;
   }
 
 
@@ -125,10 +175,59 @@ html{
 .dropdown:hover{
   .dropdown-content {
     display: block;
+  right: 0;
   }
 
   .dropbtn {
     transition: .3s;
-    background-color: rgb(187, 184, 184);
+    color:$primary-font-color;
+    background-color: $primary-window-color;
   }
 }
+
+a{
+  color: #EB3501;
+}
+
+@media only screen and (max-width: 1600px) {
+
+  .searchDrop{
+    background-color: rgba($color: #3B3537, $alpha: 0.95);
+    border: #EB3501 solid 2px;
+    border-radius: 20px;
+  }
+
+
+  @media only screen and (max-width: 500px){
+    .search{
+      font-size: 20px;
+    }
+
+    input{
+      width: 230px;
+    }
+
+    .dropbtn{
+      font-size: 20px;
+    }
+
+    .item{
+      font-size: 14px;
+    }
+
+    .searchResult{
+      font-size: 14px;
+
+    }
+
+    .searchDrop{
+      width: 140px;
+    }
+   
+  }
+
+ 
+  }
+
+
+
