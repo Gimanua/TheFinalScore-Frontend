@@ -110,10 +110,12 @@ export async function OAuthCheck(){
         sendToken(localStorage.getItem('token'));
     }
     else if(urlParams.has('code')){
-        const url = `http://localhost:8080/TheFinalScore-Backend/api/token?code=${urlParams.get('code')}`;
+        const url = `${apiURL}/token?code=${urlParams.get('code')}`;
     
         try {
             const response = await fetch(url);
+            if(response.status !== 200)
+                return;
             const token = await response.text();
             localStorage.setItem('token', token);
             sendToken(localStorage.getItem('token'));
@@ -124,10 +126,11 @@ export async function OAuthCheck(){
     }
     
     async function sendToken(token){
-        const url = `http://localhost:8080/TheFinalScore-Backend/api/login?token=${token}`;
+        const url = `${apiURL}/login?token=${token}`;
         try {
             const response = await fetch(url);
             const data = await response.json();
+            console.log(data);
             alert(`Welcome ${data.login}, your id is ${data.id}`);
         } catch (error) {
             console.log('Could not send token to backend.');
