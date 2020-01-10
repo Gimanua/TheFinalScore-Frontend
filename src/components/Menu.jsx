@@ -1,5 +1,5 @@
 import React from "react";
-
+import {verify} from '../APIHelper';
 import SearchBar from "./SearchBar";
 import MenuDrop from "./MenuDrop";
 import SearchResult from "./SearchResult";
@@ -11,21 +11,7 @@ export default function Menu({ onNavigate, onMovieSelect }) {
     /**
      * This verifies that the token the users got is valied.
      */
-    async function verify(){
-        let tokval = localStorage.getItem('token');
-        const url = "http://localhost:8080/TheFinalScore-Backend/api/verify"
-        try{
-            // const response = await fetch(url);
-            // const data = await response.json();
-            // console.log(data);
-            
-
-
-
-        }catch (error){
-            console.log("Failed to verify token: " + error);
-        }
-    }
+    
 
     function onLinkClick(id) {
         onNavigate(id);
