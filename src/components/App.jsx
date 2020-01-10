@@ -38,7 +38,7 @@ export default function App(props) {
       currentContent = <Info/>;
   }
   if (currentPage === 1)
-      currentContent = selectedMovie && <MovieInfo {...selectedMovie} />;
+      currentContent = selectedMovie && <MovieInfo movie={selectedMovie} />;
 
   else if (currentPage === 2) {
       currentContent = <Table />;

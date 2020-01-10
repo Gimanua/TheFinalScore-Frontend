@@ -158,6 +158,48 @@ export async function OAuthCheck(){
     }
 }
 
+export async function verify(){
+    let tokval = localStorage.getItem('token');
+    const url = `${apiURL}/verify`;
+    console.log(tokval);
+    try{
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        
+        
+    }catch (error){
+        console.log("Failed to verify token: " + error);
+    }
+}
+
+/**
+ * Loads all movies from localstorage, should use a database.
+ * @returns {Movie[]} The movies saved.
+ */
+export function loadSavedMovies(){
+    if(!localStorage.getItem('movies')){
+        return [];
+    }
+    return JSON.parse(localStorage.getItem('movies'));
+}
+
+/**
+ * Saves a movie to localstorage, should use a database.
+ * @param {Movie} movie The movie to save.
+ */
+export async function saveMovie(movie){
+    if(!localStorage.getItem('movies')){
+        localStorage.setItem('movies', JSON.stringify([movie]));
+    }
+    else{
+        const movies = JSON.parse(localStorage.getItem('movies'));
+        movies.push(movie);
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+    alert('Saved Movie successfully');
+}
+
 /**
  * Aborts all other requests in transit right now.
  */
