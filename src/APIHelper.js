@@ -159,6 +159,22 @@ export async function OAuthCheck(){
 }
 
 /**
+ * Saves a movie to localstorage, should use a database.
+ * @param {Movie} movie The movie to save.
+ */
+export async function saveMovie(movie){
+    if(!localStorage.getItem('movies')){
+        localStorage.setItem('movies', JSON.stringify([movie]));
+    }
+    else{
+        const movies = JSON.parse(localStorage.getItem('movies'));
+        movies.push(movie);
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+    alert('Saved Movie successfully');
+}
+
+/**
  * Aborts all other requests in transit right now.
  */
 function abortOtherRequests() {

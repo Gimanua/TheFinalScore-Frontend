@@ -4,20 +4,16 @@ import Score from './Score';
 import FinalScore from './FinalScore';
 
 import './scss/MovieInfo.scss';
+import { saveMovie } from '../APIHelper';
+import Movie from '../entities/Movie';
 
 /**
  * The Movie Info React component.
  * @param {Object} props The React props object, here deconstructing a Movie instance.
- * @param {String} props.title The title of the movie.
- * @param {String} props.synopsis The synopsis of the movie.
- * @param {String} props.logo The logo of the movie.
- * @param {Score[]} props.scores The scores of the movie.
- * @param {String[]} props.genres The genres of the movie.
- * @param {String} props.director The director of the movie.
- * @param {String[]} props.cast The cast members of the movie.
- * @param {Number} props.finalScore The final score of the movie.
+ * @param {Movie} props.movie The movie.
  */
-export default function MovieInfo({title, synopsis, logo, scores, genres, director, cast, finalScore}){
+export default function MovieInfo({movie}){
+    const {title, synopsis, logo, scores, genres, director, cast, finalScore} = movie;
     return (
         <>
         <article id="movie-info" className="has-text-centered">
@@ -34,6 +30,7 @@ export default function MovieInfo({title, synopsis, logo, scores, genres, direct
                     {scores.map((score, index) => <li key={index}><Score {...score} /></li>)}
                 </ul>
             </section>
+            <button onClick={() => saveMovie(movie)}>Save Movie</button>
         </article>
 <div class="finalScoreContainer">
     
