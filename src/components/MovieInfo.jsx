@@ -32,7 +32,7 @@ export default function MovieInfo({movie}){
             </section>
             <button onClick={() => saveMovie(movie)}>Save Movie</button>
         </article>
-<div class="finalScoreContainer">
+<div className="finalScoreContainer">
     
 <section className="finalScore"><FinalScore value={finalScore} /></section>
 </div>

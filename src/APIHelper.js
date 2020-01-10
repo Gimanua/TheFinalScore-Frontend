@@ -179,10 +179,8 @@ export async function verify(){
  */
 export function loadSavedMovies(){
     if(!localStorage.getItem('movies')){
-        console.log([]);
         return [];
     }
-    console.log(localStorage.getItem('movies'));
     return JSON.parse(localStorage.getItem('movies'));
 }
 

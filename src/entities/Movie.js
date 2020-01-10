@@ -32,7 +32,7 @@ export default class Movie{
  * @param {Score[]} scores The scores of a movie.
  */
 function getFinalScore(scores){
-    if(scores.length == 0)
+    if(scores.length === 0)
         return NaN;
 
     let sum = 0;

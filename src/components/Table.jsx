@@ -24,15 +24,15 @@ export default function Table() {
             </tr>
           </thead>
           <tbody>
-            {loadSavedMovies().map(movie =>
-              <tr>
+            {loadSavedMovies().map((movie, index) =>
+              <tr key={index}>
                 <td>{movie.title}</td>
                 <td>N/A</td>
                 <td>{movie.cast.join(",")}</td>
                 <td>{movie.synopsis}</td>
                 <td>{movie.finalScore}</td>
                 <td>N/A</td>
-                <td>❌</td>
+                <td><span role="img" aria-label="Delete">❌</span></td>
             </tr>)
             }
           </tbody>

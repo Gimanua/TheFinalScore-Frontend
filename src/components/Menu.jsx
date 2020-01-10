@@ -33,7 +33,7 @@ export default function Menu({ onNavigate, onMovieSelect }) {
 
                     </div>
                 </div>
-            <SearchResult searchQuery={searchQuery} onSelect={(selectedMovie) => {onLinkClick(1); onMovieSelect(selectedMovie);}} />
+            <SearchResult searchQuery={searchQuery} onSelect={(selectedMovie) => {onLinkClick(1); onMovieSelect(selectedMovie); setSearchQuery(null);}} />
             </div>
         </>
     )
