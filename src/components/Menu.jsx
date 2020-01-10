@@ -26,7 +26,7 @@ export default function Menu({ onNavigate, onMovieSelect }) {
                         <button className="item"><a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>Sign in</a></button>
                     </div>
                 </div>
-            <SearchResult searchQuery={searchQuery} onSelect={() => {onLinkClick(1); onMovieSelect();}} />
+            <SearchResult searchQuery={searchQuery} onSelect={(selectedMovie) => {onLinkClick(1); onMovieSelect(selectedMovie);}} />
             </div>
         </>
     )

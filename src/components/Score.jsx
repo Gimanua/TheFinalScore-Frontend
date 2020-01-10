@@ -3,7 +3,7 @@ export default function Score({value, sourceLogo}){
     return (
         <section className="scores">
             <p className="point">{value}</p>
-            <img classname="pointimg" src={sourceLogo} />
+            <img className="pointimg" src={sourceLogo} />
         </section>
     );
 }

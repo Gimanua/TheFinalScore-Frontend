@@ -100,7 +100,7 @@ export async function getMovie(movieTitle) {
         const response = await fetch(`${apiURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return new Movie(json.title, json.plot, 'imgSrc (APIHelper:87)', json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:87)')));
+            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, 'sourceLogo (APIHelper:87)')), json.genres, json.director, json.cast);
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
@@ -126,10 +126,12 @@ export async function OAuthCheck(){
         sendToken(localStorage.getItem('token'));
     }
     else if(urlParams.has('code')){
-        const url = `http://localhost:8080/TheFinalScore-Backend/api/token?code=${urlParams.get('code')}`;
+        const url = `${apiURL}/token?code=${urlParams.get('code')}`;
     
         try {
             const response = await fetch(url);
+            if(response.status !== 200)
+                return;
             const token = await response.text();
             localStorage.setItem('token', token);
             sendToken(localStorage.getItem('token'));
@@ -140,10 +142,11 @@ export async function OAuthCheck(){
     }
     
     async function sendToken(token){
-        const url = `http://localhost:8080/TheFinalScore-Backend/api/login?token=${token}`;
+        const url = `${apiURL}/login?token=${token}`;
         try {
             const response = await fetch(url);
             const data = await response.json();
+            console.log(data);
             alert(`Welcome ${data.login}, your id is ${data.id}`);
         } catch (error) {
             console.log('Could not send token to backend.');
