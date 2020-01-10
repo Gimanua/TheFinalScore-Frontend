@@ -158,6 +158,21 @@ export async function OAuthCheck(){
     }
 }
 
+export async function verify(){
+    let tokval = localStorage.getItem('token');
+    const url = `${apiURL}/verify`;
+    console.log(tokval);
+    try{
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        
+        
+    }catch (error){
+        console.log("Failed to verify token: " + error);
+    }
+}
+
 /**
  * Saves a movie to localstorage, should use a database.
  * @param {Movie} movie The movie to save.
