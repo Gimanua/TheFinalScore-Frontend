@@ -174,6 +174,19 @@ export async function verify(){
 }
 
 /**
+ * Loads all movies from localstorage, should use a database.
+ * @returns {Movie[]} The movies saved.
+ */
+export function loadSavedMovies(){
+    if(!localStorage.getItem('movies')){
+        console.log([]);
+        return [];
+    }
+    console.log(localStorage.getItem('movies'));
+    return JSON.parse(localStorage.getItem('movies'));
+}
+
+/**
  * Saves a movie to localstorage, should use a database.
  * @param {Movie} movie The movie to save.
  */
