@@ -5,9 +5,8 @@ import './scss/table.scss';
 /**
  * This print the list (a table) of a logged in user
  */
-let n = 1;
 export default function Table() {
-  if ( n === 1){
+  if ( localStorage.getItem('token')!= null){
   return (
     <div className="List">
       <h1>The Final Score</h1>

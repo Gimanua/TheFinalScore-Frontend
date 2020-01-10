@@ -8,8 +8,28 @@ import {githubClientID} from '../APIHelper';
 
 export default function Menu({ onNavigate, onMovieSelect }) {
 
+    /**
+     * This verifies that the token the users got is valied.
+     */
+    async function verify(){
+        let tokval = localStorage.getItem('token');
+        const url = "http://localhost:8080/TheFinalScore-Backend/api/verify"
+        try{
+            // const response = await fetch(url);
+            // const data = await response.json();
+            // console.log(data);
+            
+
+
+
+        }catch (error){
+            console.log("Failed to verify token: " + error);
+        }
+    }
+
     function onLinkClick(id) {
         onNavigate(id);
+        
     }
 
     const [searchQuery, setSearchQuery] = React.useState(null);
@@ -23,7 +43,8 @@ export default function Menu({ onNavigate, onMovieSelect }) {
                     <div className="dropdown-content">
                         <button className="item" onClick={() => onLinkClick(0)}>Home</button>
                         <button className="item" onClick={() => onLinkClick(2)}>My List</button>
-                        <button className="item"><a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>Sign in</a></button>
+                        <button className="item" onClick={() => verify()}><a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>Sign in</a></button>
+
                     </div>
                 </div>
             <SearchResult searchQuery={searchQuery} onSelect={(selectedMovie) => {onLinkClick(1); onMovieSelect(selectedMovie);}} />
