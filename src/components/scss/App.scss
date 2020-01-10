@@ -1,6 +1,15 @@
 $primary-font-color: white;
 $primary-window-color: rgba($color: #000000, $alpha: 0.75);
+
 $accent: #EB3501;
+
+$vit: #EDF5E1;
+$bla: #05386B;
+$Lgron: #8ee4af;
+$gron: #5CDB85;
+$Mgron: #379683;
+
+
 @font-face{
     font-family: karla;
     src: url(../../Karla/Karla-Regular.ttf);
@@ -20,7 +29,12 @@ body{
 }
 
 html{
-    background-color: lightgray;
+    background-color: $vit;
+}
+
+
+input{
+  width: 250px;
 }
 
 .search{
@@ -30,16 +44,24 @@ html{
     font-size: 26px;
     border: none;
     outline: none;
-    background-color:lightgray;
-    color: black;
     background: none;
     padding-left: 15px;
     transition: .5s;
+    color: $bla;
 }
 
 .search:focus{
-  background-color: $primary-window-color;
+  background-color: $bla;
+  color: $vit;
+  padding-right: 10px;
   transition: .5s;
+}
+
+.search{
+
+}
+input::placeholder{
+  color: $bla;
 }
 
 
@@ -50,7 +72,6 @@ html{
     padding: 10px;
     margin-right: 10px;
     float: right;
-    color: grey;
     cursor: pointer;
 }
 
@@ -63,19 +84,19 @@ html{
 
 .searchDrop{
     position: absolute;
-    left: -200px;
+    left: -300px;
     margin:0;
     box-sizing: border-box;
-    width: 299px;
+    width: 250px;
     min-height: 1vh;
     transition: 0.5s;
     z-index: 10000;
     overflow-y: auto; 
     max-height: 300px;
     overflow-x: hidden;
-    background-color: $primary-window-color;
-    border-top: $accent 2px solid;
-    border-bottom: $accent 2px solid;
+    background-color: $bla;
+    border-top: $vit 2px solid;
+    
 }
 
 ::-webkit-scrollbar {
@@ -85,7 +106,6 @@ html{
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888; 
-  display: none;
 }
 
 /* Handle on hover */
@@ -120,7 +140,7 @@ a:hover{
 
 .dropbtn {
     background-color: transparent;
-    color: grey;
+    color: $bla;
     font-family: karla;
     padding: 16px;
     font-size: 26px;
@@ -141,7 +161,7 @@ a:hover{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: $primary-window-color;
+  background-color: $bla;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -159,7 +179,7 @@ a:hover{
     background-color:transparent ;   
     font-family: karla;
     font-size: 20px;
-    color: $primary-font-color;
+    color: $vit;
     min-width: 160px;
     text-align: left;
     outline: none;
@@ -180,13 +200,13 @@ a:hover{
 
   .dropbtn {
     transition: .3s;
-    color:$primary-font-color;
-    background-color: $primary-window-color;
+    color:$vit;
+    background-color: $bla;
   }
 }
 
 a{
-  color: #EB3501;
+  color: $Lgron;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -228,6 +248,5 @@ a{
 
  
   }
-
 
 

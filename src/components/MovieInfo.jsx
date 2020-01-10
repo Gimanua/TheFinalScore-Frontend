@@ -34,11 +34,17 @@ export default function MovieInfo({title, synopsis, logo, scores, genres, direct
                     {scores.map((score, index) => <li key={index}><Score {...score} /></li>)}
                 </ul>
             </section>
+            <div class="finalScoreContainer">
+            <div class="skewbox">
+            <section className="finalScore"><FinalScore value={finalScore} /></section>
+            </div>
+            </div>
         </article>
-<div class="finalScoreContainer">
-    
-<section className="finalScore"><FinalScore value={finalScore} /></section>
-</div>
+
+        <div className="bgBox"> <div className="mgBox"></div></div>  
+
+        <div className="bbgBox"> <div className="mmgBox"></div></div>    
+
 </>
     );
 }

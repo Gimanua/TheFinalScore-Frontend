@@ -4,19 +4,27 @@ $primary-font-color: rgb(223, 223, 223);
 $primary-window-color: rgba($color: #000000, $alpha: 0.75);
 
 
+$vit: #EDF5E1;
+$bla: #05386B;
+$Lgron: #8ee4af;
+$gron: #5CDB85;
+$Mgron: #379683;
+
+
 $primary-score-font: lemon;
 
 #movie-info{
     margin-top: 50px;
     padding-left: 2vw;
     padding-right: 2vw;
-    background-color: $primary-window-color;
+    background-color: $bla;
     max-width: 130vw;
     margin-left: 14vw;
     margin-right: 14vw;
     border-radius: 10px;
     color: $primary-font-color;
     padding-bottom: 10px;
+    position: absolute;
 
 }
 
@@ -31,7 +39,7 @@ img{
     padding: 0;
     height: 400px;
     width: 270px;
-    border: solid $primary-font-color 5px;
+    border: solid $vit 5px;
     border-radius: 15px;
     margin-right: 30px;
     
@@ -44,7 +52,7 @@ img{
     font-family: $primary-score-font;
     margin-left: 23px;
     text-transform: lowercase;
-    color: $primary-font-color;
+    color: $vit;
     margin-bottom: 0;
 }
 
@@ -64,6 +72,7 @@ article p:first-of-type{
 
 .scores{
     display: grid;
+    grid-auto-flow: row;
     grid-template-columns: 150px;
     grid-template-rows: 100px;
     align-items: center;    
@@ -71,6 +80,47 @@ article p:first-of-type{
     margin-bottom: 50px;
     margin-left: 30px;
     margin-right: 30px;
+    margin-top: 30px;
+}
+
+.bgBox{
+    background-color: $gron;
+    height: 400px;
+    width: 150vw;
+    margin-top: 0px;
+    position: absolute;
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+.mgBox{
+    background-color: $Mgron;
+    height: 200px;
+    width: 150vw;
+    margin-top: 0px;
+    position: absolute;
+    z-index: -1;
+    
+}
+
+.bbgBox{
+    left: -100vw;
+    margin-top: 110vw;
+    background-color: $gron;
+    height: 400px;
+    width: 400vw;
+    position: absolute;
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+.mmgBox{
+    background-color: $Mgron;
+    height: 200px;
+    width: 200vw;
+    margin-top: 0px;
+    position: absolute;
+    z-index: -1;
 }
 
 .point{
@@ -80,7 +130,7 @@ article p:first-of-type{
     margin-top: 40px;
     text-align: right;
     font-family: $primary-score-font;
-    border-bottom: solid $primary-font-color 2px;
+    border-bottom: solid $vit 2px;
     margin-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
@@ -88,8 +138,8 @@ article p:first-of-type{
 }
 
 .pointimg{
-    grid-column-start: 2;
-    grid-column-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 1;
 }
 
 
@@ -100,19 +150,21 @@ li{
     
 }
 
+
 .finalScoreContainer{
     margin-top: 100px;
     padding-left: 2vw;
     padding-right: 2vw;
-    background-color: $primary-window-color;
+    background-color: $bla;
     max-width: 130vw;
-    margin-left: 20vw;
-    margin-right: 20vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
     border-radius: 10px;
     margin-bottom: 300px;
 }
 
 .finalScore{
+    background-color: $vit;
     font-size: 60px;
     padding: 40px;
     text-align: right;
@@ -120,26 +172,34 @@ li{
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: $primary-font-color;
+    color: $bla;
     margin-left: 10vw;
     margin-right: 10vw;
+    transform: skew(-15deg, -15deg);
    
 }
 
 .TFS{
-    border-left: solid 4px $primary-font-color;
-    border-right: solid 4px $primary-font-color;
+    border-left: solid 4px $vit;
+    border-right: solid 4px $vit;
 }
 
 .Value{
    font-size: 100px;
-   border-left: solid 4px $primary-font-color;
-    border-right: solid 4px $primary-font-color;
+   border-left: solid 4px $vit;
+    border-right: solid 4px $vit;
 }
 
 
 .synopsis{
     margin-right: 75px;
+}
+
+.skewbox{
+    background-color: $gron;
+    z-index: -1;
+    transform: skew(15deg, 15deg);
+    height: 300px;
 }
 
 
@@ -159,15 +219,56 @@ li{
         font-size: 50px;
     }
 
-  }
-
-  @media only screen and (max-width: 1150px) {
     .scores{
-        display: grid;
         grid-template-columns: 75px;
         grid-template-rows: 50px;
         align-items: center;    
       justify-items: center;
+    }
+
+    .point{
+        font-size: 30px;
+    }
+
+    .pointimg{
+        height: 25px;
+        width: auto;
+        margin-top: 15px;
+    }
+
+
+
+  }
+
+  @media only screen and (max-width: 1220px) {
+.scores{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+  }
+
+  @media only screen and (max-width: 1150px) {
+    .scores{
+        margin-top: 50px;
+        grid-template-columns: 60px;
+        grid-template-rows: 35px;
+        align-items: center;    
+      justify-items: center;
+    }
+
+    .pointimg{
+        height: 20px;
+        width: auto;
+    }
+
+    .ratingElements li{
+        margin-left:0px;
+        margin-top: 0px;
+    }
+
+    ul li:first-of-type{
+        margin-left: 30px;
     }
 
     .point{
@@ -193,7 +294,7 @@ li{
         .MovieImg{
             width: 40%;
             height: auto;
-            border: solid $primary-font-color 2px;
+            border: solid $vit 2px;
         }
         
 
@@ -250,52 +351,36 @@ li{
 
 
 
-    @media only screen and (max-width: 500px){
-        .MovieImg{
-            width: 50%;
-        }
+    @media only screen and (max-width: 575px){
+
 
         .synopsis{
-            font-size: 8px;
             margin-right: 10px;
         }
 
-        .h3class{
-            font-size: 10px;
+        .point{
+            font-size: 16px;
+            text-align:center ;
         }
 
-        @media only screen and (max-width: 355px){
-           .point{
-               font-size: 16px;
-               text-align:center ;
-           }
-
-           img{
-               width: 40px;
-               margin-top: 0;
-           }
-
-           .scores{
-            display: grid;
-            grid-template-columns: 60px;
-            grid-template-rows: 40px;
-            align-items: center;    
-          justify-items: center;
-
+        img{
+            width: 40px;
+            margin-top: 0;
         }
 
-        .finalScore{
-            margin-left: 10px;
-            margin-right: 10px;
+        ul li:first-of-type {
+            margin-left: 0 !important; 
         }
 
+        ul li{
+            margin: 0 !important;
+        }
 
-    }
+        
 
     @media only screen and (max-width: 500px){
         .scores{
-            display: grid;
-            grid-template-columns: 50px;
+            
             grid-template-rows: 25px;
             align-items: center;    
           justify-items: center;
@@ -306,7 +391,7 @@ li{
         }
 
         img{
-            width: 40px;
+            width: 20px;
             height: auto;
         }
 
@@ -315,5 +400,31 @@ li{
 
     
     }
+
+
+    @media only screen and (max-width: 355px){
+        .point{
+            font-size: 16px;
+            text-align:center ;
+        }
+
+        img{
+            width: 40px;
+            margin-top: 0;
+        }
+
+
+     .finalScore{
+         margin-left: 10px;
+         margin-right: 10px;
+     }
+
+     .scores{
+        margin-left: 3px;
+        margin-right: 3px;
+     }
+
+
+ }
 
 }
