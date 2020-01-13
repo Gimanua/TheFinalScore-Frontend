@@ -1,12 +1,12 @@
 import React from 'react';
 import './scss/table.scss';
-import { loadSavedMovies } from '../APIHelper';
+import { loadSavedMovies, deleteMovie } from '../APIHelper';
 
 
 /**
  * This print the list (a table) of a logged in user
  */
-export default function Table() {
+export default function Table({movies, onMovieDelete}) {
   if (localStorage.getItem('token') != null) {
     return (
       <div className="List">
@@ -24,7 +24,7 @@ export default function Table() {
             </tr>
           </thead>
           <tbody>
-            {loadSavedMovies().map((movie, index) =>
+            {movies.map((movie, index) =>
               <tr key={index}>
                 <td>{movie.title}</td>
                 <td>N/A</td>
@@ -32,7 +32,7 @@ export default function Table() {
                 <td>{movie.synopsis}</td>
                 <td>{movie.finalScore}</td>
                 <td>N/A</td>
-                <td><span role="img" aria-label="Delete">❌</span></td>
+                <td><span role="img" aria-label="Delete" onClick={() => onMovieDelete(index)}>❌</span></td>
             </tr>)
             }
           </tbody>
