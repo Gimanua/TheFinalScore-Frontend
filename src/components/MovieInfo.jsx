@@ -30,15 +30,14 @@ export default function MovieInfo({movie}){
                     {scores.map((score, index) => <li key={index}><Score {...score} /></li>)}
                 </ul>
             </section>
-            <div class="finalScoreContainer">
-            <div class="skewbox">
+            <div className="finalScoreContainer">
+            <div className="skewbox">
             <section className="finalScore"><FinalScore value={finalScore} /></section>
             </div>
             </div>
         </article>
 
         <div className="bgBox"> <div className="mgBox"></div></div>  
-
         <div className="bbgBox"> <div className="mmgBox"></div></div>    
 
 </>
