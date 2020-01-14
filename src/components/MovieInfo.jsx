@@ -18,6 +18,10 @@ export default function MovieInfo({movie, onMovieSave}){
         <>
         <article id="movie-info" className="has-text-centered">
             <h2 className="title">{title}</h2>
+            <div className="AddWrap">
+            <button className="AddMovie"onClick={() => onMovieSave(movie)}>+</button>
+            <p class="AddText">Add to list?</p>
+            </div>
             <img className="MovieImg" src={logo}></img>
             <h3 className="h3class">Synopsis</h3>
             <p className="synopsis">{synopsis}</p>
@@ -35,7 +39,6 @@ export default function MovieInfo({movie, onMovieSave}){
             <section className="finalScore"><FinalScore value={finalScore} /></section>
             </div>
             </div>
-            <button onClick={() => onMovieSave(movie)}>Spara film</button>
         </article>
 
         <div className="bgBox"> <div className="mgBox"></div></div>  
