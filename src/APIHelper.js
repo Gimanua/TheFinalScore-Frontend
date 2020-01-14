@@ -158,7 +158,11 @@ export async function OAuthCheck(){
     }
 }
 
+/**
+ * Checks if the token the user has is valids
+ */
 export async function verify(){
+    console.log("Verify() run");
     let tokval = localStorage.getItem('token');
     const url = `${apiURL}/verify`;
     console.log(tokval);
@@ -169,7 +173,8 @@ export async function verify(){
         
         
     }catch (error){
-        console.log("Failed to verify token: " + error);
+        console.log("Failed to verify token: ");
+        console.log(error);
     }
 }
 
