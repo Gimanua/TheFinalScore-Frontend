@@ -61,11 +61,14 @@ const fakeMovie = new Movie('Year Zero',
 let controller = new AbortController();
 
 /**
+ * @typedef {Object} MovieSearch
+ * @property {String} title The title of the movie.
+ * @property {String} year The year the movie was released.
  * Requests a list of movies matching the supplied search query from the backend.
  * If a connection to the backend can't be established, a fake list gets returned instead.
  * Also aborts all other requests.
  * @param {String} query The movie to search for.
- * @returns {Array<String>} The titles of the movies matching the search query.
+ * @returns {MovieSearch[]} The titles of the movies matching the search query.
  * @throws {DOMException} Thrown when this request gets aborted by a newer request.
  */
 export async function searchForMovie(query) {
@@ -76,7 +79,7 @@ export async function searchForMovie(query) {
         const response = await fetch(`${apiURL}/movie/search/${query}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return json.results.map(result => result.title);
+            return json.results.map(result => ({title: result.title, year: result.release_date.substring(0,4)}));
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
