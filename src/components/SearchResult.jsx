@@ -6,7 +6,7 @@ let timeoutID;
 export default function SearchResult({ searchQuery, onSelect }) {
     const [content, setContent] = React.useState(null);
     React.useEffect(() => { 
-        if(searchQuery) {
+        if(searchQuery && searchQuery.trim()) {
             clearTimeout(timeoutID);
             timeoutID = setTimeout(() => search(searchQuery, setContent), 525);
         }

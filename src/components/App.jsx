@@ -3,7 +3,7 @@ import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
 import Table from './Table';
 import Info from './info';
-import {getMovie} from "../APIHelper";
+import {getMovie, loadSavedMovies, deleteMovie, saveMovie} from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
@@ -13,10 +13,21 @@ import SignIn from './SignIn';
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(0);
   const [selectedMovie, setSelectedMovie] = React.useState(null);
+  const [savedMovies, setSavedMovies] = React.useState(loadSavedMovies());
 
   function navigate(id) {
       console.log(`Navigate: ${id}`)
       setCurrentPage(id);
+  }
+
+  function onMovieSave(movie){
+    saveMovie(movie);
+    setSavedMovies(loadSavedMovies());
+  }
+
+  function onSavedMovieDelete(index){
+    deleteMovie(index);
+    setSavedMovies(loadSavedMovies());
   }
 
   function onLogin() {
@@ -38,10 +49,10 @@ export default function App(props) {
       currentContent = <Info/>;
   }
   if (currentPage === 1)
-      currentContent = selectedMovie && <MovieInfo movie={selectedMovie} />;
+      currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} />;
 
   else if (currentPage === 2) {
-      currentContent = <Table />;
+      currentContent = <Table movies={savedMovies} onMovieDelete={(i) => onSavedMovieDelete(i)} />;
   }
 
   else if (currentPage === 3) {

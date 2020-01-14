@@ -12,7 +12,7 @@ import Movie from '../entities/Movie';
  * @param {Object} props The React props object, here deconstructing a Movie instance.
  * @param {Movie} props.movie The movie.
  */
-export default function MovieInfo({movie}){
+export default function MovieInfo({movie, onMovieSave}){
     const {title, synopsis, logo, scores, genres, director, cast, finalScore} = movie;
     return (
         <>
@@ -35,6 +35,7 @@ export default function MovieInfo({movie}){
             <section className="finalScore"><FinalScore value={finalScore} /></section>
             </div>
             </div>
+            <button onClick={() => onMovieSave(movie)}>Spara film</button>
         </article>
 
         <div className="bgBox"> <div className="mgBox"></div></div>  

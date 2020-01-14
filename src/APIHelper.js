@@ -201,6 +201,18 @@ export async function saveMovie(movie){
 }
 
 /**
+ * Deletes a movie from localstorage, should use a database.
+ * @param {Number} index The index of the movie to remove.
+ */
+export async function deleteMovie(index){
+    if(localStorage.getItem('movies')){
+        const movies = JSON.parse(localStorage.getItem('movies'));
+        movies.splice(index, 1);
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+}
+
+/**
  * Aborts all other requests in transit right now.
  */
 function abortOtherRequests() {
