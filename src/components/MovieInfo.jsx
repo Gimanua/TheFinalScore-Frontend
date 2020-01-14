@@ -9,7 +9,7 @@ import Movie from '../entities/Movie';
 
 /**
  * The Movie Info React component.
- * @param {Object} props The React props object, here deconstructing a Movie instance.
+ * @param {Object} props The React props object.
  * @param {Movie} props.movie The movie.
  */
 export default function MovieInfo({movie, onMovieSave}){
