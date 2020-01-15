@@ -15,27 +15,27 @@ export const githubClientID = '686a9cd2fe0be4052344';
  * Search results to use if the backend is unreachable.
  */
 const fakeSearchResults = [
-    'Batman',
-    'Indiana Jones',
-    'Star Wars I',
-    'Star Wars II',
-    'Harry Potter',
-    'Star Wars III',
-    'Star Wars IV',
-    'Star Wars V',
-    'Star Wars VI',
-    'Star Wars VII',
-    'Star Wars VIII',
-    'Star Wars IX',
-    'Star Wars X',
-    'Star Wars och de sju rövarna',
-    'Star Wars XII',
-    'Star Wars XIII',
-    'Star Wars XIV',
-    'Star Wars XV',
-    'Star Wars XVI',
-    'Star Wars XVII',
-    'Star Wars XVIII',
+    {title: 'Batman', year: 2000},
+    {title: 'Indiana Jones', year: 2001},
+    {title: 'Star Wars I', year: 2002},
+    {title: 'Star Wars II', year: 2003},
+    {title: 'Harry Potter', year: 2004},
+    {title: 'Star Wars III', year: 2005},
+    {title: 'Star Wars IV', year: 2006},
+    {title: 'Star Wars V', year: 2007},
+    {title: 'Star Wars VI', year: 2008},
+    {title: 'Star Wars VII', year: 2009},
+    {title: 'Star Wars VIII', year: 2010},
+    {title: 'Star Wars IX', year: 2011},
+    {title: 'Star Wars X', year: 2012},
+    {title: 'Star Wars och de sju rövarna', year: 2013},
+    {title: 'Star Wars XII', year: 2014},
+    {title: 'Star Wars XIII', year: 2015},
+    {title: 'Star Wars XIV', year: 2016},
+    {title: 'Star Wars XV', year: 2017},
+    {title: 'Star Wars XVI', year: 2018},
+    {title: 'Star Wars XVII', year: 2019},
+    {title: 'Star Wars XVIII', year: 2020},
 ];
 
 /**
@@ -95,7 +95,7 @@ export async function searchForMovie(query) {
         console.log('A connection to the backend could not be established, using fake data instead.');
     }
 
-    return fakeSearchResults.filter(fakeSearchResult => fakeSearchResult.toLowerCase().includes(query.toLowerCase()));
+    return fakeSearchResults.filter(fakeSearchResult => fakeSearchResult.title.toLowerCase().includes(query.toLowerCase()));
 }
 
 /**
@@ -170,7 +170,11 @@ export async function OAuthCheck(){
     }
 }
 
+/**
+ * Checks if the token the user has is valids
+ */
 export async function verify(){
+    console.log("Verify() run");
     let tokval = localStorage.getItem('token');
     const url = `${apiURL}/verify`;
     console.log(tokval);
@@ -181,7 +185,8 @@ export async function verify(){
         
         
     }catch (error){
-        console.log("Failed to verify token: " + error);
+        console.log("Failed to verify token: ");
+        console.log(error);
     }
 }
 
