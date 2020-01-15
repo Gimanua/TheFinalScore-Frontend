@@ -57,7 +57,7 @@ export default function App(props) {
   }
 
   else if (currentPage === 3) {
-      currentContent = null;
+      currentContent = <SignIn />;
   }
 
   else if (currentPage === 4) {

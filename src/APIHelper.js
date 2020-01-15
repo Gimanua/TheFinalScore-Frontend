@@ -171,6 +171,60 @@ export async function OAuthCheck(){
 }
 
 /**
+ * Registers a normal user.
+ */
+export async function registerRegularUser(username, password){
+    try {
+        const url = `${apiURL}/signup/regular`;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${password}`)}`
+            }
+        });
+        if(response.status !== 201){
+            alert('Failed to register user');
+        }
+        else{
+            alert('Signed up user successfully');
+        }
+    } catch (error) {
+        console.log('Failed to sign up user.');
+        console.log(error);
+    }
+}
+
+/**
+ * Signs in a user
+ * @param {String} username The username to sign in with.
+ * @param {String} password The corresponding password.
+ * @returns {Boolean} True if successful login, false otherwise.
+ */
+export async function signInRegularUser(username, password){
+    try {
+        const url = `${apiURL}/signin/regular`;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${password}`)}`
+            }
+        });
+        if(response.status !== 200){
+            alert('Failed to sign in user');
+        }
+        else{
+            alert('Signed in successfully');
+            return true;
+        }
+    } catch (error) {
+        console.log('Failed to sign in user.');
+        console.log(error);
+    }
+
+    return false;
+}
+
+/**
  * Checks if the token the user has is valids
  */
 export async function verify(){
