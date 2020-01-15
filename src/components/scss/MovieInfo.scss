@@ -13,6 +13,21 @@ $Mgron: #379683;
 
 $primary-score-font: lemon;
 
+@font-face{
+    font-family: karla;
+    src: url(../../Karla/Karla-Regular.ttf);
+}
+@font-face{
+    font-family: karla-b;
+    src: url(../../Karla/Karla-Bold.ttf);
+}
+@font-face{
+  font-family: lemon;
+  src: url(../../Karla/GoboldR.otf);
+}
+
+
+
 #movie-info{
     margin-top: 50px;
     padding-left: 2vw;
@@ -25,7 +40,6 @@ $primary-score-font: lemon;
     color: $primary-font-color;
     padding-bottom: 10px;
     position: absolute;
-
 }
 
 img{
@@ -47,18 +61,19 @@ img{
 
 .title{
     padding-top: 23px;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
     text-align: left;
     font-family: $primary-score-font;
-    margin-left: 23px;
     text-transform: lowercase;
     color: $vit;
     margin-bottom: 0;
+    font-size: 3em;
 }
 
 h3{
     padding-top: 5px;
     margin-left: 300px;
+    font-size: 18px;
     text-align: left;
     font-family: karla-b;
 }
@@ -80,7 +95,7 @@ article p:first-of-type{
     margin-bottom: 50px;
     margin-left: 30px;
     margin-right: 30px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .bgBox{
@@ -122,6 +137,8 @@ article p:first-of-type{
     position: absolute;
     z-index: -1;
 }
+
+
 
 .point{
     font-size: 40px;
@@ -193,6 +210,8 @@ li{
 
 .synopsis{
     margin-right: 75px;
+    font-family: karla;
+    font-size: 16px;
 }
 
 .skewbox{
@@ -332,9 +351,6 @@ li{
             font-size: 20px;
         }
 
-        .h3class{
-            font-size: 14px;
-        }
 
         .finalScore{
             padding-right: 20px ;
