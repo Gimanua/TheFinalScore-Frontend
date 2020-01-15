@@ -9,6 +9,7 @@ import SearchResult from "./SearchResult";
 
 import './scss/App.scss';
 import SignIn from './SignIn';
+import Register from './Register';
 
 export default function App(props) {
   const [currentPage, setCurrentPage] = React.useState(0);
@@ -56,11 +57,11 @@ export default function App(props) {
   }
 
   else if (currentPage === 3) {
-      currentContent = <SignIn />;
+      currentContent = null;
   }
 
   else if (currentPage === 4) {
-      currentContent = null;
+      currentContent = <Register />;
   }
 
   return (

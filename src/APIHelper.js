@@ -61,9 +61,12 @@ const fakeMovie = new Movie('Year Zero',
 let controller = new AbortController();
 
 /**
- * @typedef {Object} MovieSearch
+ * @typedef {Object} MovieSearch A search result.
  * @property {String} title The title of the movie.
  * @property {String} year The year the movie was released.
+ */
+
+ /**
  * Requests a list of movies matching the supplied search query from the backend.
  * If a connection to the backend can't be established, a fake list gets returned instead.
  * Also aborts all other requests.
