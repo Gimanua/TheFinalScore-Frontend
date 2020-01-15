@@ -38,9 +38,13 @@ export default function MovieInfo({movie, onMovieSave}){
             <button onClick={() => onMovieSave(movie)}>Spara film</button>
         </article>
 
+        <div className="stripeBox">
+
         <div className="bgBox"> <div className="mgBox"></div></div>  
 
         <div className="bbgBox"> <div className="mmgBox"></div></div>    
+
+        </div>
 
 </>
     );
