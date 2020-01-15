@@ -41,7 +41,7 @@ const fakeSearchResults = [
 /**
  * A fake movie to use if the backend is unreachable.
  */
-const fakeMovie = new Movie('Year Zero',
+const fakeMovie = new Movie('Year Zero (2020)',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     'images/fake_poster.jpg',
     [new Score('8.3/10', 'Internet Movie Database'), new Score('95%', 'Rotten Tomatoes'), new Score('35/100', 'Metacritic')],
