@@ -20,10 +20,13 @@ export default function Table({movies, onMovieDelete}) {
             <tr>
               <th>Title</th>
               <th>Year</th>
-              <th>Actor</th>
+              <th>Director</th>
+              <th>Cast</th>
+              <th>Genres</th>
               <th>Plot</th>
               <th>FINALSCORE</th>
               <th>Type</th>
+              <th>Languages</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -32,10 +35,13 @@ export default function Table({movies, onMovieDelete}) {
               <tr key={index}>
                 <td>{movie.title}</td>
                 <td>{movie.year}</td>
-                <td>{movie.cast.join(",")}</td>
+                <td>{movie.director}</td>
+                <td>{movie.cast.join(", ")}</td>
+                <td>{movie.genres.join(", ")}</td>
                 <td>{movie.synopsis}</td>
                 <td>{movie.finalScore}</td>
                 <td>{movie.type}</td>
+                <td>{movie.languages.join(", ")}</td>
                 <td><span role="img" aria-label="Delete" onClick={() => onMovieDelete(index)}>❌</span></td>
             </tr>)
             }
