@@ -172,6 +172,8 @@ export async function OAuthCheck(){
 
 /**
  * Registers a normal user.
+ * @param {String} username The username to use.
+ * @param {String} password The password to use.
  */
 export async function registerRegularUser(username, password){
     try {
@@ -180,6 +182,32 @@ export async function registerRegularUser(username, password){
             method: 'POST',
             headers: {
                 Authorization: `Basic ${btoa(`${username}:${password}`)}`
+            }
+        });
+        if(response.status !== 201){
+            alert('Failed to register user');
+        }
+        else{
+            alert('Signed up user successfully');
+        }
+    } catch (error) {
+        console.log('Failed to sign up user.');
+        console.log(error);
+    }
+}
+
+/**
+ * Registers a user with GitHubs OAuth.
+ * @param {String} username The username to use.
+ * @param {String} token The token to use.
+ */
+export async function registerOAuthUser(username, token){
+    try {
+        const url = `${apiURL}/signup/oauth`;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${token}`)}`
             }
         });
         if(response.status !== 201){
@@ -204,7 +232,6 @@ export async function signInRegularUser(username, password){
     try {
         const url = `${apiURL}/signin/regular`;
         const response = await fetch(url, {
-            method: 'GET',
             headers: {
                 Authorization: `Basic ${btoa(`${username}:${password}`)}`
             }
@@ -225,23 +252,51 @@ export async function signInRegularUser(username, password){
 }
 
 /**
+ * Signs in a oauth user
+ * @param {String} username The username to sign in with.
+ * @param {String} token The token to use.
+ * @returns {Boolean} True if successful login, false otherwise.
+ */
+export async function signInOAuthUser(username, token){
+    try {
+        const url = `${apiURL}/signin/oauth`;
+        const response = await fetch(url, {
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${token}`)}`
+            }
+        });
+        if(response.status !== 200){
+            alert('Failed to sign in user');
+        }
+        else{
+            alert('Signed in successfully');
+            return true;
+        }
+    } catch (error) {
+        console.log('Failed to sign in user.');
+        console.log(error);
+    }
+
+    return false;
+}
+
+/**
  * Checks if the token the user has is valids
  */
-export async function verify(){
+export async function verifyToken(){
     console.log("Verify() run");
     let tokval = localStorage.getItem('token');
-    const url = `${apiURL}/verify`;
+    const url = `${apiURL}/verify?token=${tokval}`;
     console.log(tokval);
     try{
         const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-        
-        
+        return response.status === 200;
     }catch (error){
         console.log("Failed to verify token: ");
         console.log(error);
     }
+
+    return false;
 }
 
 /**
