@@ -36,7 +36,7 @@ export default function MovieInfo({ movie, onMovieSave }) {
                 <h3 className="h3class">Type: {type}</h3>
                 <section className="ratingElements">
                     <ul>
-                        {scores.map((score, index) => <li key={index}><Score {...score} /></li>)}
+                        {scores.map((score, index) => <li className="Rate" key={index}><Score {...score} /></li>)}
                     </ul>
                 </section>
                 <div className="finalScoreContainer">
@@ -46,8 +46,7 @@ export default function MovieInfo({ movie, onMovieSave }) {
                 </div>
             </article>
 
-            <div className="bgBox"> <div className="mgBox"></div></div>
-            <div className="bbgBox"> <div className="mmgBox"></div></div>
+
 
         </>
     );

@@ -25,6 +25,7 @@ $primary-score-font: lemon;
     color: $primary-font-color;
     padding-bottom: 10px;
     position: absolute;
+    margin-bottom: 200px;
 
 }
 
@@ -56,17 +57,28 @@ img{
     margin-bottom: 0;
 }
 
+.ratingElements{
+    clear: both;
+}
+
+.h3class:first-of-type{
+    font-size: 30px;
+    padding-top: 0;
+}
+
 h3{
     padding-top: 5px;
     margin-left: 300px;
     text-align: left;
     font-family: karla-b;
+    color: $vit;
 }
 
 article p:first-of-type{
     text-align: left;
     
 }
+
 
 
 
@@ -88,7 +100,7 @@ article p:first-of-type{
     height: 400px;
     width: 150vw;
     margin-top: 0px;
-    position: absolute;
+    position: fixed;
     z-index: -1;
     transform: rotate(45deg);
 }
@@ -98,7 +110,7 @@ article p:first-of-type{
     height: 200px;
     width: 150vw;
     margin-top: 0px;
-    position: absolute;
+    position: fixed;
     z-index: -1;
     
 }
@@ -109,7 +121,7 @@ article p:first-of-type{
     background-color: $gron;
     height: 400px;
     width: 400vw;
-    position: absolute;
+    position: fixed;
     z-index: -1;
     transform: rotate(45deg);
 }
@@ -119,7 +131,7 @@ article p:first-of-type{
     height: 200px;
     width: 200vw;
     margin-top: 0px;
-    position: absolute;
+    position: fixed;
     z-index: -1;
 }
 
@@ -143,10 +155,15 @@ article p:first-of-type{
 }
 
 
-li{
+.Rate{
     display: inline-block;
-    margin-right: 100px;
     margin-bottom: 50px;
+}
+
+
+.ratingElements ul{
+    display: flex;
+    justify-content: center;
     
 }
 
@@ -193,6 +210,7 @@ li{
 
 .synopsis{
     margin-right: 75px;
+    font-family: karla;
 }
 
 .skewbox{
@@ -246,6 +264,7 @@ transition: .5s;
     width: 150px;
     height: 0;
 }
+
 
 
 
