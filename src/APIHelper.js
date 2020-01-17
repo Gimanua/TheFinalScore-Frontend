@@ -4,7 +4,7 @@ import Score from './entities/Score';
 /**
  * The URL to the backend's API.
  */
-const apiURL = 'http://localhost:8080/TheFinalScore-Backend/api';
+const backendURL = 'http://localhost:8080/TheFinalScore-Backend/api';
 
 /**
  * The client ID used by Github OAuth.
@@ -15,27 +15,27 @@ export const githubClientID = '686a9cd2fe0be4052344';
  * Search results to use if the backend is unreachable.
  */
 const fakeSearchResults = [
-    {title: 'Batman', year: 2000},
-    {title: 'Indiana Jones', year: 2001},
-    {title: 'Star Wars I', year: 2002},
-    {title: 'Star Wars II', year: 2003},
-    {title: 'Harry Potter', year: 2004},
-    {title: 'Star Wars III', year: 2005},
-    {title: 'Star Wars IV', year: 2006},
-    {title: 'Star Wars V', year: 2007},
-    {title: 'Star Wars VI', year: 2008},
-    {title: 'Star Wars VII', year: 2009},
-    {title: 'Star Wars VIII', year: 2010},
-    {title: 'Star Wars IX', year: 2011},
-    {title: 'Star Wars X', year: 2012},
-    {title: 'Star Wars och de sju rövarna', year: 2013},
-    {title: 'Star Wars XII', year: 2014},
-    {title: 'Star Wars XIII', year: 2015},
-    {title: 'Star Wars XIV', year: 2016},
-    {title: 'Star Wars XV', year: 2017},
-    {title: 'Star Wars XVI', year: 2018},
-    {title: 'Star Wars XVII', year: 2019},
-    {title: 'Star Wars XVIII', year: 2020},
+    { title: 'Batman', year: 2000 },
+    { title: 'Indiana Jones', year: 2001 },
+    { title: 'Star Wars I', year: 2002 },
+    { title: 'Star Wars II', year: 2003 },
+    { title: 'Harry Potter', year: 2004 },
+    { title: 'Star Wars III', year: 2005 },
+    { title: 'Star Wars IV', year: 2006 },
+    { title: 'Star Wars V', year: 2007 },
+    { title: 'Star Wars VI', year: 2008 },
+    { title: 'Star Wars VII', year: 2009 },
+    { title: 'Star Wars VIII', year: 2010 },
+    { title: 'Star Wars IX', year: 2011 },
+    { title: 'Star Wars X', year: 2012 },
+    { title: 'Star Wars och de sju rövarna', year: 2013 },
+    { title: 'Star Wars XII', year: 2014 },
+    { title: 'Star Wars XIII', year: 2015 },
+    { title: 'Star Wars XIV', year: 2016 },
+    { title: 'Star Wars XV', year: 2017 },
+    { title: 'Star Wars XVI', year: 2018 },
+    { title: 'Star Wars XVII', year: 2019 },
+    { title: 'Star Wars XVIII', year: 2020 },
 ];
 
 /**
@@ -66,23 +66,23 @@ let controller = new AbortController();
  * @property {String} year The year the movie was released.
  */
 
- /**
- * Requests a list of movies matching the supplied search query from the backend.
- * If a connection to the backend can't be established, a fake list gets returned instead.
- * Also aborts all other requests.
- * @param {String} query The movie to search for.
- * @returns {MovieSearch[]} The titles of the movies matching the search query.
- * @throws {DOMException} Thrown when this request gets aborted by a newer request.
- */
+/**
+* Requests a list of movies matching the supplied search query from the backend.
+* If a connection to the backend can't be established, a fake list gets returned instead.
+* Also aborts all other requests.
+* @param {String} query The movie to search for.
+* @returns {MovieSearch[]} The titles of the movies matching the search query.
+* @throws {DOMException} Thrown when this request gets aborted by a newer request.
+*/
 export async function searchForMovie(query) {
     try {
         abortOtherRequests();
         const abortSignal = getAbortSignal();
 
-        const response = await fetch(`${apiURL}/movie/search/${query}`, { signal: abortSignal });
+        const response = await fetch(`${backendURL}/movie/search/${query}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return json.results.map(result => ({title: result.title, year: result.release_date.substring(0,4)}));
+            return json.results.map(result => ({ title: result.title, year: result.release_date.substring(0, 4) }));
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
@@ -111,11 +111,12 @@ export async function getMovie(movieTitle) {
         abortOtherRequests();
         const abortSignal = getAbortSignal();
 
-        const response = await fetch(`${apiURL}/movie/info/${movieTitle}`, { signal: abortSignal });
+        const response = await fetch(`${backendURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, rating.source)), json.genres, json.director, json.cast,
-            json.year, json.runtime, json.released, json.languages, json.type);
+            console.log(json);
+            return new Movie(json.title, json.synopsis, json.logo, json.scores.map(score => new Score(score.value, score.source)), json.genres, json.director, json.cast,
+                json.year, json.runtime, json.released, json.languages, json.type);
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
@@ -132,39 +133,25 @@ export async function getMovie(movieTitle) {
 }
 
 /**
- * Checks the OAuth status. Sends an alert on logged in.
+ * Checks the url params for an OAuth code, and if present sends it to the backend to retrieve the token.
  */
-export async function OAuthCheck(){
+export async function OAuthCheck() {
     const urlParams = new URLSearchParams(window.location.search);
 
-    if(localStorage.getItem('token')){
-        sendToken(localStorage.getItem('token'));
-    }
-    else if(urlParams.has('code')){
-        const url = `${apiURL}/token?code=${urlParams.get('code')}`;
-    
+    if (urlParams.has('code')) {
+        const url = `${backendURL}/token?code=${urlParams.get('code')}`;
+
         try {
             const response = await fetch(url);
-            if(response.status !== 200)
-                return;
-            const token = await response.text();
-            localStorage.setItem('token', token);
-            sendToken(localStorage.getItem('token'));
+            if (response.status === 200) {
+                const token = await response.text();
+                localStorage.setItem('token', token);
+            }
+            else {
+                console.log('Backend refused to give token with the code supplied.');
+            }
         } catch (error) {
             console.log('Could not get token from backend.');
-            console.log(error);
-        }
-    }
-    
-    async function sendToken(token){
-        const url = `${apiURL}/login?token=${token}`;
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log(data);
-            alert(`Welcome ${data.login}, your id is ${data.id}`);
-        } catch (error) {
-            console.log('Could not send token to backend.');
             console.log(error);
         }
     }
@@ -175,19 +162,19 @@ export async function OAuthCheck(){
  * @param {String} username The username to use.
  * @param {String} password The password to use.
  */
-export async function registerRegularUser(username, password){
+export async function registerRegularUser(username, password) {
     try {
-        const url = `${apiURL}/signup/regular`;
+        const url = `${backendURL}/signup/regular`;
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 Authorization: `Basic ${btoa(`${username}:${password}`)}`
             }
         });
-        if(response.status !== 201){
+        if (response.status !== 201) {
             alert('Failed to register user');
         }
-        else{
+        else {
             alert('Signed up user successfully');
         }
     } catch (error) {
@@ -201,19 +188,19 @@ export async function registerRegularUser(username, password){
  * @param {String} username The username to use.
  * @param {String} token The token to use.
  */
-export async function registerOAuthUser(username, token){
+export async function registerOAuthUser(username, token) {
     try {
-        const url = `${apiURL}/signup/oauth`;
+        const url = `${backendURL}/signup/oauth`;
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 Authorization: `Basic ${btoa(`${username}:${token}`)}`
             }
         });
-        if(response.status !== 201){
+        if (response.status !== 201) {
             alert('Failed to register user');
         }
-        else{
+        else {
             alert('Signed up user successfully');
         }
     } catch (error) {
@@ -228,18 +215,18 @@ export async function registerOAuthUser(username, token){
  * @param {String} password The corresponding password.
  * @returns {Boolean} True if successful login, false otherwise.
  */
-export async function signInRegularUser(username, password){
+export async function signInRegularUser(username, password) {
     try {
-        const url = `${apiURL}/signin/regular`;
+        const url = `${backendURL}/signin/regular`;
         const response = await fetch(url, {
             headers: {
                 Authorization: `Basic ${btoa(`${username}:${password}`)}`
             }
         });
-        if(response.status !== 200){
+        if (response.status !== 200) {
             alert('Failed to sign in user');
         }
-        else{
+        else {
             alert('Signed in successfully');
             return true;
         }
@@ -257,18 +244,18 @@ export async function signInRegularUser(username, password){
  * @param {String} token The token to use.
  * @returns {Boolean} True if successful login, false otherwise.
  */
-export async function signInOAuthUser(username, token){
+export async function signInOAuthUser(username, token) {
     try {
-        const url = `${apiURL}/signin/oauth`;
+        const url = `${backendURL}/signin/oauth`;
         const response = await fetch(url, {
             headers: {
                 Authorization: `Basic ${btoa(`${username}:${token}`)}`
             }
         });
-        if(response.status !== 200){
+        if (response.status !== 200) {
             alert('Failed to sign in user');
         }
-        else{
+        else {
             alert('Signed in successfully');
             return true;
         }
@@ -283,15 +270,15 @@ export async function signInOAuthUser(username, token){
 /**
  * Checks if the token the user has is valids
  */
-export async function verifyToken(){
+export async function verifyToken() {
     console.log("Verify() run");
     let tokval = localStorage.getItem('token');
-    const url = `${apiURL}/verify?token=${tokval}`;
+    const url = `${backendURL}/verify?token=${tokval}`;
     console.log(tokval);
-    try{
+    try {
         const response = await fetch(url);
         return response.status === 200;
-    }catch (error){
+    } catch (error) {
         console.log("Failed to verify token: ");
         console.log(error);
     }
@@ -303,8 +290,8 @@ export async function verifyToken(){
  * Loads all movies from localstorage, should use a database.
  * @returns {Movie[]} The movies saved.
  */
-export function loadSavedMovies(){
-    if(!localStorage.getItem('movies')){
+export function loadSavedMovies() {
+    if (!localStorage.getItem('movies')) {
         return [];
     }
     return JSON.parse(localStorage.getItem('movies'));
@@ -314,24 +301,43 @@ export function loadSavedMovies(){
  * Saves a movie to localstorage, should use a database.
  * @param {Movie} movie The movie to save.
  */
-export async function saveMovie(movie){
-    if(!localStorage.getItem('movies')){
-        localStorage.setItem('movies', JSON.stringify([movie]));
+export async function saveMovie(movie, username, verifier, verifierMethod) {
+    try {
+        const url = `${backendURL}/movie/save`;
+        console.log('Awaiting save response');
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${verifier}`)}`,
+                AuthVerifier: verifierMethod,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movie)
+        });
+        console.log('Save response retrieved');
+        if (response.status === 201) {
+            console.log('Parsing json');
+            const rawReturnedMovie = await response.json();
+            console.log('Parsing complete');
+            console.log(rawReturnedMovie);
+            return rawReturnedMovie;
+        }
+        else {
+            console.log('Backend refused to save movie.');
+        }
+    } catch (error) {
+        console.log('Error when saving movie.');
+        console.log(error);
     }
-    else{
-        const movies = JSON.parse(localStorage.getItem('movies'));
-        movies.push(movie);
-        localStorage.setItem('movies', JSON.stringify(movies));
-    }
-    alert('Saved Movie successfully');
+    alert('Failed to save movie');
 }
 
 /**
  * Deletes a movie from localstorage, should use a database.
  * @param {Number} index The index of the movie to remove.
  */
-export async function deleteMovie(index){
-    if(localStorage.getItem('movies')){
+export async function deleteMovie(index) {
+    if (localStorage.getItem('movies')) {
         const movies = JSON.parse(localStorage.getItem('movies'));
         movies.splice(index, 1);
         localStorage.setItem('movies', JSON.stringify(movies));
@@ -349,7 +355,7 @@ function abortOtherRequests() {
  * Gets a signal which can later be used by other requests to abort this one.
  * @returns {AbortSignal} The signal used to abort this request.
  */
-function getAbortSignal(){
+function getAbortSignal() {
     controller = new AbortController();
     return controller.signal;
 }

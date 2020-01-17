@@ -12,15 +12,15 @@ import Movie from '../entities/Movie';
  * @param {Object} props The React props object.
  * @param {Movie} props.movie The movie.
  */
-export default function MovieInfo({ movie, onMovieSave }) {
+export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
     const { title, synopsis, logo, scores, genres, director, cast, finalScore, year, runtime, released, languages, type } = movie;
     return (
         <>
             <article id="movie-info" className="has-text-centered">
                 <h2 className="title">{title}</h2>
                 <div className="AddWrap">
-            <button className="AddMovie"onClick={() => onMovieSave(movie)}>+</button>
-            <p class="AddText">Add to list?</p>
+            {loggedIn && <><button className="AddMovie"onClick={() => onMovieSave(movie)}>+</button>
+            <p className="AddText">Add to list?</p></>}
             </div>
                 <img className="MovieImg" src={logo}></img>
                 <h3 className="h3class">Synopsis</h3>

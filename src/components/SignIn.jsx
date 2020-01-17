@@ -2,7 +2,7 @@ import React from 'react';
 import { signInRegularUser, signInOAuthUser } from '../APIHelper';
 import Verifier from './Verifier';
 
-export default function SignIn(props) {
+export default function SignIn({onLogin}) {
 
     const [method, setMethod] = React.useState('regular');
     const [validUsername, setValidUsername] = React.useState(false);
@@ -21,10 +21,14 @@ export default function SignIn(props) {
         const username = document.getElementById('username').value;
         if(method === 'regular'){
             const password = document.getElementById('password').value;
-            signInRegularUser(username, password)
+            if(signInRegularUser(username, password)){
+                onLogin(username, password, 'regular');
+            }
         } else{
             const token = localStorage.getItem('token');
-            signInOAuthUser(username, token);
+            if(signInOAuthUser(username, token)){
+                onLogin(username, token, 'token');
+            }
         }
     }
 

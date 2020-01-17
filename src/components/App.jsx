@@ -3,7 +3,7 @@ import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
 import Table from './Table';
 import Info from './info';
-import { getMovie, loadSavedMovies, deleteMovie, saveMovie } from "../APIHelper";
+import { getMovie, loadSavedMovies, deleteMovie, saveMovie, OAuthCheck } from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
@@ -12,9 +12,16 @@ import SignIn from './SignIn';
 import Register from './Register';
 
 export default function App(props) {
+
+    const [username, setUsername] = React.useState(null);
+    const [verifier, setVerifier] = React.useState(null);
+    const [verifierMethod, setVerifierMethod] = React.useState(null);
+
     const [currentPage, setCurrentPage] = React.useState(0);
     const [selectedMovie, setSelectedMovie] = React.useState(null);
     const [savedMovies, setSavedMovies] = React.useState(loadSavedMovies());
+    const [loggedIn, setLoggedIn] = React.useState(false);
+    React.useEffect(() => {OAuthCheck()}, []);
 
     function navigate(id) {
         console.log(`Navigate: ${id}`)
@@ -22,8 +29,10 @@ export default function App(props) {
     }
 
     function onMovieSave(movie) {
-        saveMovie(movie);
-        setSavedMovies(loadSavedMovies());
+        if(loggedIn){
+            saveMovie(movie, username, verifier, verifierMethod);
+            setSavedMovies(loadSavedMovies());
+        }
     }
 
     function onSavedMovieDelete(index) {
@@ -31,8 +40,11 @@ export default function App(props) {
         setSavedMovies(loadSavedMovies());
     }
 
-    function onLogin() {
-        setCurrentPage(4);
+    function onLogin(username, verifier, verifierMethod) {
+        setUsername(username);
+        setVerifier(verifier);
+        setVerifierMethod(verifierMethod);
+        setLoggedIn(true);
     }
 
     async function onMovieSelected(selectedMovieTitle) {
@@ -50,14 +62,14 @@ export default function App(props) {
         currentContent = <Info />;
     }
     if (currentPage === 1)
-        currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} />;
+        currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} loggedIn={loggedIn}/>;
 
     else if (currentPage === 2) {
-        currentContent = <Table movies={savedMovies} onMovieDelete={(i) => onSavedMovieDelete(i)} />;
+        currentContent = <Table movies={savedMovies} onMovieDelete={(i) => onSavedMovieDelete(i)} loggedIn={loggedIn} />;
     }
 
     else if (currentPage === 3) {
-        currentContent = <SignIn />;
+        currentContent = <SignIn onLogin={onLogin}/>;
     }
 
     else if (currentPage === 4) {
