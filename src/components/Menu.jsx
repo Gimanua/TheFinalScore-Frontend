@@ -29,8 +29,8 @@ export default function Menu({ onNavigate, onMovieSelect }) {
                     <div className="dropdown-content">
                         <button className="item" onClick={() => onLinkClick(0)}>Home</button>
                         <button className="item" onClick={() => onLinkClick(2)}>My List</button>
-                        <button className="item" onClick={() => verify()}><a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>Sign in</a></button>
-
+                        <button className="item" onClick={() => onLinkClick(3)}>Sign in</button>
+                        <button className="item" onClick={() => onLinkClick(4)}>Register</button>
                     </div>
                 </div>
             <SearchResult searchQuery={searchQuery} onSelect={(selectedMovie) => {onLinkClick(1); onMovieSelect(selectedMovie); setSearchQuery(null);}} />
