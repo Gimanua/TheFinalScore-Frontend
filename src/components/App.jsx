@@ -3,7 +3,7 @@ import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
 import Table from './Table';
 import Info from './info';
-import {getMovie, loadSavedMovies, deleteMovie, saveMovie} from "../APIHelper";
+import { getMovie, loadSavedMovies, deleteMovie, saveMovie, OAuthCheck } from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
@@ -12,64 +12,80 @@ import SignIn from './SignIn';
 import Register from './Register';
 
 export default function App(props) {
-  const [currentPage, setCurrentPage] = React.useState(0);
-  const [selectedMovie, setSelectedMovie] = React.useState(null);
-  const [savedMovies, setSavedMovies] = React.useState(loadSavedMovies());
 
-  function navigate(id) {
-      console.log(`Navigate: ${id}`)
-      setCurrentPage(id);
-  }
+    const [username, setUsername] = React.useState(null);
+    const [verifier, setVerifier] = React.useState(null);
+    const [verifierMethod, setVerifierMethod] = React.useState(null);
 
-  function onMovieSave(movie){
-    saveMovie(movie);
-    setSavedMovies(loadSavedMovies());
-  }
+    const [currentPage, setCurrentPage] = React.useState(0);
+    const [selectedMovie, setSelectedMovie] = React.useState(null);
+    const [savedMovies, setSavedMovies] = React.useState(loadSavedMovies());
+    const [loggedIn, setLoggedIn] = React.useState(false);
+    React.useEffect(() => {OAuthCheck()}, []);
 
-  function onSavedMovieDelete(index){
-    deleteMovie(index);
-    setSavedMovies(loadSavedMovies());
-  }
-
-  function onLogin() {
-      setCurrentPage(4);
-  }
-
-  async function onMovieSelected(selectedMovieTitle){
-    try{
-        const movie = await getMovie(selectedMovieTitle);
-        console.log(movie);
-        setSelectedMovie(movie);
-    } catch (error){
-        console.log(error);
+    function navigate(id) {
+        console.log(`Navigate: ${id}`)
+        setCurrentPage(id);
     }
-  }
 
-  let currentContent;
-  if(currentPage === 0){
-      currentContent = <Info/>;
-  }
-  if (currentPage === 1)
-      currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} />;
+    function onMovieSave(movie) {
+        if(loggedIn){
+            saveMovie(movie, username, verifier, verifierMethod);
+            setSavedMovies(loadSavedMovies());
+        }
+    }
 
-  else if (currentPage === 2) {
-      currentContent = <Table movies={savedMovies} onMovieDelete={(i) => onSavedMovieDelete(i)} />;
-  }
+    function onSavedMovieDelete(index) {
+        deleteMovie(index);
+        setSavedMovies(loadSavedMovies());
+    }
 
-  else if (currentPage === 3) {
-      currentContent = <SignIn />;
-  }
+    function onLogin(username, verifier, verifierMethod) {
+        setUsername(username);
+        setVerifier(verifier);
+        setVerifierMethod(verifierMethod);
+        setLoggedIn(true);
+    }
 
-  else if (currentPage === 4) {
-      currentContent = <Register />;
-  }
+    async function onMovieSelected(selectedMovieTitle) {
+        try {
+            const movie = await getMovie(selectedMovieTitle);
+            console.log(movie);
+            setSelectedMovie(movie);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-  return (
-      <>
-          <Menu onNavigate={navigate} onMovieSelect={onMovieSelected} />
-          <main className="guistate-content">
-              {currentContent}
-          </main>
-      </>
-  )
+    let currentContent;
+    if (currentPage === 0) {
+        currentContent = <Info />;
+    }
+    if (currentPage === 1)
+        currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} loggedIn={loggedIn}/>;
+
+    else if (currentPage === 2) {
+        currentContent = <Table movies={savedMovies} onMovieDelete={(i) => onSavedMovieDelete(i)} loggedIn={loggedIn} />;
+    }
+
+    else if (currentPage === 3) {
+        currentContent = <SignIn onLogin={onLogin}/>;
+    }
+
+    else if (currentPage === 4) {
+        currentContent = <Register />;
+    }
+
+    return (
+        <>
+            <Menu onNavigate={navigate} onMovieSelect={onMovieSelected} />
+            <main className="guistate-content">
+                {currentContent}
+            </main>
+            <div className="bgcontainer">
+                <div className="bgBox"> <div className="mgBox"></div></div>
+                <div className="bbgBox"> <div className="mmgBox"></div></div>
+            </div>
+        </>
+    )
 }

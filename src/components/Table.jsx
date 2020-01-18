@@ -10,8 +10,8 @@ import { loadSavedMovies, deleteMovie } from '../APIHelper';
  * @param {Movie[]} props.movies The movies that are saved.
  * @param {Function} props.onMovieDelete The function to call when you delete a movie.
  */
-export default function Table({movies, onMovieDelete}) {
-  if (localStorage.getItem('token') != null) {
+export default function Table({movies, onMovieDelete, loggedIn}) {
+  if (loggedIn) {
     return (
       <div className="List">
         <h1>The Final Score</h1>
@@ -42,7 +42,7 @@ export default function Table({movies, onMovieDelete}) {
                 <td>{movie.finalScore}</td>
                 <td>{movie.type}</td>
                 <td>{movie.languages.join(", ")}</td>
-                <td><span role="img" aria-label="Delete" onClick={() => onMovieDelete(index)}>❌</span></td>
+                <td><span className="delete-movie" role="img" aria-label="Delete" onClick={() => onMovieDelete(index)}>❌</span></td>
             </tr>)
             }
           </tbody>

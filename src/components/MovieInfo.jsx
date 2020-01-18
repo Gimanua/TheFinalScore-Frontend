@@ -12,15 +12,15 @@ import Movie from '../entities/Movie';
  * @param {Object} props The React props object.
  * @param {Movie} props.movie The movie.
  */
-export default function MovieInfo({ movie, onMovieSave }) {
+export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
     const { title, synopsis, logo, scores, genres, director, cast, finalScore, year, runtime, released, languages, type } = movie;
     return (
         <>
             <article id="movie-info" className="has-text-centered">
                 <h2 className="title">{title}</h2>
                 <div className="AddWrap">
-            <button className="AddMovie"onClick={() => onMovieSave(movie)}>+</button>
-            <p class="AddText">Add to list?</p>
+            {loggedIn && <><button className="AddMovie"onClick={() => onMovieSave(movie)}>+</button>
+            <p className="AddText">Add to list?</p></>}
             </div>
             </div>
             <button onClick={() => onMovieSave(movie)}>Spara film</button>
@@ -44,7 +44,7 @@ export default function MovieInfo({ movie, onMovieSave }) {
                 <h3 className="h3class">Type: {type}</h3>
                 <section className="ratingElements">
                     <ul>
-                        {scores.map((score, index) => <li key={index}><Score {...score} /></li>)}
+                        {scores.map((score, index) => <li className="Rate" key={index}><Score {...score} /></li>)}
                     </ul>
                 </section>
                 <div className="finalScoreContainer">
@@ -54,8 +54,7 @@ export default function MovieInfo({ movie, onMovieSave }) {
                 </div>
             </article>
 
-            <div className="bgBox"> <div className="mgBox"></div></div>
-            <div className="bbgBox"> <div className="mmgBox"></div></div>
+
 
 
         </div>

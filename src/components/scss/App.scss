@@ -32,6 +32,19 @@ html{
     background-color: $vit;
 }
 
+main{
+  max-height: 200vh;
+}
+
+
+.bgcontainer{
+  height: 100%;
+  display: block;
+  z-index: -1;
+  overflow: hidden;
+  max-height: 200px;
+}
+
 
 input{
   width: 250px;
@@ -118,7 +131,6 @@ li{
   margin-top: 5px;
   margin-bottom: 10px;
   margin-right: 40px;
-  
 }
 
 .searchResult{
@@ -189,6 +201,7 @@ a:hover{
   .item:hover {
     background-color: #f1f1f1;
     cursor: pointer;
+    color:$bla;
   }
 }
   
