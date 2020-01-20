@@ -11,22 +11,32 @@ table{
   margin-right: auto;
 }
 
+$primary-color: #00a800;//First
+$secondary-color:#000;//Second
+$tertiary-color:#ccc;//Third
+
+
 th{
-  background: #00ff00;
+  background: $primary-color;
   text-align: center;
 }
   
 tr:nth-child(even){
   background: #bbbbbb;
+  color: $secondary-color;
 }
 
 tr:nth-child(odd){
   background: #7a7a7a;
+  color: $tertiary-color;
 }
 
 td{
-  color: #00ff00;
   padding: 5px;
+}
+
+.delete-movie{
+    cursor: pointer;
 }
 
 table,th,td{
