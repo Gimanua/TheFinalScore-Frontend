@@ -15,27 +15,27 @@ export const githubClientID = '686a9cd2fe0be4052344';
  * Search results to use if the backend is unreachable.
  */
 const fakeSearchResults = [
-    {title: 'Batman', year: 2000},
-    {title: 'Indiana Jones', year: 2001},
-    {title: 'Star Wars I', year: 2002},
-    {title: 'Star Wars II', year: 2003},
-    {title: 'Harry Potter', year: 2004},
-    {title: 'Star Wars III', year: 2005},
-    {title: 'Star Wars IV', year: 2006},
-    {title: 'Star Wars V', year: 2007},
-    {title: 'Star Wars VI', year: 2008},
-    {title: 'Star Wars VII', year: 2009},
-    {title: 'Star Wars VIII', year: 2010},
-    {title: 'Star Wars IX', year: 2011},
-    {title: 'Star Wars X', year: 2012},
-    {title: 'Star Wars och de sju rövarna', year: 2013},
-    {title: 'Star Wars XII', year: 2014},
-    {title: 'Star Wars XIII', year: 2015},
-    {title: 'Star Wars XIV', year: 2016},
-    {title: 'Star Wars XV', year: 2017},
-    {title: 'Star Wars XVI', year: 2018},
-    {title: 'Star Wars XVII', year: 2019},
-    {title: 'Star Wars XVIII', year: 2020},
+    'Batman',
+    'Indiana Jones',
+    'Star Wars I',
+    'Star Wars II',
+    'Harry Potter',
+    'Star Wars III',
+    'Star Wars IV',
+    'Star Wars V',
+    'Star Wars VI',
+    'Star Wars VII',
+    'Star Wars VIII',
+    'Star Wars IX',
+    'Star Wars X',
+    'Star Wars och de sju rövarna',
+    'Star Wars XII',
+    'Star Wars XIII',
+    'Star Wars XIV',
+    'Star Wars XV',
+    'Star Wars XVI',
+    'Star Wars XVII',
+    'Star Wars XVIII',
 ];
 
 /**
@@ -47,12 +47,7 @@ const fakeMovie = new Movie('Year Zero (2020)',
     [new Score('8.3/10', 'Internet Movie Database'), new Score('95%', 'Rotten Tomatoes'), new Score('35/100', 'Metacritic')],
     ['Thriller', 'Science Fiction'],
     'Vladimir Putin',
-    ['Boris Spasskij', 'Chuck Norris', 'He-Man'],
-    '2009',
-    '127 min',
-    '13 dec 2009',
-    ['Ruski', 'Blyat', 'Portuguese'],
-    'Movie'
+    ['Boris Spasskij', 'Chuck Norris', 'He-Man']
 );
 
 /**
@@ -61,17 +56,11 @@ const fakeMovie = new Movie('Year Zero (2020)',
 let controller = new AbortController();
 
 /**
- * @typedef {Object} MovieSearch A search result.
- * @property {String} title The title of the movie.
- * @property {String} year The year the movie was released.
- */
-
- /**
  * Requests a list of movies matching the supplied search query from the backend.
  * If a connection to the backend can't be established, a fake list gets returned instead.
  * Also aborts all other requests.
  * @param {String} query The movie to search for.
- * @returns {MovieSearch[]} The titles of the movies matching the search query.
+ * @returns {Array<String>} The titles of the movies matching the search query.
  * @throws {DOMException} Thrown when this request gets aborted by a newer request.
  */
 export async function searchForMovie(query) {
@@ -82,7 +71,7 @@ export async function searchForMovie(query) {
         const response = await fetch(`${apiURL}/movie/search/${query}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return json.results.map(result => ({title: result.title, year: result.release_date.substring(0,4)}));
+            return json.results.map(result => result.title);
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
@@ -95,7 +84,7 @@ export async function searchForMovie(query) {
         console.log('A connection to the backend could not be established, using fake data instead.');
     }
 
-    return fakeSearchResults.filter(fakeSearchResult => fakeSearchResult.title.toLowerCase().includes(query.toLowerCase()));
+    return fakeSearchResults.filter(fakeSearchResult => fakeSearchResult.toLowerCase().includes(query.toLowerCase()));
 }
 
 /**
@@ -114,8 +103,7 @@ export async function getMovie(movieTitle) {
         const response = await fetch(`${apiURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, rating.source)), json.genres, json.director, json.cast,
-            json.year, json.runtime, json.released, json.languages, json.type);
+            return new Movie(json.title, json.plot, json.poster, json.ratings.map(rating => new Score(rating.value, rating.source)), json.genres, json.director, json.cast);
         }
         else {
             console.log(`Backend responded with: ${response.statusText}`);
@@ -170,65 +158,7 @@ export async function OAuthCheck(){
     }
 }
 
-/**
- * Registers a normal user.
- */
-export async function registerRegularUser(username, password){
-    try {
-        const url = `${apiURL}/signup/regular`;
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                Authorization: `Basic ${btoa(`${username}:${password}`)}`
-            }
-        });
-        if(response.status !== 201){
-            alert('Failed to register user');
-        }
-        else{
-            alert('Signed up user successfully');
-        }
-    } catch (error) {
-        console.log('Failed to sign up user.');
-        console.log(error);
-    }
-}
-
-/**
- * Signs in a user
- * @param {String} username The username to sign in with.
- * @param {String} password The corresponding password.
- * @returns {Boolean} True if successful login, false otherwise.
- */
-export async function signInRegularUser(username, password){
-    try {
-        const url = `${apiURL}/signin/regular`;
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                Authorization: `Basic ${btoa(`${username}:${password}`)}`
-            }
-        });
-        if(response.status !== 200){
-            alert('Failed to sign in user');
-        }
-        else{
-            alert('Signed in successfully');
-            return true;
-        }
-    } catch (error) {
-        console.log('Failed to sign in user.');
-        console.log(error);
-    }
-
-    return false;
-}
-
-/**
- * Checks if the token the user has is valids
- */
 export async function verify(){
-    console.log("Verify() run");
     let tokval = localStorage.getItem('token');
     const url = `${apiURL}/verify`;
     console.log(tokval);
@@ -239,8 +169,7 @@ export async function verify(){
         
         
     }catch (error){
-        console.log("Failed to verify token: ");
-        console.log(error);
+        console.log("Failed to verify token: " + error);
     }
 }
 
