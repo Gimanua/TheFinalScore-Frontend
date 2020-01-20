@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/info.scss';
+import './scss/InfoPage.scss';
 
 export default function Info() {
     return (

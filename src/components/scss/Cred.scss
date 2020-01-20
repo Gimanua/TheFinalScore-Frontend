@@ -1,0 +1,112 @@
+$primary-font-color: white;
+$primary-window-color: rgba($color: #000000, $alpha: 0.75);
+
+$accent: #EB3501;
+
+$vit: #EDF5E1;
+$bla: #05386B;
+$Lgron: #8ee4af;
+$gron: #5CDB85;
+$Mgron: #379683;
+
+
+@font-face{
+    font-family: karla;
+    src: url(../../Karla/Karla-Regular.ttf);
+}
+@font-face{
+    font-family: karla-b;
+    src: url(../../Karla/Karla-Bold.ttf);
+}
+@font-face{
+  font-family: lemon;
+  src: url(../../Karla/GoboldR.otf);
+}
+
+
+.Credwrap{
+    margin-top:10vw;
+    background-color: $bla;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+
+.label{
+    color: $vit;
+}
+
+.input, .input:focus{
+    outline: 0;
+    -webkit-appearance:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    outline:0;
+    border-bottom-color: $vit;
+}
+
+.input{
+    background-color: $bla;
+    outline: none;
+    border:none;
+    border-bottom: 2px solid $vit;
+    border-radius: 0;
+    margin-bottom: 30px;
+    color: $vit;
+    padding-left: 0;
+    transition: 0.5s;
+    font-family: karla;
+    font-size: 20px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.input::placeholder{
+    color: $vit;
+    font-size: 1em;
+    font-family: Karla;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba($color: #ffff, $alpha: 0.4);
+    transition: 1s;
+}
+
+.input:hover{
+    transform: scale(1.01);
+    transition: 0.5s;
+    border-bottom-color: $gron;
+    
+}
+
+.input:focus::placeholder{
+    color: $bla;
+    
+}
+
+.input:hover::placeholder{
+    color: rgba($color: #ffff, $alpha: 1);
+    transition: 1s;
+}
+
+.input:focus{
+    transform: scale(1.01);
+    transition: 0.5s;
+    border-bottom-color: $gron;
+}
+
+
+
+
+.CredHead{
+font-size: 2em;
+font-family: karla;
+color: $vit;
+text-transform: uppercase;
+margin-bottom: 3vw;
+}
+

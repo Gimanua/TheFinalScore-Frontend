@@ -26,8 +26,7 @@ export default function Verifier({ method, onChange }) {
         case 'regular':
             content = (
                 <>
-                    <label htmlFor="password" className="label">Password</label>
-                    <input onInput={e => onChange(e.target.value !== '')} className="input" id="password" type="password" />
+                    <input onInput={e => onChange(e.target.value !== '')} className="input" id="password" type="password" placeholder="Password" />
                 </>
             );
             break;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { registerRegularUser, registerOAuthUser } from '../APIHelper';
 import Verifier from './Verifier';
+import './scss/Cred.scss';
 
 
 export default function Register(props) {
@@ -40,16 +41,18 @@ export default function Register(props) {
 
     return (
         <>
-            <div>
-                <label htmlFor="username" className="label">Username</label>
-                <input onInput={e => onUsernameInput(e.target.value)} className="input" id="username" type="text" />
+            <div className="Credwrap">
+                <div>
+                <h2 className="CredHead">Register</h2>
+                <input onInput={e => onUsernameInput(e.target.value)} className="input" id="username" type="text" placeholder="Username"/>
             </div>
             <div>
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
             </div>
             
             <button onClick={() => onRegister()} disabled={!(validUsername && validVerifier)}>Register</button>
-            <button onClick={changeRegisterMethod}>{method === 'regular' ? 'Register with GitHub OAuth instead!' : 'Register normally.'}</button>
+            <button onClick={changeRegisterMethod}>{method === 'regular' ? 'Register w/ Github' : 'Register normally.'}</button>
+            </div>
         </>
     );
 }

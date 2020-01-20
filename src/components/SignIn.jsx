@@ -1,6 +1,8 @@
 import React from 'react';
 import { signInRegularUser, signInOAuthUser } from '../APIHelper';
 import Verifier from './Verifier';
+import './scss/Cred.scss';
+
 
 export default function SignIn({onLogin}) {
 
@@ -43,15 +45,17 @@ export default function SignIn({onLogin}) {
     //<a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>
     return (
         <>
+        <div className="Credwrap">
             <div>
-                <label htmlFor="username" className="label">Username</label>
-                <input onInput={e => onUsernameInput(e.target.value)} className="input" type="text" id="username" />
+                <h2 className="CredHead">Sign in</h2>
+                <input onInput={e => onUsernameInput(e.target.value)} className="input" type="text" id="username" placeholder="Username"/>
             </div>
             <div>
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
             </div>
-            <button onClick={onSignin} disabled={!(validUsername && validVerifier)}>Log In</button>
-            <button onClick={changeRegisterMethod}>{method === 'regular' ? 'Login with GitHub OAuth instead!' : 'Login normally.'}</button>
+            <button class="" onClick={onSignin} disabled={!(validUsername && validVerifier)}>Log In</button>
+            <button onClick={changeRegisterMethod}>{method === 'regular' ? 'Login w/ Github' : 'Login normally.'}</button>
+            </div>
         </>
     );
 }

@@ -95,45 +95,6 @@ article p:first-of-type{
     margin-top: 30px;
 }
 
-.bgBox{
-    background-color: $gron;
-    height: 400px;
-    width: 150vw;
-    margin-top: 0px;
-    position: fixed;
-    z-index: -1;
-    transform: rotate(45deg);
-}
-
-.mgBox{
-    background-color: $Mgron;
-    height: 200px;
-    width: 150vw;
-    margin-top: 0px;
-    position: fixed;
-    z-index: -1;
-    
-}
-
-.bbgBox{
-    left: -100vw;
-    margin-top: 110vw;
-    background-color: $gron;
-    height: 400px;
-    width: 400vw;
-    position: fixed;
-    z-index: -1;
-    transform: rotate(45deg);
-}
-
-.mmgBox{
-    background-color: $Mgron;
-    height: 200px;
-    width: 200vw;
-    margin-top: 0px;
-    position: fixed;
-    z-index: -1;
-}
 
 .point{
     font-size: 40px;

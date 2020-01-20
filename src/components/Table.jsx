@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/table.scss';
+import './scss/Table.scss';
 import Movie from '../entities/Movie';
 import { loadSavedMovies, deleteMovie } from '../APIHelper';
 
