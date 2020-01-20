@@ -19,9 +19,8 @@ export default class Movie{
      * @param {String} released The release date of the movie.
      * @param {String[]} languages The languages available for the movie.
      * @param {String} type The type of the movie (series, regular movie etc.);
-     * @param {Number} id The id of the movie in the database.
      */
-    constructor(title, synopsis, imgSrc, scores, genres, director, cast, year, runtime, released, languages, type, id){
+    constructor(title, synopsis, imgSrc, scores, genres, director, cast, year, runtime, released, languages, type){
         this.title = title;
         this.synopsis = synopsis;
         this.logo = imgSrc;
@@ -34,7 +33,6 @@ export default class Movie{
         this.released = released;
         this.languages = languages;
         this.type = type;
-        this.id = id;
         this.finalScore = getFinalScore(scores);
     }
 }
