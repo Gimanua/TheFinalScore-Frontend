@@ -10,6 +10,12 @@ $Lgron: #8ee4af;
 $gron: #5CDB85;
 $Mgron: #379683;
 
+$gul: rgb(247, 147, 30);
+$orange: rgb(241, 90, 36);
+$svart: rgb(26, 26, 26);
+$win:#332F2E;
+
+
 
 $primary-score-font: lemon;
 
@@ -17,7 +23,7 @@ $primary-score-font: lemon;
     margin-top: 50px;
     padding-left: 2vw;
     padding-right: 2vw;
-    background-color: $bla;
+    background-color: $win;
     max-width: 130vw;
     margin-left: 14vw;
     margin-right: 14vw;
@@ -133,7 +139,7 @@ article p:first-of-type{
     margin-top: 100px;
     padding-left: 2vw;
     padding-right: 2vw;
-    background-color: $bla;
+    background-color: $gul;
     max-width: 130vw;
     margin-left: 10vw;
     margin-right: 10vw;
@@ -150,7 +156,7 @@ article p:first-of-type{
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: $bla;
+    color: $win;
     margin-left: 10vw;
     margin-right: 10vw;
     transform: skew(-15deg, -15deg);
@@ -175,7 +181,7 @@ article p:first-of-type{
 }
 
 .skewbox{
-    background-color: $gron;
+    background-color: $orange;
     z-index: -1;
     transform: skew(15deg, 15deg);
     height: 300px;

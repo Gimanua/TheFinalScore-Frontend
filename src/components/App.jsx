@@ -82,10 +82,10 @@ export default function App(props) {
             <main className="guistate-content">
                 {currentContent}
             </main>
-            <div className="bgcontainer">
+            {/* <div className="bgcontainer">
                 <div className="bgBox"> <div className="mgBox"></div></div>
                 <div className="bbgBox"> <div className="mmgBox"></div></div>
-            </div>
+            </div> */}
         </>
     )
 }

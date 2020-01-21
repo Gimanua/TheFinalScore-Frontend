@@ -9,6 +9,12 @@ $Lgron: #8ee4af;
 $gron: #5CDB85;
 $Mgron: #379683;
 
+$gul: rgb(247, 147, 30);
+$orange: rgb(241, 90, 36);
+$svart: rgb(26, 26, 26);
+$win:#332F2E;
+
+
 
 @font-face{
     font-family: karla;
@@ -29,7 +35,8 @@ body{
 }
 
 html{
-    background-color: $vit;
+    background-image: url(../../Karla/BGB.png);
+    background-attachment: fixed;
 }
 
 main{
@@ -37,53 +44,53 @@ main{
 }
 
 
-.bgcontainer{
-  height: 100%;
-  display: block;
-  z-index: -1;
-  overflow: hidden;
-  max-height: 200px;
-}
+// .bgcontainer{
+//   height: 100%;
+//   display: block;
+//   z-index: -1;
+//   overflow: hidden;
+//   max-height: 200px;
+// }
 
-.bgBox{
-  background-color: $gron;
-  height: 400px;
-  width: 150vw;
-  margin-top: 0px;
-  position: fixed;
-  z-index: -1;
-  transform: rotate(45deg);
-}
+// .bgBox{
+//   background-color: $gron;
+//   height: 400px;
+//   width: 150vw;
+//   margin-top: 0px;
+//   position: fixed;
+//   z-index: -1;
+//   transform: rotate(45deg);
+// }
 
-.mgBox{
-  background-color: $Mgron;
-  height: 200px;
-  width: 150vw;
-  margin-top: 0px;
-  position: fixed;
-  z-index: -1;
+// .mgBox{
+//   background-color: $Mgron;
+//   height: 200px;
+//   width: 150vw;
+//   margin-top: 0px;
+//   position: fixed;
+//   z-index: -1;
   
-}
+// }
 
-.bbgBox{
-  left: -100vw;
-  margin-top: 110vw;
-  background-color: $gron;
-  height: 400px;
-  width: 400vw;
-  position: fixed;
-  z-index: -1;
-  transform: rotate(45deg);
-}
+// .bbgBox{
+//   left: -100vw;
+//   margin-top: 110vw;
+//   background-color: $gron;
+//   height: 400px;
+//   width: 400vw;
+//   position: fixed;
+//   z-index: -1;
+//   transform: rotate(45deg);
+// }
 
-.mmgBox{
-  background-color: $Mgron;
-  height: 200px;
-  width: 200vw;
-  margin-top: 0px;
-  position: fixed;
-  z-index: -1;
-}
+// .mmgBox{
+//   background-color: $Mgron;
+//   height: 200px;
+//   width: 200vw;
+//   margin-top: 0px;
+//   position: fixed;
+//   z-index: -1;
+// }
 
 input{
   width: 250px;
@@ -99,21 +106,18 @@ input{
     background: none;
     padding-left: 15px;
     transition: .5s;
-    color: $bla;
+    color: $orange;
 }
 
 .search:focus{
-  background-color: $bla;
-  color: $vit;
+  background-color: $orange;
+  color: $svart;
   padding-right: 10px;
   transition: .5s;
 }
 
-.search{
-
-}
 input::placeholder{
-  color: $bla;
+  color: $orange;
 }
 
 
@@ -146,8 +150,8 @@ input::placeholder{
     overflow-y: auto; 
     max-height: 300px;
     overflow-x: hidden;
-    background-color: $bla;
-    border-top: $vit 2px solid;
+    background-color: $orange;
+    border-top: $gul 4px solid;
     
 }
 
@@ -157,7 +161,7 @@ input::placeholder{
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: $gul; 
 }
 
 /* Handle on hover */
@@ -170,6 +174,10 @@ li{
   margin-top: 5px;
   margin-bottom: 10px;
   margin-right: 40px;
+}
+
+li a{
+  color: $svart;
 }
 
 .searchResult{
@@ -191,7 +199,7 @@ a:hover{
 
 .dropbtn {
     background-color: transparent;
-    color: $bla;
+    color: $orange;
     font-family: karla;
     padding: 16px;
     font-size: 26px;
@@ -212,7 +220,7 @@ a:hover{
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: $bla;
+  background-color: $orange;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -230,7 +238,7 @@ a:hover{
     background-color:transparent ;   
     font-family: karla;
     font-size: 20px;
-    color: $vit;
+    color: $svart;
     min-width: 160px;
     text-align: left;
     outline: none;
@@ -238,9 +246,9 @@ a:hover{
 
 
   .item:hover {
-    background-color: #f1f1f1;
+    background-color: $win;
     cursor: pointer;
-    color:$bla;
+    color:$orange;
   }
 }
   
@@ -252,14 +260,34 @@ a:hover{
 
   .dropbtn {
     transition: .3s;
-    color:$vit;
-    background-color: $bla;
+    color:$svart;
+    background-color: $orange;
   }
 }
 
 a{
-  color: $Lgron;
+  color: $svart;
 }
+
+// input svg,
+// input svg rect{
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   fill:transparent;
+// }
+
+// a svg rect{
+//   stroke: $orange;
+//   stroke: 4;
+//   transition: 1s;
+//   stroke-dasharray: 60 200;
+
+// }
+
+
 
 @media only screen and (max-width: 1600px) {
 

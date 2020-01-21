@@ -50,8 +50,8 @@ export default function Register(props) {
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
             </div>
             
-            <button onClick={() => onRegister()} disabled={!(validUsername && validVerifier)}>Register</button>
-            <button onClick={changeRegisterMethod}>{method === 'regular' ? 'Register w/ Github' : 'Register normally.'}</button>
+            <button class="submit1" onClick={() => onRegister()} disabled={!(validUsername && validVerifier)}>Register</button>
+            <button class="submit2" onClick={changeRegisterMethod}>{method === 'regular' ? 'Register w/ Github' : 'Register normally.'}</button>
             </div>
         </>
     );

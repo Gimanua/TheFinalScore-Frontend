@@ -53,8 +53,8 @@ export default function SignIn({onLogin}) {
             <div>
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
             </div>
-            <button class="" onClick={onSignin} disabled={!(validUsername && validVerifier)}>Log In</button>
-            <button onClick={changeRegisterMethod}>{method === 'regular' ? 'Login w/ Github' : 'Login normally.'}</button>
+            <button class="submit1" onClick={onSignin} disabled={!(validUsername && validVerifier)}>Sign in</button>
+            <button class="submit2"onClick={changeRegisterMethod}>{method === 'regular' ? 'Login w/ Github' : 'Login normally.'}</button>
             </div>
         </>
     );

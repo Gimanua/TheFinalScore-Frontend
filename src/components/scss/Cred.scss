@@ -9,6 +9,10 @@ $Lgron: #8ee4af;
 $gron: #5CDB85;
 $Mgron: #379683;
 
+$gul: rgb(247, 147, 30);
+$orange: rgb(241, 90, 36);
+$svart: rgb(26, 26, 26);
+$win:#332F2E;
 
 @font-face{
     font-family: karla;
@@ -26,7 +30,7 @@ $Mgron: #379683;
 
 .Credwrap{
     margin-top:10vw;
-    background-color: $bla;
+    background-color: $win;
     padding-top: 30px;
     padding-bottom: 100px;
     padding-left: 100px;
@@ -50,7 +54,7 @@ $Mgron: #379683;
 }
 
 .input{
-    background-color: $bla;
+    background-color: $win;
     outline: none;
     border:none;
     border-bottom: 2px solid $vit;
@@ -79,12 +83,12 @@ $Mgron: #379683;
 .input:hover{
     transform: scale(1.01);
     transition: 0.5s;
-    border-bottom-color: $gron;
+    border-bottom-color: $orange;
     
 }
 
 .input:focus::placeholder{
-    color: $bla;
+    color: $win;
     
 }
 
@@ -96,10 +100,8 @@ $Mgron: #379683;
 .input:focus{
     transform: scale(1.01);
     transition: 0.5s;
-    border-bottom-color: $gron;
+    border-bottom-color: $orange;
 }
-
-
 
 
 .CredHead{
@@ -108,5 +110,27 @@ font-family: karla;
 color: $vit;
 text-transform: uppercase;
 margin-bottom: 3vw;
+
+}
+
+.submit1 , .submit2{
+background: transparent;
+padding: 15px;
+border: 2px solid $vit;
+font-family: karla;
+font-size: 1vw;
+color: $vit;
+transition: .5s;
+cursor: pointer;
+}
+
+.submit1:hover , .submit2:hover{
+    color:$orange;
+    border: 2px solid $orange;
+    transition: .5s;
+}
+
+.submit1{
+    margin-right: 3vw;
 }
 
