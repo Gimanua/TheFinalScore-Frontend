@@ -19,28 +19,37 @@ export default function App(props) {
 
     const [currentPage, setCurrentPage] = React.useState(0);
     const [selectedMovie, setSelectedMovie] = React.useState(null);
-    const [savedMovies, setSavedMovies] = React.useState(loadSavedMovies());
+    const [savedMovies, setSavedMovies] = React.useState([]);
     const [loggedIn, setLoggedIn] = React.useState(false);
     React.useEffect(() => {OAuthCheck()}, []);
+    React.useEffect(() => {loadInMoves()}, [loggedIn]);
+
+    //Temporary
+    async function loadInMoves(){
+        const movies = await loadSavedMovies(username, verifier, verifierMethod);
+        setSavedMovies(movies);
+    }
 
     function navigate(id) {
         console.log(`Navigate: ${id}`)
         setCurrentPage(id);
     }
 
-    function onMovieSave(movie) {
+    async function onMovieSave(movie) {
         if(loggedIn){
-            saveMovie(movie, username, verifier, verifierMethod);
-            setSavedMovies(loadSavedMovies());
+            await saveMovie(movie, username, verifier, verifierMethod);
+            loadInMoves();
         }
     }
 
     function onSavedMovieDelete(index) {
         deleteMovie(index);
-        setSavedMovies(loadSavedMovies());
     }
 
     function onLogin(username, verifier, verifierMethod) {
+        console.log(username);
+        console.log(verifier);
+        console.log(verifierMethod);
         setUsername(username);
         setVerifier(verifier);
         setVerifierMethod(verifierMethod);
