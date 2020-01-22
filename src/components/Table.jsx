@@ -39,7 +39,7 @@ export default function Table({movies, onMovieDelete, loggedIn}) {
                 <td>{movie.cast.join(", ")}</td>
                 <td>{movie.genres.join(", ")}</td>
                 <td>{movie.synopsis}</td>
-                <td>{movie.finalScore}</td>
+                <td>{movie.finalScore.toString()}</td>
                 <td>{movie.type}</td>
                 <td>{movie.languages.join(", ")}</td>
                 <td><span className="delete-movie" role="img" aria-label="Delete" onClick={() => onMovieDelete(index)}>❌</span></td>
