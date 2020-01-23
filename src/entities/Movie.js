@@ -44,6 +44,8 @@ export default class Movie{
  * @param {Score[]} scores The scores of a movie.
  */
 function getFinalScore(scores){
+    console.log(scores);
+    
     if(scores.length === 0)
         return NaN;
 
