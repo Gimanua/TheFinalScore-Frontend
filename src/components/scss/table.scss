@@ -40,9 +40,10 @@ h1{
   
   table{
     margin-top: 15vh;
-    margin-left: 15vw;
-    margin-right: 10vw;
+    margin-left: 8vw;
+    margin-right: 8vw;
     font-family: karla;
+    margin-bottom: 25vh;
   }
   
   $primary-color: #00a800;//First
@@ -103,3 +104,133 @@ h1{
     font-family: karla-b;
     font-size: 40px;
   }
+
+  @media only screen and (max-width: 1225px){
+    table{
+      margin-right: 5vw;
+      margin-left: 5vw;
+    }
+
+    th{
+      padding: 10px;
+
+    }
+
+    td{
+      padding: 10px;
+
+    }
+
+    }
+
+    @media only screen and (max-width: 930px){
+      table{
+        margin-right: 3vw;
+        margin-left: 3vw;
+      }
+  
+      th{
+        padding: 5px;
+        font-size: 12px;
+  
+      }
+  
+      td{
+        padding: 5px;
+        font-size: 12px;
+      }
+
+      td:nth-of-type(6){
+        font-size: 20px;
+      }
+
+      td:last-of-type{
+        font-size: 14px;
+      }
+      
+  
+      }
+
+      @media only screen and (max-width: 930px){
+        th{
+          padding: 3px;
+          font-size: 10px;
+    
+        }
+    
+        td{
+          padding: 3px;
+          font-size: 10px;
+        }
+
+        h1{
+          font-size: 20px;
+        }
+    
+        }
+
+        @media only screen and (max-width: 510px){
+          th:nth-of-type(4){
+            display: none;
+          }
+
+          th:nth-of-type(5){
+            display: none;
+          }
+
+          th:nth-of-type(8){
+            display: none;
+          }
+
+          td:nth-of-type(4){
+            display: none;
+          }
+
+          td:nth-of-type(5){
+            display: none;
+          }
+
+          td:nth-of-type(8){
+            display: none;
+          }
+          
+          th{
+            padding: 3px;
+            font-size: 6px;
+      
+          }
+
+          td:last-of-type{
+            font-size: 12px;
+          }
+      
+          td{
+            padding: 3px;
+            font-size: 10px;
+          }
+            
+          th{
+            padding: 5px;
+            font-size: 12px;
+
+          }
+      
+          }
+
+          @media only screen and (max-width: 380px){
+            td{
+              padding: 2px;
+              font-size: 10px;
+            }
+              
+            th{
+              padding: 2px;
+              font-size: 10px;
+          }
+
+        }
+          
+
+
+
+      
