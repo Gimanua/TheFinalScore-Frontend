@@ -44,7 +44,7 @@ export default function Register(props) {
             <div className="Credwrap">
                 <div>
                 <h2 className="CredHead">Register</h2>
-                <input onInput={e => onUsernameInput(e.target.value)} className="input" spellcheck="false" id="username" type="text" placeholder="Username"/>
+                <input onInput={e => onUsernameInput(e.target.value)} className="input" spellCheck="false" id="username" type="text" placeholder="Username"/>
             </div>
             <div>
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
