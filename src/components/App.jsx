@@ -3,7 +3,7 @@ import MovieInfo from './MovieInfo';
 import Menu from "./Menu";
 import Table from './Table';
 import Info from './info';
-import { getMovie, loadSavedMovies, deleteMovie, saveMovie, OAuthCheck } from "../APIHelper";
+import { getMovie, loadSavedMovies, deleteMovie, saveMovie, OAuthCheck, autoOAuthLogin } from "../APIHelper";
 import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
 
@@ -11,6 +11,11 @@ import './scss/App.scss';
 import SignIn from './SignIn';
 import Register from './Register';
 
+/**
+ * The root React component for this app.
+ * @param {Object} props The React props object. This is actually not used here, it's just there to clarify that it's a React component.
+ * @returns {JSX.Element} A React component.
+ */
 export default function App(props) {
 
     const [username, setUsername] = React.useState(null);
@@ -21,14 +26,16 @@ export default function App(props) {
     const [selectedMovie, setSelectedMovie] = React.useState(null);
     const [savedMovies, setSavedMovies] = React.useState([]);
     const [loggedIn, setLoggedIn] = React.useState(false);
-    React.useEffect(() => {OAuthCheck()}, []);
-    React.useEffect(() => {loadInMoves()}, [loggedIn]);
+    React.useEffect(() => { autoOAuthLogin(setLoggedIn, setUsername, setVerifier, setVerifierMethod); }, []);
+    React.useEffect(() => { OAuthCheck(); }, []);
+    React.useEffect(() => { loadInMoves(); }, [loggedIn]);
 
     //Temporary
-    async function loadInMoves(){
-        const movies = await loadSavedMovies(username, verifier, verifierMethod);
-        setSavedMovies(movies);
-        
+    async function loadInMoves() {
+        if (loggedIn) {
+            const movies = await loadSavedMovies(username, verifier, verifierMethod);
+            setSavedMovies(movies);
+        }
     }
 
     function navigate(id) {
@@ -37,7 +44,7 @@ export default function App(props) {
     }
 
     async function onMovieSave(movie) {
-        if(loggedIn){
+        if (loggedIn) {
             await saveMovie(movie, username, verifier, verifierMethod);
             loadInMoves();
         }
@@ -49,13 +56,11 @@ export default function App(props) {
     }
 
     function onLogin(username, verifier, verifierMethod) {
-        console.log(username);
-        console.log(verifier);
-        console.log(verifierMethod);
         setUsername(username);
         setVerifier(verifier);
         setVerifierMethod(verifierMethod);
         setLoggedIn(true);
+        localStorage.setItem('username', username);
     }
 
     async function onMovieSelected(selectedMovieTitle) {
@@ -73,14 +78,14 @@ export default function App(props) {
         currentContent = <Info />;
     }
     if (currentPage === 1)
-        currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} loggedIn={loggedIn}/>;
+        currentContent = selectedMovie && <MovieInfo movie={selectedMovie} onMovieSave={(movie) => onMovieSave(movie)} loggedIn={loggedIn} />;
 
     else if (currentPage === 2) {
         currentContent = <Table movies={savedMovies} onMovieDelete={(i) => onSavedMovieDelete(i)} loggedIn={loggedIn} />;
     }
 
     else if (currentPage === 3) {
-        currentContent = <SignIn onLogin={onLogin}/>;
+        currentContent = <SignIn onLogin={onLogin} />;
     }
 
     else if (currentPage === 4) {

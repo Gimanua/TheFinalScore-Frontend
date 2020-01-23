@@ -1,7 +1,12 @@
 import React from 'react';
 import './scss/InfoPage.scss';
 
-export default function Info() {
+/**
+ * Displays information about this website.
+ * @param {Object} props The React props object. This is actually not used here, it's just there to clarify that it's a React component.
+ * @returns {JSX.Element} A React component.
+ */
+export default function Info(props) {
     return (
       <div id="infodiv">
         <h1 className="info-h1">The Final Score</h1>

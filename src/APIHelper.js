@@ -158,6 +158,22 @@ export async function OAuthCheck() {
 }
 
 /**
+ * Checks localstorage for a username and token and if presesnt tries to sign in.
+ */
+export async function autoOAuthLogin(setLogin, setUsername, setVerifier, setVerifierMethod) {
+
+    if (localStorage.getItem('token') && localStorage.getItem('username')) {
+        const success = await signInOAuthUser(localStorage.getItem('username'), localStorage.getItem('token'));
+        if (success) {
+            setUsername(localStorage.getItem('username'));
+            setVerifier(localStorage.getItem('token'));
+            setVerifierMethod('token');
+            setLogin(true);
+        }
+    }
+}
+
+/**
  * Registers a normal user.
  * @param {String} username The username to use.
  * @param {String} password The password to use.
@@ -304,7 +320,7 @@ export async function loadSavedMovies(username, verifier, verifierMethod) {
             return json.map(movieJson => new Movie(movieJson.title, movieJson.synopsis, movieJson.logo, movieJson.scores.map(scoreJson => new Score(scoreJson.value, scoreJson.source)), movieJson.genres, movieJson.director, movieJson.cast
                 , movieJson.year, movieJson.runtime, movieJson.released, movieJson.languages, movieJson.type, movieJson.id));
         }
-        else{
+        else {
             console.log('Server refused to send saved movies.');
         }
 
@@ -367,10 +383,10 @@ export async function deleteMovie(index, username, verifier, verifierMethod) {
                 AuthVerifier: verifierMethod
             }
         });
-        if(response.status !== 204){
+        if (response.status !== 204) {
             console.log('Backend refused to delete movie.');
         }
-    } catch(error){
+    } catch (error) {
         console.log('Error when deleting movie.');
         console.log(error);
     }

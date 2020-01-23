@@ -3,7 +3,11 @@ import { registerRegularUser, registerOAuthUser } from '../APIHelper';
 import Verifier from './Verifier';
 import './scss/Cred.scss';
 
-
+/**
+ * Displays a register form.
+ * @param {Object} props The React props object. This is actually not used here, it's just there to clarify that it's a React component.
+ * @returns {JSX.Element} A React component.
+ */
 export default function Register(props) {
     
     const [method, setMethod] = React.useState('regular');
@@ -44,7 +48,7 @@ export default function Register(props) {
             <div className="Credwrap">
                 <div>
                 <h2 className="CredHead">Register</h2>
-                <input onInput={e => onUsernameInput(e.target.value)} className="input" spellcheck="false" id="username" type="text" placeholder="Username"/>
+                <input onInput={e => onUsernameInput(e.target.value)} className="input" spellCheck="false" id="username" type="text" placeholder="Username"/>
             </div>
             <div>
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />

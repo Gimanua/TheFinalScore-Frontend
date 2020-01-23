@@ -3,12 +3,12 @@ import './scss/Table.scss';
 import Movie from '../entities/Movie';
 import { loadSavedMovies, deleteMovie } from '../APIHelper';
 
-
 /**
- * This print the list (a table) of a logged in user
+ * This print the list (a table) of the movies saved by a logged in user.
  * @param {Object} props The React props object.
  * @param {Movie[]} props.movies The movies that are saved.
- * @param {Function} props.onMovieDelete The function to call when you delete a movie.
+ * @param {Function} props.onMovieDelete Callback receiving id of a deleted movie.
+ * @returns {JSX.Element} A React component.
  */
 export default function Table({movies, onMovieDelete, loggedIn}) {
   if (loggedIn) {

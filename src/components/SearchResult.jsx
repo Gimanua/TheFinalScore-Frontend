@@ -3,6 +3,13 @@ import { searchForMovie } from '../APIHelper';
 
 let timeoutID;
 
+/**
+ * Displays a list of search result.
+ * @param {Object} props The React props object.
+ * @param {String} props.searchQuery What to search for.
+ * @param {Function} props.onSelect Callback receiving title of a movie that's being clicked.
+ * @returns {JSX.Element} A React component.
+ */
 export default function SearchResult({ searchQuery, onSelect }) {
     const [content, setContent] = React.useState(null);
     React.useEffect(() => { 
