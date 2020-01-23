@@ -48,7 +48,7 @@ export default function SignIn({onLogin}) {
         <div className="Credwrap">
             <div>
                 <h2 className="CredHead">Sign in</h2>
-                <input onInput={e => onUsernameInput(e.target.value)} className="input" type="text" id="username" placeholder="Username"/>
+                <input onInput={e => onUsernameInput(e.target.value)} className="input" spellcheck="false" type="text" id="username" placeholder="Username"/>
             </div>
             <div>
                 <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />

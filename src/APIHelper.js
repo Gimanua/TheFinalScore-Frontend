@@ -290,11 +290,32 @@ export async function verifyToken() {
  * Loads all movies from localstorage, should use a database.
  * @returns {Movie[]} The movies saved.
  */
-export function loadSavedMovies() {
-    if (!localStorage.getItem('movies')) {
-        return [];
+export async function loadSavedMovies(username, verifier, verifierMethod) {
+    try {
+        const url = `${backendURL}/movie/saved-movies`;
+        const response = await fetch(url, {
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${verifier}`)}`,
+                AuthVerifier: verifierMethod
+            }
+        });
+        if (response.status === 200) {
+            const json = await response.json();
+            return json.map(movieJson => new Movie(movieJson.title, movieJson.synopsis, movieJson.logo, movieJson.scores, movieJson.genres, movieJson.director, movieJson.cast
+                , movieJson.year, movieJson.runtime, movieJson.released, movieJson.languages, movieJson.type, movieJson.id));
+        }
+        else{
+            console.log('Server refused to send saved movies.');
+        }
+
+    } catch (error) {
+        console.log('Failed to retrieve saved movies.');
+        console.log(`username: ${username}`);
+        console.log(`verifier: ${verifier}`);
+        console.log(`verifierMethod: ${verifierMethod}`);
+        console.log(error);
     }
-    return JSON.parse(localStorage.getItem('movies'));
+    return [];
 }
 
 /**

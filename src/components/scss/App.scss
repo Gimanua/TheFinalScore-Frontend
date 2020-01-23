@@ -33,7 +33,15 @@ $win:#332F2E;
 
 html{
     background-image: url(../../Karla/BGB.png);
-    background-attachment: fixed;
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-attachment: fixed;       
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%; 
 }
 
 main{
@@ -153,19 +161,9 @@ input::placeholder{
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $gul; 
+  display: none;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(71, 69, 69); 
-  display: block;
-}
 
 li{
   margin-top: 5px;
@@ -290,7 +288,7 @@ a{
 
   .searchDrop{
     background-color: rgba($color: #3B3537, $alpha: 0.95);
-    border: #EB3501 solid 2px;
+    border: $orange solid 2px;
     border-radius: 20px;
   }
 
@@ -323,7 +321,29 @@ a{
    
   }
 
- 
   }
 
+  @media only screen and (max-width: 1125px){
+    html{
+      background-image: url(../../Karla/BGS.png);
+      background-attachment: local;
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-attachment: fixed;       
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 100vh;
+      width: 100vw; 
+      
+  }
+}
+
+
+@media only screen and (max-width: 350px){
+    .search{
+      width: 200px;
+    }
+  }
 
