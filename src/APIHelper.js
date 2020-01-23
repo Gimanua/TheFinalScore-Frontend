@@ -301,7 +301,7 @@ export async function loadSavedMovies(username, verifier, verifierMethod) {
         });
         if (response.status === 200) {
             const json = await response.json();
-            return json.map(movieJson => new Movie(movieJson.title, movieJson.synopsis, movieJson.logo, movieJson.scores, movieJson.genres, movieJson.director, movieJson.cast
+            return json.map(movieJson => new Movie(movieJson.title, movieJson.synopsis, movieJson.logo, movieJson.scores.map(scoreJson => new Score(scoreJson.value, scoreJson.source)), movieJson.genres, movieJson.director, movieJson.cast
                 , movieJson.year, movieJson.runtime, movieJson.released, movieJson.languages, movieJson.type, movieJson.id));
         }
         else{
@@ -357,11 +357,22 @@ export async function saveMovie(movie, username, verifier, verifierMethod) {
  * Deletes a movie from localstorage, should use a database.
  * @param {Number} index The index of the movie to remove.
  */
-export async function deleteMovie(index) {
-    if (localStorage.getItem('movies')) {
-        const movies = JSON.parse(localStorage.getItem('movies'));
-        movies.splice(index, 1);
-        localStorage.setItem('movies', JSON.stringify(movies));
+export async function deleteMovie(index, username, verifier, verifierMethod) {
+    try {
+        const url = `${backendURL}/movie/saved-movie/${index}`;
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Basic ${btoa(`${username}:${verifier}`)}`,
+                AuthVerifier: verifierMethod
+            }
+        });
+        if(response.status !== 204){
+            console.log('Backend refused to delete movie.');
+        }
+    } catch(error){
+        console.log('Error when deleting movie.');
+        console.log(error);
     }
 }
 

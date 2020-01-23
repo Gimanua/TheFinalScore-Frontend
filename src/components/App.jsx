@@ -28,6 +28,7 @@ export default function App(props) {
     async function loadInMoves(){
         const movies = await loadSavedMovies(username, verifier, verifierMethod);
         setSavedMovies(movies);
+        
     }
 
     function navigate(id) {
@@ -42,8 +43,9 @@ export default function App(props) {
         }
     }
 
-    function onSavedMovieDelete(index) {
-        deleteMovie(index);
+    async function onSavedMovieDelete(index) {
+        await deleteMovie(index, username, verifier, verifierMethod);
+        loadInMoves();
     }
 
     function onLogin(username, verifier, verifierMethod) {
