@@ -1,11 +1,17 @@
 import React from "react";
 import {verify} from '../APIHelper';
 import SearchBar from "./SearchBar";
-import MenuDrop from "./MenuDrop";
 import SearchResult from "./SearchResult";
 
 import {githubClientID} from '../APIHelper';
 
+/**
+ * 
+ * @param {Object} props The React props object.
+ * @param {Function} props.onNavigate Callback receiving the id of the page navigated to.
+ * @param {Function} props.onMovieSelect Callback receiving the movie that was selected.
+ * @returns {JSX.Element} A React component.
+ */
 export default function Menu({ onNavigate, onMovieSelect }) {
 
     /**

@@ -9,6 +9,7 @@ const TOKEN_STATUS_UNVERIFIED = <>You need a valid token, you can acquire one <a
  * The verifier part of the register form.
  * @param {Object} props The React props object.
  * @param {'regular' | 'oauth'} props.method The method to be used.
+ * @param {Function} props.onChange Callback receiving the verifier used.
  */
 export default function Verifier({ method, onChange }) {
 

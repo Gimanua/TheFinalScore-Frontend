@@ -3,7 +3,12 @@ import { signInRegularUser, signInOAuthUser } from '../APIHelper';
 import Verifier from './Verifier';
 import './scss/Cred.scss';
 
-
+/**
+ * Displays a sign in form.
+ * @param {Object} props The React props object. 
+ * @param {Function} props.onLogin Callback receiving username, verifier and verifier method when login was successful.
+ * @returns {JSX.Element} A React component.
+ */
 export default function SignIn({onLogin}) {
 
     const [method, setMethod] = React.useState('regular');

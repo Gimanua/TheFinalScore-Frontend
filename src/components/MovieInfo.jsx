@@ -8,9 +8,10 @@ import { saveMovie } from '../APIHelper';
 import Movie from '../entities/Movie';
 
 /**
- * The Movie Info React component.
+ * Displays information about a movie.
  * @param {Object} props The React props object.
- * @param {Movie} props.movie The movie.
+ * @param {Movie} props.movie The movie to display.
+ * @returns {JSX.Element} A React component.
  */
 export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
     const { title, synopsis, logo, scores, genres, director, cast, finalScore, year, runtime, released, languages, type } = movie;

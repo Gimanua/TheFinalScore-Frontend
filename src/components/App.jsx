@@ -11,6 +11,11 @@ import './scss/App.scss';
 import SignIn from './SignIn';
 import Register from './Register';
 
+/**
+ * The root React component for this app.
+ * @param {Object} props The React props object. This is actually not used here, it's just there to clarify that it's a React component.
+ * @returns {JSX.Element} A React component.
+ */
 export default function App(props) {
 
     const [username, setUsername] = React.useState(null);

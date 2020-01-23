@@ -1,6 +1,12 @@
 import React from 'react';
 import "./scss/App.scss"
 
+/**
+ * Displays a search bar where you can search for movies.
+ * @param {Object} props The React props object.
+ * @param {Function} props.search Callback receiving the search query.
+ * @returns {JSX.Element} A React component.
+ */
 export default function SearchBar({search}){
     return ( 
         <>
