@@ -1,3 +1,35 @@
+$primary-font-color: white;
+$primary-window-color: rgba($color: #000000, $alpha: 0.75);
+
+$accent: #EB3501;
+
+$vit: #EDF5E1;
+$bla: #05386B;
+$Lgron: #8ee4af;
+$gron: #5CDB85;
+$Mgron: #379683;
+
+$gul: rgb(247, 147, 30);
+$orange: rgb(241, 90, 36);
+$svart: rgb(26, 26, 26);
+$win:#332F2E;
+$win2:rgb(68, 66, 66);
+
+
+
+@font-face{
+    font-family: karla;
+    src: url(../../Karla/Karla-Regular.ttf);
+}
+@font-face{
+    font-family: karla-b;
+    src: url(../../Karla/Karla-Bold.ttf);
+}
+@font-face{
+  font-family: lemon;
+  src: url(../../Karla/GoboldR.otf);
+}
+
 
 h1{
     font-size: xx-large;
@@ -7,9 +39,11 @@ h1{
   }
   
   table{
-    margin-top: 3%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 15vh;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    font-family: karla;
+    margin-bottom: 25vh;
   }
   
   $primary-color: #00a800;//First
@@ -18,22 +52,28 @@ h1{
   
   
   th{
-    background: $primary-color;
-    text-align: center;
+    font-family: karla-b;
+    font-size: 18px;
+    background: $win;
+    text-align: left;
+    padding: 15px;
+    color: $orange!important;
+    text-transform: uppercase;
   }
     
   tr:nth-child(even){
-    background: #bbbbbb;
-    color: $secondary-color;
+    background: $svart;
+    color: $vit;
   }
   
   tr:nth-child(odd){
-    background: #7a7a7a;
-    color: $tertiary-color;
+    background: $win;
+    color: $vit;
   }
   
   td{
-    padding: 5px;
+    padding: 15px;
+    transition: 0.5s;
   }
   
   .delete-movie{
@@ -42,6 +82,155 @@ h1{
   
   table,th,td{
     border-style: solid;
-    border-color: black;
+    border-color: $win2;
     text-align: center;
   }
+
+  td:last-of-type{
+    font-size: 24px;
+    vertical-align: middle;
+    text-align: center!important;
+  }
+
+  td:last-of-type:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+
+  td:nth-of-type(6){
+    color:$gul;
+    vertical-align: middle;
+    text-align: center!important;
+    font-family: karla-b;
+    font-size: 40px;
+  }
+
+  @media only screen and (max-width: 1225px){
+    table{
+      margin-right: 5vw;
+      margin-left: 5vw;
+    }
+
+    th{
+      padding: 10px;
+
+    }
+
+    td{
+      padding: 10px;
+
+    }
+
+    }
+
+    @media only screen and (max-width: 930px){
+      table{
+        margin-right: 3vw;
+        margin-left: 3vw;
+      }
+  
+      th{
+        padding: 5px;
+        font-size: 12px;
+  
+      }
+  
+      td{
+        padding: 5px;
+        font-size: 12px;
+      }
+
+      td:nth-of-type(6){
+        font-size: 20px;
+      }
+
+      td:last-of-type{
+        font-size: 14px;
+      }
+      
+  
+      }
+
+      @media only screen and (max-width: 930px){
+        th{
+          padding: 3px;
+          font-size: 10px;
+    
+        }
+    
+        td{
+          padding: 3px;
+          font-size: 10px;
+        }
+
+        h1{
+          font-size: 20px;
+        }
+    
+        }
+
+        @media only screen and (max-width: 510px){
+          th:nth-of-type(4){
+            display: none;
+          }
+
+          th:nth-of-type(5){
+            display: none;
+          }
+
+          th:nth-of-type(8){
+            display: none;
+          }
+
+          td:nth-of-type(4){
+            display: none;
+          }
+
+          td:nth-of-type(5){
+            display: none;
+          }
+
+          td:nth-of-type(8){
+            display: none;
+          }
+          
+          th{
+            padding: 3px;
+            font-size: 6px;
+      
+          }
+
+          td:last-of-type{
+            font-size: 12px;
+          }
+      
+          td{
+            padding: 3px;
+            font-size: 10px;
+          }
+            
+          th{
+            padding: 5px;
+            font-size: 12px;
+
+          }
+      
+          }
+
+          @media only screen and (max-width: 380px){
+            td{
+              padding: 2px;
+              font-size: 10px;
+            }
+              
+            th{
+              padding: 2px;
+              font-size: 10px;
+          }
+
+        }
+          
+
+
+
+      

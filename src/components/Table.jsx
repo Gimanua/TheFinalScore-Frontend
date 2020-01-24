@@ -17,7 +17,7 @@ export default function Table({ movies, onMovieDelete, loggedIn }) {
   if (loggedIn) {
     return (
       <div className="List">
-        <h1>The Final Score</h1>
+        <h1>Your List</h1>
         <table>
           <thead>
             <tr>
@@ -26,7 +26,7 @@ export default function Table({ movies, onMovieDelete, loggedIn }) {
               <th>Director</th>
               <th>Cast</th>
               <th>Genres</th>
-              <th>Plot</th>
+              {/* <th>Plot</th> */}
               <th>FINALSCORE</th>
               <th>Type</th>
               <th>Languages</th>
@@ -41,7 +41,7 @@ export default function Table({ movies, onMovieDelete, loggedIn }) {
                 <td>{movie.director}</td>
                 <td>{movie.cast.join(", ")}</td>
                 <td>{movie.genres.join(", ")}</td>
-                <td>{movie.synopsis}</td>
+                {/* <td>{movie.synopsis}</td> */}
                 <td>{movie.finalScore.toString()}</td>
                 <td>{movie.type}</td>
                 <td>{movie.languages.join(", ")}</td>

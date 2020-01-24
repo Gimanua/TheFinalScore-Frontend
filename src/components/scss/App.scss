@@ -340,10 +340,18 @@ a{
   }
 }
 
+@media only screen and (max-width: 930px){
+.top{
+  background-color: $win;
+}
+}
+
+
 
 @media only screen and (max-width: 350px){
     .search{
       width: 200px;
     }
+
   }
 
