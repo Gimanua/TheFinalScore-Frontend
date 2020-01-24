@@ -6,7 +6,7 @@ import React from "react";
  * @param {Number} props.value The value of the final score. 
  * @returns {JSX.Element} A React component.
  */
-export default function FinalScore({value}) {
+export default function FinalScore({ value }) {
     return (
         <>
             <div className="Value">{value.toString()}</div>

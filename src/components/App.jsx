@@ -1,15 +1,18 @@
-import React from 'react';
-import MovieInfo from './MovieInfo';
-import Menu from "./Menu";
-import Table from './Table';
-import Info from './info';
-import { getMovie, loadSavedMovies, deleteMovie, saveMovie, OAuthCheck, autoOAuthLogin } from "../APIHelper";
-import SearchBar from "./SearchBar";
-import SearchResult from "./SearchResult";
+import React from "react";
 
-import './scss/App.scss';
-import SignIn from './SignIn';
-import Register from './Register';
+//Components
+import MovieInfo from "./MovieInfo";
+import Menu from "./Menu";
+import Table from "./Table";
+import Info from "./Info";
+import SignIn from "./SignIn";
+import Register from "./Register";
+
+//Utility functions
+import { getMovie, loadSavedMovies, deleteMovie, saveMovie, OAuthCheck, autoOAuthLogin } from "../APIHelper";
+
+//Styling
+import "./scss/App.scss";
 
 /**
  * The root React component for this app.
@@ -30,7 +33,6 @@ export default function App(props) {
     React.useEffect(() => { OAuthCheck(); }, []);
     React.useEffect(() => { loadInMoves(); }, [loggedIn]);
 
-    //Temporary
     async function loadInMoves() {
         if (loggedIn) {
             const movies = await loadSavedMovies(username, verifier, verifierMethod);
@@ -39,7 +41,6 @@ export default function App(props) {
     }
 
     function navigate(id) {
-        console.log(`Navigate: ${id}`)
         setCurrentPage(id);
     }
 
@@ -66,7 +67,6 @@ export default function App(props) {
     async function onMovieSelected(selectedMovieTitle) {
         try {
             const movie = await getMovie(selectedMovieTitle);
-            console.log(movie);
             setSelectedMovie(movie);
         } catch (error) {
             console.log(error);
@@ -98,10 +98,6 @@ export default function App(props) {
             <main className="guistate-content">
                 {currentContent}
             </main>
-            {/* <div className="bgcontainer">
-                <div className="bgBox"> <div className="mgBox"></div></div>
-                <div className="bbgBox"> <div className="mmgBox"></div></div>
-            </div> */}
         </>
     )
 }

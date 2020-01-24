@@ -1,7 +1,10 @@
-import React from 'react';
-import './scss/Table.scss';
-import Movie from '../entities/Movie';
-import { loadSavedMovies, deleteMovie } from '../APIHelper';
+import React from "react";
+
+//Entities
+import Movie from "../entities/Movie";
+
+//Styling
+import "./scss/Table.scss";
 
 /**
  * This print the list (a table) of the movies saved by a logged in user.
@@ -10,7 +13,7 @@ import { loadSavedMovies, deleteMovie } from '../APIHelper';
  * @param {Function} props.onMovieDelete Callback receiving id of a deleted movie.
  * @returns {JSX.Element} A React component.
  */
-export default function Table({movies, onMovieDelete, loggedIn}) {
+export default function Table({ movies, onMovieDelete, loggedIn }) {
   if (loggedIn) {
     return (
       <div className="List">
@@ -43,7 +46,7 @@ export default function Table({movies, onMovieDelete, loggedIn}) {
                 <td>{movie.type}</td>
                 <td>{movie.languages.join(", ")}</td>
                 <td><span className="delete-movie" role="img" aria-label="Delete" onClick={() => onMovieDelete(movie.id)}>❌</span></td>
-            </tr>)
+              </tr>)
             }
           </tbody>
         </table>

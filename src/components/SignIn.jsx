@@ -1,7 +1,13 @@
-import React from 'react';
-import { signInRegularUser, signInOAuthUser } from '../APIHelper';
-import Verifier from './Verifier';
-import './scss/Cred.scss';
+import React from "react";
+
+//Components
+import Verifier from "./Verifier";
+
+//Utility functions
+import { signInRegularUser, signInOAuthUser } from "../APIHelper";
+
+//Styling
+import "./scss/Cred.scss";
 
 /**
  * Displays a sign in form.
@@ -9,7 +15,7 @@ import './scss/Cred.scss';
  * @param {Function} props.onLogin Callback receiving username, verifier and verifier method when login was successful.
  * @returns {JSX.Element} A React component.
  */
-export default function SignIn({onLogin}) {
+export default function SignIn({ onLogin }) {
 
     const [method, setMethod] = React.useState('regular');
     const [validUsername, setValidUsername] = React.useState(false);
@@ -26,40 +32,39 @@ export default function SignIn({onLogin}) {
 
     function onSignin() {
         const username = document.getElementById('username').value;
-        if(method === 'regular'){
+        if (method === 'regular') {
             const password = document.getElementById('password').value;
-            if(signInRegularUser(username, password)){
+            if (signInRegularUser(username, password)) {
                 onLogin(username, password, 'regular');
             }
-        } else{
+        } else {
             const token = localStorage.getItem('token');
-            if(signInOAuthUser(username, token)){
+            if (signInOAuthUser(username, token)) {
                 onLogin(username, token, 'token');
             }
         }
     }
 
-    function onUsernameInput(username){
+    function onUsernameInput(username) {
         setValidUsername(username.trim() !== '');
     }
 
-    function onVerifierInput(valid){
+    function onVerifierInput(valid) {
         setValidVerifier(valid);
     }
 
-    //<a href={`https://github.com/login/oauth/authorize?client_id=${githubClientID}`}>
     return (
         <>
-        <div className="Credwrap">
-            <div>
-                <h2 className="CredHead">Sign in</h2>
-                <input onInput={e => onUsernameInput(e.target.value)} className="input" spellCheck="false" type="text" id="username" placeholder="Username"/>
-            </div>
-            <div>
-                <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
-            </div>
-            <button className="submit1" onClick={onSignin} disabled={!(validUsername && validVerifier)}>Sign in</button>
-            <button className="submit2"onClick={changeRegisterMethod}>{method === 'regular' ? 'Login w/ Github' : 'Login normally.'}</button>
+            <div className="Credwrap">
+                <div>
+                    <h2 className="CredHead">Sign in</h2>
+                    <input onInput={e => onUsernameInput(e.target.value)} className="input" spellCheck="false" type="text" id="username" placeholder="Username" />
+                </div>
+                <div>
+                    <Verifier method={method} onChange={(valid) => onVerifierInput(valid)} />
+                </div>
+                <button className="submit1" onClick={onSignin} disabled={!(validUsername && validVerifier)}>Sign in</button>
+                <button className="submit2" onClick={changeRegisterMethod}>{method === 'regular' ? 'Login w/ Github' : 'Login normally.'}</button>
             </div>
         </>
     );

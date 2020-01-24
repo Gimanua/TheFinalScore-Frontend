@@ -15,6 +15,11 @@ export default class Score {
     }
 }
 
+/**
+ * Gets the logo for a given source of a score.
+ * @param {String} source The source of the score.
+ * @returns {String} The path to the logo.
+ */
 function getLogo(source) {
     switch (source) {
         case 'Internet Movie Database':
@@ -28,6 +33,11 @@ function getLogo(source) {
     }
 }
 
+/**
+ * Converts a raw score to a JS number.
+ * @param {String} rawValue The direct value of the score.
+ * @returns {Number} The number equivalent.
+ */
 function getValue(rawValue) {
     const rawNumValue = parseFloat(rawValue);
     if (rawNumValue > 10) {
