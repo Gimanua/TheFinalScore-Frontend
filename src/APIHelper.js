@@ -114,7 +114,6 @@ export async function getMovie(movieTitle) {
         const response = await fetch(`${backendURL}/movie/info/${movieTitle}`, { signal: abortSignal });
         if (response.ok) {
             const json = await response.json();
-            console.log(json);
             return new Movie(json.title, json.synopsis, json.logo, json.scores.map(score => new Score(score.value, score.source)), json.genres, json.director, json.cast,
                 json.year, json.runtime, json.released, json.languages, json.type);
         }
