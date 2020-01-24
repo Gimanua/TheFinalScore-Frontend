@@ -1,19 +1,3 @@
-$primary-font-color: white;
-$primary-window-color: rgba($color: #000000, $alpha: 0.75);
-
-$accent: #EB3501;
-
-$vit: #EDF5E1;
-$bla: #05386B;
-$Lgron: #8ee4af;
-$gron: #5CDB85;
-$Mgron: #379683;
-
-$gul: rgb(247, 147, 30);
-$orange: rgb(241, 90, 36);
-$svart: rgb(26, 26, 26);
-$win:#332F2E;
-
 @font-face{
     font-family: karla;
     src: url(../../Karla/Karla-Regular.ttf);
@@ -27,6 +11,12 @@ $win:#332F2E;
   src: url(../../Karla/GoboldR.otf);
 }
 
+$vit: #EDF5E1;
+$gul: rgb(247, 147, 30);
+$orange: rgb(241, 90, 36);
+$svart: rgb(26, 26, 26);
+$win:#332F2E;
+//-------------------------------------------------------------------------------//
 
 .Credwrap{
     margin-top:10vw;
@@ -119,24 +109,24 @@ $win:#332F2E;
 
 
 .CredHead{
-font-size: 2em;
-font-family: karla;
-color: $vit;
-text-transform: uppercase;
-margin-bottom: 3vw;
+    font-size: 2em;
+    font-family: karla;
+    color: $vit;
+    text-transform: uppercase;
+    margin-bottom: 3vw;
 
 }
 
 .submit1 , .submit2{
-background: transparent;
-padding: 15px;
-border: 2px solid $vit;
-font-family: karla;
-font-size: 1vw;
-color: $vit;
-transition: .5s;
-cursor: pointer;
-outline: none;
+    background: transparent;
+    padding: 15px;
+    border: 2px solid $vit;
+    font-family: karla;
+    font-size: 1vw;
+    color: $vit;
+    transition: .5s;
+    cursor: pointer;
+    outline: none;
 }
 
 .submit1:hover , .submit2:hover{
@@ -148,6 +138,7 @@ outline: none;
 .submit1{
     margin-right: 3vw;
 }
+//-------------------------------------------------------------------------------//
 
 @media only screen and (max-width: 900px) {
 .input{
@@ -160,8 +151,8 @@ outline: none;
 }
 
 .Credwrap{
-padding-left: 50px;
-padding-right: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .CredHead{
@@ -184,9 +175,9 @@ padding-right: 50px;
     .Credwrap{
         margin-right: 3vw;
         margin-left: 3vw;
-    padding-left: 50px;
-    padding-right: 50px;
-    margin-top: 100px;
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-top: 100px;
 }
 
 }
@@ -208,3 +199,4 @@ padding-right: 50px;
     margin-top: 150px;
 }
 }
+//-------------------------------------------------------------------------------//

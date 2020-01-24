@@ -1,23 +1,44 @@
+@font-face{
+    font-family: karla;
+    src: url(../../Karla/Karla-Regular.ttf);
+  }
+  @font-face{
+    font-family: karla-b;
+    src: url(../../Karla/Karla-Bold.ttf);
+  }
+  @font-face{
+  font-family: lemon;
+  src: url(../../Karla/GoboldR.otf);
+  }
+  
+  $vit: #EDF5E1;
+  $gul: rgb(247, 147, 30);
+  $orange: rgb(241, 90, 36);
+  $svart: rgb(26, 26, 26);
+  $win:#332F2E;
 
-$primary-color: black;
-$primary-font-color: rgb(223, 223, 223);
-$primary-window-color: rgba($color: #000000, $alpha: 0.75);
+    $primary-font-color: rgb(223, 223, 223);
+    $primary-score-font: lemon;
+//-------------------------------------------------------------------------------//
+img{
+    height: 40px;
+    width: auto;
+    padding: 3px;
+}
 
+h3{
+    padding-top: 5px;
+    margin-left: 300px;
+    text-align: left;
+    font-family: karla-b;
+    color: $vit;
+}
 
-$vit: #EDF5E1;
-$bla: #05386B;
-$Lgron: #8ee4af;
-$gron: #5CDB85;
-$Mgron: #379683;
+article p:first-of-type{
+    text-align: left;
+}
 
-$gul: rgb(247, 147, 30);
-$orange: rgb(241, 90, 36);
-$svart: rgb(26, 26, 26);
-$win:#332F2E;
-
-
-
-$primary-score-font: lemon;
+//-------------------------------------------------------------------------------//
 
 #movie-info{
     margin-top: 50px;
@@ -32,13 +53,6 @@ $primary-score-font: lemon;
     padding-bottom: 10px;
     position: absolute;
     margin-bottom: 200px;
-
-}
-
-img{
-    height: 40px;
-    width: auto;
-    padding: 3px;
 }
 
 .MovieImg{
@@ -49,7 +63,6 @@ img{
     border: solid $vit 5px;
     border-radius: 15px;
     margin-right: 30px;
-    
 }
 
 .title{
@@ -72,22 +85,6 @@ img{
     padding-top: 0;
 }
 
-h3{
-    padding-top: 5px;
-    margin-left: 300px;
-    text-align: left;
-    font-family: karla-b;
-    color: $vit;
-}
-
-article p:first-of-type{
-    text-align: left;
-    
-}
-
-
-
-
 .scores{
     display: grid;
     grid-auto-flow: row;
@@ -100,7 +97,6 @@ article p:first-of-type{
     margin-right: 30px;
     margin-top: 30px;
 }
-
 
 .point{
     font-size: 40px;
@@ -121,19 +117,16 @@ article p:first-of-type{
     grid-column-end: 1;
 }
 
-
 .Rate{
     display: inline-block;
     margin-bottom: 50px;
 }
-
 
 .ratingElements ul{
     display: flex;
     justify-content: center;
     
 }
-
 
 .finalScoreContainer{
     margin-top: 100px;
@@ -174,7 +167,6 @@ article p:first-of-type{
     border-right: solid 4px $vit;
 }
 
-
 .synopsis{
     margin-right: 75px;
     font-family: karla;
@@ -200,18 +192,19 @@ article p:first-of-type{
 }
 
 .AddWrap:hover .AddMovie{
-transform: rotate(180deg);
-transition: .5s;
+    transform: rotate(180deg);
+    transition: .5s;
 }
 
 .AddText{
     float: left;
+    right: 0;
     font-size: 20px;
     position: absolute;
     transition: .5s;
     font-family: karla;
     display: none;
-    right: 0;
+    margin-right: 100px;
     top: 20px;
     cursor: default;
 }
@@ -222,21 +215,15 @@ transition: .5s;
     height: 50px;
     top: 0;
     right:20px;
-    z-index: 2;
     transition: .5s;
 }
 .AddWrap:hover .AddText{
     transition: .5s;
     display: block;
-    width: 150px;
+    width: 10px;
     height: 0;
 }
-
-
-
-
-
-
+//-------------------------------------------------------------------------------//
 
 @media only screen and (max-width: 1600px) {
 
@@ -256,7 +243,7 @@ transition: .5s;
         grid-template-columns: 75px;
         grid-template-rows: 50px;
         align-items: center;    
-      justify-items: center;
+        justify-items: center;
     }
 
     .point{
@@ -268,26 +255,22 @@ transition: .5s;
         width: auto;
         margin-top: 15px;
     }
-
-
-
-  }
-
-  @media only screen and (max-width: 1220px) {
-.scores{
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
-  }
+@media only screen and (max-width: 1220px) {
+    .scores{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
 
-  @media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1150px) {
     .scores{
         margin-top: 50px;
         grid-template-columns: 60px;
         grid-template-rows: 35px;
         align-items: center;    
-      justify-items: center;
+        justify-items: center;
     }
 
     .pointimg{
@@ -321,144 +304,194 @@ transition: .5s;
     .TFS{
         font-size: 25px;
     }
+}
 
-    @media only screen and (max-width: 900px){
-
-        .MovieImg{
-            width: 40%;
-            height: auto;
-            border: solid $vit 2px;
-        }
+@media only screen and (max-width: 900px){
+    .MovieImg{
+        width: 40%;
+        height: auto;
+        border: solid $vit 2px;
+    }
         
 
-        h3{
-            margin-left: 10px;
-        }
+    h3{
+        margin-left: 10px;
+    }
 
-        .finalScore{
-            margin-left: 5vw;
-            margin-right: 5vw;
-        }
+    .finalScore{
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+
+    .title{
+        max-width: 400px;
 
     }
 
-    @media only screen and (max-width: 750px){
+}
 
-        .MovieImg{
-            display: block;
-            margin: 0 auto;
-            margin-left: 25%;
-            margin-right: 110px;
-            margin-bottom: 30px;
-        }
+@media only screen and (max-width: 750px){
+    .MovieImg{
+        display: block;
+        margin: 0 auto;
+        margin-left: 20vw;
+        margin-right: 20vw;
+        margin-bottom: 30px;
+    }
 
-        .synopsis{
-            font-size: 12px;
-            margin-left: 10px;
-        }
+    .synopsis{
+        font-size: 12px;
+        margin-left: 10px;
+    }
 
-        li{
-            margin-top: 20px;
-        }
+    li{
+        margin-top: 20px;
+    }
 
-        .title{
-            font-size: 20px;
-        }
+    .title{
+        font-size: 20px;
+        max-width: 200px;
+    }
 
-        .h3class{
-            font-size: 14px;
-        }
+    .h3class{
+        font-size: 14px;
+    }
 
-        .finalScore{
-            padding-right: 20px ;
-            padding-left: 20px;
-            margin-left: 1vw;
-            margin-right: 1vw;
-        }
+    .h3class:first-of-type{
+        font-size: 14px;
+    }
 
-        .scores{
-            margin-left: 10px;
+    .finalScore{
+        padding-right: 20px ;
+        padding-left: 20px;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    .scores{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+
+@media only screen and (max-width: 575px){
+    .synopsis{
             margin-right: 10px;
+    }
+
+    .point{
+        font-size: 16px;
+        text-align:center ;
+    }
+
+    .title{
+        max-width: 170px;
+    }
+
+    img{
+        width: 40px;
+        margin-top: 0;
+    }
+
+    ul li:first-of-type {
+        margin-left: 0 !important; 
+    }
+
+    ul li{
+        margin: 0 !important;
+    }
+
+}    
+
+@media only screen and (max-width: 500px){
+    .scores{
+        grid-template-rows: 25px;
+        align-items: center;    
+        justify-items: center;
+    }
+
+    .AddText{
+        font-size: 14px;
+        top: 23px;
+        width: 75px;
+        margin-right: 75px;
+    }
+
+    .title{
+        max-width: 130px;
+        font-size: 16px;
+    }
+
+    .point{
+        font-size: 14px;
+    }
+
+    img{
+        width: 20px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 420px){
+    .title{
+        max-width: 100px;
+        font-size: 12px;
+    }
+
+    .MovieImg{
+        border-radius: 8px;
+    }
+}
+
+@media only screen and (max-width: 355px){
+    .point{
+        font-size: 16px;
+        text-align:center ;
+    }
+
+    img{
+        width: 100px!important;
+        margin-top: 0;
         }
+
+    .AddMovie{
+        font-size: 40px;
+        margin-top: 5px;
     }
 
 
-
-    @media only screen and (max-width: 575px){
-
-
-        .synopsis{
-            margin-right: 10px;
-        }
-
-        .point{
-            font-size: 16px;
-            text-align:center ;
-        }
-
-        img{
-            width: 40px;
-            margin-top: 0;
-        }
-
-        ul li:first-of-type {
-            margin-left: 0 !important; 
-        }
-
-        ul li{
-            margin: 0 !important;
-        }
-
-        
-
-    @media only screen and (max-width: 500px){
-        .scores{
-            
-            grid-template-rows: 25px;
-            align-items: center;    
-          justify-items: center;
-        }
-
-        .point{
-            font-size: 14px;
-        }
-
-        img{
-            width: 20px;
-            height: auto;
-        }
-
-    
+    .AddText{
+        font-size: 10px;
+        top: 25px;
+        width: 75px;
+        margin-right: 55px;
     }
 
-    
+    .title{
+        width:100px;
+        margin-bottom: 10px !important;
+        margin-left: 12px;
     }
-
-
-    @media only screen and (max-width: 355px){
-        .point{
-            font-size: 16px;
-            text-align:center ;
-        }
-
-        img{
-            width: 40px;
-            margin-top: 0;
-        }
-
 
      .finalScore{
          margin-left: 10px;
          margin-right: 10px;
-     }
+    }
 
      .scores{
         margin-left: 3px;
         margin-right: 3px;
-     }
-
-
-
+    }
  }
 
+
+
+@media only screen and (max-width: 320px){
+    .title{
+        font-size: 10px;
+        max-width: 80px;
+    }
 }
+//-------------------------------------------------------------------------------//

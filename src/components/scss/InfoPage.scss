@@ -1,24 +1,69 @@
+@font-face{
+  font-family: karla;
+  src: url(../../Karla/Karla-Regular.ttf);
+}
+@font-face{
+  font-family: karla-b;
+  src: url(../../Karla/Karla-Bold.ttf);
+}
+@font-face{
+font-family: lemon;
+src: url(../../Karla/GoboldR.otf);
+}
+
+$vit: #EDF5E1;
+$gul: rgb(247, 147, 30);
+$orange: rgb(241, 90, 36);
+$svart: rgb(26, 26, 26);
+$win:#332F2E;
+//-------------------------------------------------------------------------------//
+
 .info-h1{
-font-family: karla-b;
-font-size: 30px;
-margin-top:50px;
-margin-bottom: 30px;
+  font-family: karla-b;
+  font-size: 30px;
+  margin-top:50px;
+  margin-bottom: 30px;
 }
 
 #Info{
   font-size: 18px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-family: karla;
-  }
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: karla;
+  padding-bottom: 5vh;
+  padding-right: 3vw;
+}
 
+#infodiv{
+  margin-top: 10vh;  
+  margin-right: 15vw;
+  margin-left: 15vw;
+  padding-top: 1px;  
+}
+
+#Info a{
+  color: rgb(103, 31, 219);
+  transition: .5s;
+}
+
+#Info a:hover{
+  border-bottom: rgb(103, 31, 219) 3px solid;
+  transition: .5s;
+}
+//-------------------------------------------------------------------------------//
+@media only screen and (max-width: 1600px) {
+  #Info{
+    padding-left: 3vw;
+    padding-top: 5vh; 
+}
+    
   #Info a{
-      color: rgb(103, 31, 219);
-      transition: .5s;
-    }
+    color: $orange;    
+}
 
-    #Info a:hover{
-      border-bottom: rgb(103, 31, 219) 3px solid;
-      transition: .5s;
-    }
+  #infodiv{
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+}
