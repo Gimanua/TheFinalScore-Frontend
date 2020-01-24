@@ -1,6 +1,11 @@
-import React from 'react';
-import { searchForMovie } from '../APIHelper';
+import React from "react";
 
+//Utility functions
+import { searchForMovie } from "../APIHelper";
+
+/**
+ * This is used to set a timeout to issue a search and possibly interrupt it.
+ */
 let timeoutID;
 
 /**
@@ -12,12 +17,12 @@ let timeoutID;
  */
 export default function SearchResult({ searchQuery, onSelect }) {
     const [content, setContent] = React.useState(null);
-    React.useEffect(() => { 
-        if(searchQuery && searchQuery.trim()) {
+    React.useEffect(() => {
+        if (searchQuery && searchQuery.trim()) {
             clearTimeout(timeoutID);
             timeoutID = setTimeout(() => search(searchQuery, setContent), 525);
         }
-        else{
+        else {
             clearTimeout(timeoutID);
             setContent(null);
         }
@@ -36,10 +41,10 @@ export default function SearchResult({ searchQuery, onSelect }) {
     );
 
     async function search(query, setContent) {
-        try{
+        try {
             const searchResults = await searchForMovie(query.trim());
             setContent(searchResults.map((searchResult, index) => <li key={index}><a onClick={() => onSelect(searchResult.title)}>{`${searchResult.title} (${searchResult.year})`}</a></li>));
-        } catch(error){
+        } catch (error) {
             console.log(error);
         }
     }

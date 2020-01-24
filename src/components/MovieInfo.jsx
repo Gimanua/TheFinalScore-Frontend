@@ -1,16 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import Score from './Score';
-import FinalScore from './FinalScore';
+//Components
+import Score from "./Score";
+import FinalScore from "./FinalScore";
 
-import './scss/MovieInfo.scss';
-import { saveMovie } from '../APIHelper';
-import Movie from '../entities/Movie';
+//Entities
+import Movie from "../entities/Movie";
+
+//Styling
+import "./scss/MovieInfo.scss";
 
 /**
  * Displays information about a movie.
  * @param {Object} props The React props object.
  * @param {Movie} props.movie The movie to display.
+ * @param {Function} props.onMovieSave Callback receiving a movie being saved.
+ * @param {Boolean} props.loggedIn If the user is logged in or not.
  * @returns {JSX.Element} A React component.
  */
 export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
@@ -20,9 +25,9 @@ export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
             <article id="movie-info" className="has-text-centered">
                 <h2 className="title">{title}</h2>
                 <div className="AddWrap">
-            {loggedIn && <><button className="AddMovie"onClick={() => onMovieSave(movie)}>+</button>
-            <p className="AddText">Add to list?</p></>}
-            </div>
+                    {loggedIn && <><button className="AddMovie" onClick={() => onMovieSave(movie)}>+</button>
+                        <p className="AddText">Add to list?</p></>}
+                </div>
                 <img className="MovieImg" src={logo}></img>
                 <h3 className="h3class">Synopsis</h3>
                 <p className="synopsis">{synopsis}</p>
@@ -46,9 +51,6 @@ export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
                     </div>
                 </div>
             </article>
-
-
-
         </>
     );
 }
