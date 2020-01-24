@@ -26,7 +26,7 @@ export default function MovieInfo({ movie, onMovieSave, loggedIn }) {
                 <h2 className="title">{title}</h2>
                 <div className="AddWrap">
                     {loggedIn && <><button className="AddMovie" onClick={() => onMovieSave(movie)}>+</button>
-                        <p className="AddText">Add to list?</p></>}
+                        <p className="AddText">Add?</p></>}
                 </div>
                 <img className="MovieImg" src={logo}></img>
                 <h3 className="h3class">Synopsis</h3>
