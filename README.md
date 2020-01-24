@@ -17,3 +17,6 @@ The Front end communicates with the users browser to figure out what the user wa
 ## Adrian major contributions:
 * APIHelper.js
 * General functions on site.
+
+## Matteus Major contributions:
+* All scss files
