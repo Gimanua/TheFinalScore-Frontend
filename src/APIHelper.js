@@ -158,10 +158,13 @@ export async function OAuthCheck() {
 }
 
 /**
- * Checks localstorage for a username and token and if presesnt tries to sign in.
+ * Checks localstorage for a username and token and if present tries to sign in.
+ * @param {Function} setLogin Used to set logged in status.
+ * @param {Function} setUsername Used to set username.
+ * @param {Function} setVerifier Used to set verifier used.
+ * @param {Function} setVerifierMethod Used to set verifier method.
  */
 export async function autoOAuthLogin(setLogin, setUsername, setVerifier, setVerifierMethod) {
-
     if (localStorage.getItem('token') && localStorage.getItem('username')) {
         const success = await signInOAuthUser(localStorage.getItem('username'), localStorage.getItem('token'));
         if (success) {
@@ -287,10 +290,8 @@ export async function signInOAuthUser(username, token) {
  * Checks if the token the user has is valids
  */
 export async function verifyToken() {
-    console.log("Verify() run");
     let tokval = localStorage.getItem('token');
     const url = `${backendURL}/verify?token=${tokval}`;
-    console.log(tokval);
     try {
         const response = await fetch(url);
         return response.status === 200;
@@ -341,7 +342,6 @@ export async function loadSavedMovies(username, verifier, verifierMethod) {
 export async function saveMovie(movie, username, verifier, verifierMethod) {
     try {
         const url = `${backendURL}/movie/save`;
-        console.log('Awaiting save response');
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -351,12 +351,8 @@ export async function saveMovie(movie, username, verifier, verifierMethod) {
             },
             body: JSON.stringify(movie)
         });
-        console.log('Save response retrieved');
         if (response.status === 201) {
-            console.log('Parsing json');
             const rawReturnedMovie = await response.json();
-            console.log('Parsing complete');
-            console.log(rawReturnedMovie);
             return rawReturnedMovie;
         }
         else {

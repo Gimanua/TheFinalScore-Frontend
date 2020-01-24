@@ -1,5 +1,24 @@
+.info-h1{
+font-family: karla-b;
+font-size: 30px;
+margin-top:50px;
+margin-bottom: 30px;
+}
+
 #Info{
+  font-size: 18px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-family: karla;
   }
+
+  #Info a{
+      color: rgb(103, 31, 219);
+      transition: .5s;
+    }
+
+    #Info a:hover{
+      border-bottom: rgb(103, 31, 219) 3px solid;
+      transition: .5s;
+    }

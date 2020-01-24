@@ -3,7 +3,7 @@ import Score from "./Score";
 /**
  * A class for representing a movie.
  */
-export default class Movie{
+export default class Movie {
 
     /**
      * Constructs a movie.
@@ -21,7 +21,7 @@ export default class Movie{
      * @param {String} type The type of the movie (series, regular movie etc.);
      * @param {Number} id The id of the movie in the database.
      */
-    constructor(title, synopsis, imgSrc, scores, genres, director, cast, year, runtime, released, languages, type, id){
+    constructor(title, synopsis, imgSrc, scores, genres, director, cast, year, runtime, released, languages, type, id) {
         this.title = title;
         this.synopsis = synopsis;
         this.logo = imgSrc;
@@ -42,9 +42,10 @@ export default class Movie{
 /**
  * Gets the final score for a movie.
  * @param {Score[]} scores The scores of a movie.
+ * @returns {Number} The final score.
  */
-function getFinalScore(scores){
-    if(scores.length === 0)
+function getFinalScore(scores) {
+    if (scores.length === 0)
         return NaN;
 
     let sum = 0;

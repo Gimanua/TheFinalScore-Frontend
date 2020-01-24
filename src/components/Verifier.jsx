@@ -1,5 +1,7 @@
-import React from 'react';
-import { verifyToken, githubClientID } from '../APIHelper';
+import React from "react";
+
+//Utility functions
+import { verifyToken, githubClientID } from "../APIHelper";
 
 const TOKEN_STATUS_VERIFYING = 'Verifying token..';
 const TOKEN_STATUS_VERIFIED = 'Token verified, you\'re good to go!';
@@ -38,7 +40,7 @@ export default function Verifier({ method, onChange }) {
                     <p id="token-status">{tokenStatus}</p>
                 </>
             );
-            if(tokenStatus === TOKEN_STATUS_VERIFYING){
+            if (tokenStatus === TOKEN_STATUS_VERIFYING) {
                 verify();
             }
             break;
